@@ -1,0 +1,34 @@
+{
+    "name": "shadrachodek/seerbit-merchants",
+    "description": "Seerbit Merchants WordPress Plugin",
+    "license": "GPL-3.0+",
+    "version": "1.0.0",
+    "keywords": [
+        "wordpress",
+        "plugin"
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "homepage": "https://github.com/seerbit-developers/wordpress-seerbit.git",
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "authors": [
+        {
+            "name": "Shadrach Odekhiran",
+            "email": "shadrach.odekhiran@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SeerbitMerchants\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,144 @@
+{
+    "default": [
+        {
+            "label": "Transaction Time",
+            "key": "transactionTimeString"
+        },
+        {
+            "label": "Currency",
+            "key": "currency"
+        },
+        {
+            "label": "Original Amount",
+            "key": "amount"
+        },
+        {
+            "label": "Settlement Amount",
+            "key": "settlementAmount"
+        },
+        {
+            "label": "Fee",
+            "key": "transactionFee"
+        },
+        {
+            "label": "Transaction Reference",
+            "key": "linkingRef"
+        },
+        {
+            "label": "Merchant Reference",
+            "key": "transactionRef"
+        },
+        {
+            "label": "Product ID",
+            "key": "productId"
+        },
+        {
+            "label": "Customer Name",
+            "key": "customer.customerName"
+        },
+        {
+            "label": "Customer Phone No",
+            "key": "customer.customerPhone"
+        },
+        {
+            "label": "Customer Email",
+            "key": "customer.customerEmail"
+        },
+        {
+            "label": "Description",
+            "key": "transactionDescription"
+        },
+        {
+            "label": "Country",
+            "key": "analytics.country"
+        },
+        {
+            "label": "Bank",
+            "key": "analytics.bank"
+        },
+        {
+            "label": "Channel",
+            "key": "analytics.channel"
+        },
+        {
+            "label": "Channel Type",
+            "key": "analytics.channelType"
+        },
+        {
+            "label": "Refund Date",
+            "key": "refundDate"
+        },
+        {
+            "label": "Refund",
+            "key": "refundValue"
+        },
+        {
+            "label": "Order Id",
+            "key": "orderId"
+        },
+        {
+            "key": "isUpdated",
+            "label": "Transaction Status was Updated"
+        }
+    ],
+    "branch": [
+        {
+            "label": "Branch Reference",
+            "key": "branchReference"
+        },
+        {
+            "label": "Invoice Number",
+            "key": "invoiceNumber"
+        },
+        {
+            "label": "Branch Phone Number",
+            "key": "branchLocationPhoneNo"
+        }
+    ],
+    "settlement": [
+        {
+            "label": "Reference",
+            "key": "cycleRef"
+        },
+        {
+            "label": "Recipient",
+            "key": "merchant.business_name"
+        },
+        {
+            "label": "Currency",
+            "key": "settlementcurrency"
+        },
+        {
+            "label": "Original Amount",
+            "key": "originalAmount"
+        },
+        {
+            "label": "Fee",
+            "key": "fee"
+        },
+        {
+            "label": "Transaction Count",
+            "key": "transactionCount"
+        },
+        {
+            "label": "Refund Count",
+            "key": "refundCount"
+        },
+        {
+            "label": "Refund Volume",
+            "key": "refundVolume"
+        },
+        {
+            "label": "Payout Amount",
+            "key": "settlementAmount"
+        },
+        {
+            "label": "Payout Date",
+            "key": "transferDate"
+        },
+        {
+            "label": "Payout Description",
+            "key": "payoutIdentifier"
+        }
+    ]
+}

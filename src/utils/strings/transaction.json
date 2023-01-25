@@ -1,0 +1,129 @@
+{
+  "filter": [
+    {
+      "text": "All Transactions",
+      "value": "ALL"
+    },
+    {
+      "text": "Successful",
+      "value": "SUCCESS"
+    },
+    {
+      "text": "Failed",
+      "value": "FAIL"
+    },
+    {
+      "text": "Expired",
+      "value": "ABANDONED"
+    }
+  ],
+  "dispute": [
+    {
+      "text": "All Disputes",
+      "value": "ALL"
+    },
+    {
+      "text": "In Dispute",
+      "value": "IN_DISPUTE"
+    },
+    {
+      "text": "Accepted",
+      "value": "ACCEPTED"
+    },
+    {
+      "text": "Closed",
+      "value": "CLOSED"
+    }
+  ],
+  "location": [
+    {
+      "text": "Local",
+      "value": "Local"
+    },
+    {
+      "text": "International",
+      "value": "International"
+    }
+  ],
+  "exports_type": [
+    {
+      "text": "Export to Excel",
+      "value": 1,
+      "label": 1
+    },
+    {
+      "text": "Request Report link",
+      "value": 4,
+      "label": 4
+    }
+  ],
+  "exports_branch_settlements": [
+    {
+      "text": "Export to Excel",
+      "value": 1,
+      "label": 1
+    }
+  ],
+  "export_settlement_details": [
+    {
+      "text": "Export Transactions",
+      "value": 1,
+      "label": 1
+    },
+    {
+      "text": "Export Refunds",
+      "value": 2,
+      "label": 2
+    }
+  ],
+  "pre_auth": [
+    {
+      "text": "Immediate",
+      "value": "immediate"
+    },
+    {
+      "text": "24 hours",
+      "value": "24 hours"
+    },
+    {
+      "text": "Manual",
+      "value": "Manual"
+    }
+  ],
+  "payment_options": [
+    {
+      "text": "All",
+      "value": ""
+    },
+    {
+      "text": "Card",
+      "value": "card"
+    },
+    {
+      "text": "24 hours",
+      "value": "24 hours"
+    },
+    {
+      "text": "Manual",
+      "value": "Manual"
+    }
+  ],
+  "pos_status_options": [
+    {
+      "text": "All",
+      "value": "All"
+    },
+    {
+      "text": "Pending",
+      "value": "pending"
+    },
+    {
+      "text": "Active",
+      "value": "Active"
+    },
+    {
+      "text": "Failed",
+      "value": "failed"
+    }
+  ]
+}

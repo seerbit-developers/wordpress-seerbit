@@ -1,0 +1,134 @@
+$linkColor: #c2c2c2;
+$hoverLinkColor: #676767;
+$inputColor: #cccdd9;
+$fill: 400px;
+$transparent: transparent;
+$black: #000;
+
+
+
+
+
+.sbt-chart-legend {
+
+  .calender-wrap {
+    input.p-inputtext {
+      border: none !important;
+      background: transparent !important;
+      width: 100px !important;
+      font-size: 13px !important;
+      cursor: pointer;
+
+      &:enabled:focus {
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .black {
+    color: $black !important;
+  }
+
+  .text-bold {
+    font-weight: 500;
+  }
+
+  i.icon.outline {
+    color: #bababa;
+    font-size: 1.2em;
+  }
+
+  [data-testid="datepicker-input"] {
+    width: 180px;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .font-8 {
+    font-size: .5rem !important;
+  }
+
+  .font-10 {
+    font-size: 10px !important;
+  }
+
+
+
+  .font-20 {
+    font-size: 20px !important;
+  }
+
+  .font-18 {
+    font-size: 18px !important;
+  }
+
+  .font-11 {
+    font-size: 11px !important;
+  }
+
+  .font-12 {
+    font-size: 12px !important;
+  }
+
+  .font-13 {
+    font-size: 13px !important;
+  }
+
+  .font-14 {
+    font-size: 14px !important;
+  }
+
+  .font-15 {
+    font-size: 15px !important;
+  }
+
+  .font-16 {
+    font-size: 1rem !important;
+  }
+
+  .border-left {
+    border-left: 1px solid $black;
+  }
+
+  .m-none {
+    margin: 0em !important;
+  }
+
+  .m-v-none {
+    margin: 1rem 0em !important;
+  }
+
+  .p-3 {
+    padding: 1em !important;
+  }
+
+  .mt-3 {
+    margin-top: 1em !important;
+  }
+
+  .mr-2 {
+    margin-right: 0.5em !important;
+  }
+
+  .ml-2 {
+    margin-left: 0.5em !important;
+  }
+
+  .font-bold {
+    font-weight: 500;
+  }
+
+  .border-right {
+    border-right: 1px solid $black !important;
+  }
+
+  .transparent {
+    background: $transparent !important;
+  }
+
+  .br-none {
+    border-radius: 0 !important;
+  }
+}

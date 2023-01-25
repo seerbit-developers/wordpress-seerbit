@@ -1,0 +1,204 @@
+/** @format */
+
+$linkColor: #c2c2c2;
+$hoverLinkColor: #676767;
+$inputColor: #cccdd9;
+$fill: 400px;
+$transparent: transparent;
+$size11: 11px;
+
+.sbt-transaction,
+.page-container {
+  margin: 1% auto;
+  padding-bottom: 8.8%;
+  @include media(">=xlarge") {
+    width: calc(100% - 18rem);
+  }
+  @include media(">=large", "<xlarge") {
+    width: calc(100% - 10rem);
+  }
+  @include media(">=small", "<large") {
+    margin-top: 4rem;
+  }
+  @include media(">medium", "<large") {
+    width: calc(100% - 10rem);
+  }
+  @include media("<medium") {
+    width: calc(100% - 2rem);
+  }
+  @include media("<=small") {
+    width: calc(100% - 3rem);
+  }
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    input {
+      border: none !important;
+      background: transparent !important;
+      font-size: 13px !important;
+      height: 30px;
+      //width: 170px;
+
+      &:focus {
+        box-shadow: none !important;
+        outline: none !important;
+      }
+      &::placeholder {
+        color: black !important;
+      }
+    }
+  }
+
+  .p-inputtext {
+    padding: 0.5em;
+    font-size: 12px !important;
+  }
+
+  .icon.close,
+  .icon.times {
+    font-weight: 100;
+    font-size: 8px;
+    padding: 8px;
+    color: #283c7c;
+  }
+
+  .sbt-select-option {
+    font-size: 12px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    border-radius: 3px !important;
+    .text {
+      font-size: 12px !important;
+      color: #676767 !important;
+    }
+
+    i {
+      top: auto !important;
+    }
+  }
+
+  i.icon.outline {
+    color: #bababa;
+    font-size: 1em;
+  }
+
+  .border-right {
+    border-right: 1px solid #dcdcdc;
+  }
+
+  .border-left {
+    border-left: 1px solid #dcdcdc;
+  }
+
+  .value {
+    font-size: 15px;
+  }
+
+  .ui[class*="right labeled"].icon.button {
+    padding-right: 0em !important;
+    padding-left: 0em !important;
+
+    i {
+      background-color: $transparent;
+      border-left: 1px solid #eee;
+      font-size: 12px;
+      font-weight: 100;
+    }
+  }
+
+  .p-none {
+    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .perpage .text {
+    font-size: $size11;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .input-tag {
+    color: #29327f;
+    font-size: 11px;
+    width: 100px !important;
+
+    input {
+      padding-top: 1.4em;
+      padding-bottom: 1.4em;
+      color: #283c7c;
+    }
+  }
+
+  [data-testid="datepicker-input"] {
+    input,
+    icon::before {
+      color: #283c7c;
+    }
+  }
+}
+
+.link-dark {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.black {
+  color: rgba(0, 0, 0, 1) !important;
+}
+
+.font-light {
+  font-weight: lighter !important;
+}
+
+.dashboard-left-section {
+  background: #fbfbfb;
+  padding: 0 4.2em;
+  @include media("<medium") {
+    display: none;
+  }
+}
+
+.hisx-boxx {
+  width: 374px;
+  height: 100px;
+  @media only screen and (max-width: 480px) {
+    height: auto;
+    width: 100%;
+    .xhxx {
+      max-width: 100%;
+      flex: auto;
+    }
+    .tiltx {
+      text-align: center;
+    }
+    .cbxx{
+      flex: auto;
+      max-width: 100%;
+    }
+  }
+}
+
+
+.naraxx{
+  width: 62% !important
+}
+
+.scroll-table{
+  // @media only screen and (max-width: 8200px) {
+  overflow-x: auto;
+  // width: 100%;
+
+  // max-width: 1700px;
+  overflow-x: auto;
+
+  padding-bottom: 10px;
+  // }
+}
+
+.hgx{
+  margin-left: 0px !important
+}

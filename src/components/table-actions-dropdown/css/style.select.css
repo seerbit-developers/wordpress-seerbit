@@ -1,0 +1,59 @@
+.dropdown--select-table-parent{
+    width:max-content;
+    padding: 10px 0;
+    position: absolute;
+    top: 39px;
+    right: 0;
+    display: table;
+    z-index: 1000;
+    background: #FFFFFF;
+    border: 1px solid #D2DAE1;
+    box-sizing: border-box;
+    border-radius: 3px;
+    overflow: scroll;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    visibility: visible;
+    height: auto;
+    transition: all ease-in-out 300ms;
+}
+.dropdown--select-table-parent:focus{
+    outline: none;
+}
+.dropdown--select-table-parent-hide{
+display: none;
+}
+.dropdown--select-table-item{
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    position: relative;
+    align-items: center;
+    color: #000000;
+    margin: 0 !important;
+    cursor: pointer;
+    padding: 10px 65px 10px 10px;
+    height: 100%;
+    transition: all ease-in-out 300ms;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -webkit-tap-highlight-color:transparent;
+}
+
+/*.dropdown--select-item:not(:last-of-type){*/
+/*    border-bottom: 1px solid #DCE5E5;*/
+/*}*/
+.dropdown--select-table-item:hover{
+    background: rgba(151, 151, 151, 0.1);
+    /*padding: 7px;*/
+}
+
+.dropdown--select-table-item p{
+    margin: 0 !important;
+}
+
+.dropdown--select-table-item-active{
+    background: rgba(151, 151, 151, 0.3);
+}

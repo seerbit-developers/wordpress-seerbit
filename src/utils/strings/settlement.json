@@ -1,0 +1,98 @@
+{
+    "transactions_field_out": [
+        {
+            "name": "originalAmount",
+            "value": "Original Amount"
+        },
+        {
+            "name": "cycleRef",
+            "value": "Settlement Reference"
+        },
+        {
+            "name": "message",
+            "value": "Settlement Message"
+        },
+        {
+            "name": "paymentCurrency",
+            "value": "Payment Currency"
+        },
+        {
+            "name": "paymentStatus",
+            "value": "Payment Status"
+        },
+        {
+            "name": "processingStartTime",
+            "value": "Starting Time"
+        },
+        {
+            "name": "processingStopTime",
+            "value": "Stoping Time"
+        },
+        {
+            "name": "paymentProcessingTime",
+            "value": "Payment Processing Time"
+        },
+        {
+            "name": "refundCount",
+            "value": "Refund Count"
+        },
+        {
+            "name": "refundFee",
+            "value": "Refund Fee"
+        },
+        {
+            "name": "refundVolume",
+            "value": "Refund Volume"
+        },
+        {
+            "name": "settlementAmount",
+            "value": "Settlement Amount"
+        },
+        {
+            "name": "settlementcurrency",
+            "value": "Settlement Currency"
+        },
+        {
+            "name": "refundFee",
+            "value": "Refund Fee"
+        },
+        {
+            "name": "vatFee",
+            "value": "Vat Fee"
+        }
+    ],
+    "transactions_field_in": [
+        {
+            "name": "spillOverCount",
+            "value": "Spill Overcount"
+        },
+        {
+            "name": "startOfCycle",
+            "value": "Start Of Cycle"
+        },
+        {
+            "name": "status",
+            "value": "Status"
+        },
+        {
+            "name": "transactionCount",
+            "value": "Transaction Count"
+        },
+        {
+            "name": "transactionType",
+            "value": "Transaction Type"
+        },
+        {
+            "name": "transactionVolume",
+            "value": "Transaction Volume"
+        },
+        {
+            "name": "transferDate",
+            "value": "Transfer Date"
+        },
+        {
+            "name": "updatedAt",
+            "value": "Updated At"
+        }
+    ]
+}

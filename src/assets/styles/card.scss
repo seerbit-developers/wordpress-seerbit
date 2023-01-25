@@ -1,0 +1,15 @@
+.card__standard{
+  border: 1px solid #DFE0EB;
+  border-radius: 3px;
+  &--header{
+    background: #E8E8E8;
+    padding: 15px;
+  }
+  &--body{
+    background: #ffffff;
+    &--content{
+      padding: 15px;
+    }
+  }
+
+}

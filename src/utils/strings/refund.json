@@ -1,0 +1,62 @@
+{
+    "transactions_field_out": [
+        {
+            "name": "transactionDescription",
+            "value": "Transaction Description"
+        },
+        {
+            "name": "currency",
+            "value": "Currency"
+        },
+        {
+            "name": "amount",
+            "value": "amount"
+        },
+        {
+            "name": "customerName",
+            "value": "Customer Name"
+        },
+        {
+            "name": "customerPhone",
+            "value": "Customer Phone"
+        },
+        {
+            "name": "customerEmail",
+            "value": "Customer Email"
+        },
+        {
+            "name": "reasonForFailure",
+            "value": "Reason For Failure"
+        },
+        {
+            "name": "refundRef",
+            "value": "Refund Ref"
+        },
+        {
+            "name": "refundFee",
+            "value": "Refund Fee"
+        },
+        {
+            "name": "createdAt",
+            "value": "Created At"
+        },
+        {
+            "name": "type",
+            "value": "Refund Type"
+        },
+        {
+            "name": "processStatus",
+            "value": "Process Status"
+        }
+    ],
+    "transactions_field_in": [
+        {
+            "name": "transactionRef",
+            "value": "Transaction Reference"
+        },
+        {
+            "name": "transactionid",
+            "value": "Transaction Id"
+        }
+    ]
+}

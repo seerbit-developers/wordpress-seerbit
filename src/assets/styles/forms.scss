@@ -1,0 +1,104 @@
+.form__control--full {
+  background: transparent;
+  color: $text__color--black;
+  width: 100%;
+  padding: 13px;
+  margin: 0;
+  border: 1px solid #dfe0eb;
+  border-radius: 3px;
+  &::placeholder {
+    color: $text__color--black !important;
+  }
+  & + .input__border--bottom {
+    border-bottom: 0px transparent !important;
+  }
+}
+input[readonly],
+input[disabled] {
+  background: #ececec;
+  color: #333;
+}
+
+.form__control--blank {
+  background: transparent;
+  width: 100%;
+  color: $text__color--active;
+  padding: 13px 13px 13px 0;
+  margin: 0;
+  border: 0 transparent !important;
+  border-radius: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  &::placeholder {
+    color: $text__color--black !important;
+  }
+
+  &:focus,
+  &:active,
+  &:focus-within,
+  &:focus-visible {
+    border-radius: 0 !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
+    border: 1px solid #dfe0eb;
+    padding: 13px;
+    .configuration__item {
+      border-bottom: 0px transparent !important;
+    }
+    & + .input__border--bottom {
+      border-bottom: 0px transparent !important;
+    }
+  }
+}
+.form__control--border-bottom {
+  background: transparent;
+  width: 100%;
+  color: $text__color--active;
+  padding: 13px 13px 13px 0;
+  margin: 0;
+  border: 0 transparent !important;
+  border-radius: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-bottom: 1px solid $text__color--black !important;
+  &::placeholder {
+    color: $text__color--black !important;
+  }
+  &:focus,
+  &:active,
+  &:focus-within,
+  &:focus-visible {
+    border: 0 transparent !important;
+    border-radius: 0 !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
+    border-bottom: 1px solid $color__blue !important;
+    background: $color__input--background;
+    padding: 13px;
+    & + .input__border--bottom {
+      border-bottom: 0px transparent !important;
+    }
+  }
+}
+.form__control--label--lg {
+  font-weight: 500;
+  font-size: $font__size--base;
+  color: #000;
+}
+.input__border--bottom {
+  border-bottom: 1px solid #dde0e5;
+  display: block;
+  width: 100%;
+  padding-top: 10px;
+}
+
+input:focus,
+input:focus-visible,
+input:active {
+  outline-color: #333 !important;
+  border-color: #333 !important;
+}

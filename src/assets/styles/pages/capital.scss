@@ -1,0 +1,398 @@
+
+
+.capital-container{
+  padding: 0;
+  .header{
+    margin-bottom: 3em;
+    h3>span{
+      color: $color__capital;
+    }
+    p{
+      font-size: 18px;
+      color: #4D4D4D;
+      font-weight: 300;
+      margin-top: 23px;
+    }
+  }
+  .capital-sections{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    @include media("<medium") {
+      flex-direction: column;
+    }
+
+  .balance-section {
+    width: 45%;
+    padding: 0;
+    @include media("<medium") {
+      width: 100%;
+      margin-bottom: 4em;
+    }
+    > .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h4 {
+        font-size: 20px;
+        color: #8BA2C1;
+      }
+      span {
+        font-size: 28px;
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+     .balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+       border-bottom: 1px solid #DFE8F4;
+       padding: 25px 0;
+      h4 {
+        font-size: 18px;
+        color: #4D4D4D;
+      }
+
+      span {
+        font-size: 23px;
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+  }
+  }
+  .application-section{
+    width: 45%;
+    padding: 0;
+    @include media("<medium") {
+      width: 100%;
+    }
+    >.start{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      height: 180px;
+      background: #ffffff;
+      padding: 30px 30px;
+      border-radius: 8px;
+      div{
+        width: 100%;
+      }
+      div>.title{
+        display: block;
+        width: 55%;
+        text-align: left;
+        font-size: 18px;
+        @include media("<medium") {
+          width: 100%;
+          text-align: center;
+        }
+      }
+      div>.action{
+        display: block;
+        width: 100%;
+        text-align: right;
+        @include media("<medium") {
+          text-align: center;
+        }
+      }
+    }
+    >.offers{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      min-height: 180px;
+      background: #ffffff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      position: relative;
+      .header{
+        text-align: center;
+        color: #1A1919;
+        font-size: 15px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 25px;
+        position: relative;
+        span.close{
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+      .offer-list{
+        width: 100%;
+        height: 500px;
+        overflow: scroll;
+        .item{
+          border: 1px solid #F5F5F5;
+          box-sizing: border-box;
+          box-shadow: 0px 2px 4px rgba(44, 46, 48, 0.0504982);
+          border-radius: 5px;
+          padding: 15px;
+          margin: 15px 0;
+          background: #ffffff;
+          .title{
+            color: #000000;
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .details{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include media("<medium") {
+              flex-direction: column;
+            }
+            .description{
+              color: #999999;
+              font-size: 15px;
+              @include media("<medium") {
+                margin-bottom: 15px;
+              }
+            }
+          }
+        }
+        -ms-overflow-style: none; /* for Internet Explorer, Edge */
+        scrollbar-width: none; /* for Firefox */
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          display: none; /* for Chrome, Safari, and Opera */
+        }
+      }
+
+    }
+    >.offer{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      min-height: 180px;
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 8px;
+      position: relative;
+      .header{
+        text-align: center;
+        color: #1A1919;
+        font-size: 15px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 25px;
+        position: relative;
+        span.close{
+          position: absolute;
+          //top: 20px;
+          right: 0;
+        }
+        span.back{
+          position: absolute;
+          padding-right: 8px;
+          left: 0;
+        }
+        span img{
+          padding-right: 8px;
+        }
+      }
+      .repayment-details{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        text-align: right;
+        p.frequency{
+          color: $color__capital_2;
+          font-size: 12px;
+        }
+        p.amount{
+          font-size: 25px;
+          color: #000000;
+          font-weight: 500;
+        }
+      }
+      .offer-details{
+        width: 100%;
+        margin-top: 30px;
+        .--text{
+          font-size: 15px;
+          font-weight: 500;
+          margin-bottom: 5px;
+          word-spacing: 1px;
+        }
+        input.--amount{
+          font-size: 15px;
+          font-weight: 500;
+          height: 50px;
+          width: 100%;
+          background: #F3F3F3;
+          border: 1px solid rgba(196, 196, 196, 0.53) ;
+          outline-color: transparent !important;
+          box-sizing: border-box;
+          border-radius: 3px;
+          padding: 10px 20px;
+          &:focus,&:focus-visible,&:focus-within,&:active,&:valid{
+            outline-color: transparent !important;
+            border-color: rgba(196, 196, 196, 0.53) !important;
+            border-width: 1px;
+          }
+        }
+        .amount-range{
+          font-weight: 500;
+          font-size: 10px;
+          display: flex;
+          margin-top: 5px;
+          justify-content: space-between;
+        }
+        .bottom-actions{
+          display: flex;
+          margin-top: 5px;
+          justify-content: space-between;
+          margin-bottom: 5px;
+          flex-direction: column;
+          .range-duration{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: inherit;
+            margin-top: 10px;
+            p.text{
+              font-size: 12px;
+              font-weight: 700;
+            }
+            p.duration-selected{
+              font-weight: 700;
+              font-size: 12px;
+            }
+          }
+          .repayment-period-range {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            font-weight: 500;
+            font-size: 10px;
+          }
+          .cost-slider{
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            .slider-bar{
+              background: #F0F0F0;
+              height: 12px;
+            }
+            .rs-slider-progress-bar{
+              background: $color__capital_2;
+              height: 12px;
+            }
+            .rs-slider-handle {
+              top: -60%;
+            }
+            .rs-slider-handle:before{
+              border: 7px solid $color__capital_2;
+              height: 26px;
+              width: 26px;
+              margin-left: -24px;
+            }
+          }
+          .loan-amount-note{
+            padding: 20px 10px;
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+      }
+      .loan-review{
+        width: 100%;
+        padding: 15px 0;
+        .--text{
+          font-size: 15px;
+          margin-bottom: 5px;
+          word-spacing: 1px;
+        }
+        .loan-summary{
+          background: #F3F6F9;
+          width: 100%;
+          padding: 20px;
+          margin-bottom: 20px;
+          .table-row{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            padding: 0 0 10px 0;
+            .key{
+              color: #757575;
+            }
+            .value{
+              color: #000000;
+            }
+            .border{
+              border-top: 1px solid #C2CCD1;
+            }
+          }
+        }
+        .repayment-schedule{
+          background: #F3F6F9;
+          width: 100%;
+          padding: 20px;
+          table{
+            table-layout: fixed;
+            border-collapse: collapse;
+            width: 100%;
+            tr {
+              th{
+                color: #757575;
+                font-size: 14px;
+                font-weight: 500;
+              }
+              td:last-child,th:last-child{
+                padding-left: 15px;
+              }
+              td {
+                color: #000000;
+                font-size: 15px;
+              }
+              td:not(:first-child) {
+                font-weight: 500;
+              }
+            }
+            tbody{
+              margin-top: 15px;
+              tr:first-child{
+                td{
+                  padding-top: 15px;
+                }
+              }
+              tr:not(:first-child){
+                td{
+                  padding-top: 15px;
+                }
+              }
+            }
+          }
+        }
+
+      }
+      .application-complete{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        min-height: 300px;
+      }
+    }
+    .btn{
+      background: $color__capital_2;
+      &:hover{
+        color: #ffffff;
+      }
+    }
+
+  }
+}

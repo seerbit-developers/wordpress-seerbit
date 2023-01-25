@@ -1,0 +1,85 @@
+$linkColor: #c2c2c2;
+$hoverLinkColor: #676767;
+$inputColor: #cccdd9;
+$fill: 400px;
+$transparent: transparent;
+$blank:#000000;
+$sbtLink:#3F99F0;
+
+
+.sbt-code {
+
+.form-outline {
+    position: relative;
+}
+
+.form-control {
+    display: block;
+    height: 53px;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4f4f4f;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: "1px solid #E8E8EB";
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+
+  .form-label {
+    position: absolute;
+    top: 10px;
+    left: .75rem;
+    padding-top: .37rem;
+    pointer-events: none;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: all .2s ease-out;
+    transition: top .2s ease-out;
+    color: rgba(0,0,0,.6);
+    margin-bottom: 0;
+}
+
+.form-outline input[type=text], 
+.form-outline input[type=email], 
+.form-outline input[type=password],
+.form-outline input[type=number],
+.form-outline input[type=url],
+.form-outline input[type=tel]  { 
+  padding-top: 20px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[readonly] {
+    cursor: text;
+    background-color: #fff;
+}
+.seerbit-code:focus + label
+ {
+  top: 1px;
+  font-size: 11px;
+}
+
+.has-code + label {
+  top: 1px;
+  font-size: 11px;
+}
+}

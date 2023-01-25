@@ -1,0 +1,125 @@
+$linkColor: #c2c2c2;
+$hoverLinkColor: #676767;
+$inputColor: #cccdd9;
+$fill: 400px;
+$transparent: transparent;
+$blank:#000000;
+$sbtLink:#3F99F0;
+
+
+
+.sbt-setup {
+
+    .input-group-append .custom {
+
+        .p-inputtext {
+            width: 25px !important;
+            height: 25px !important;
+        }
+    }
+
+    .sbt-btn {
+        border-radius: 3px;
+        border: 0.5px solid #dddddd;
+
+        background: #8fc4f6;
+        border-color: #8fc4f6;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 14px;
+        min-height: 40px;
+
+        &:hover {
+            background: #8fc4f6;
+            border-color: #8fc4f6;
+            color: #ffffff !important;
+        }
+
+        &:focus {
+            background: #8fc4f6;
+            box-shadow: none;
+        }
+
+        &:active {
+            background: #8fc4f6;
+            border-color: #8fc4f6;
+        }
+    }
+
+    .pwd-btn {
+        border-radius: 3px;
+        border: 0.5px solid #DFE0EB;
+
+        background: #DFE0EB;
+        border-color: #DFE0EB;
+        color: #000000;
+        font-weight: 500;
+        font-size: 14px;
+        min-height: 40px;
+
+        &:hover {
+            background: #DFE0EB;
+            border-color: #DFE0EB;
+            color: #000000 !important;
+        }
+
+        &:focus {
+            background: #DFE0EB;
+            box-shadow: none;
+        }
+
+        &:active {
+            background: #DFE0EB;
+            border-color: #DFE0EB;
+        }
+    }
+
+  
+    .ui.form .field>label {
+        color: #bababa;
+        font-weight: 500;
+    }
+
+    .border-right {
+        border-right: 1px solid #dcdcdc;
+    }
+
+    .justify-end {
+        justify-content: flex-end;
+    }
+
+    .border-left {
+        border-left: 1px solid #dcdcdc;
+    }
+
+    .bg-white {
+        background-color: #fff !important;
+    }
+
+
+
+    .value {
+        font-size: 15px;
+    }
+
+    .pb-3 {
+        padding-bottom: 1em;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    .text-right {
+        text-align: right !important;
+    }
+
+    .link {
+        color: $sbtLink;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+}

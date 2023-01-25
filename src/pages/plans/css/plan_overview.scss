@@ -1,0 +1,27 @@
+.sbt-plan-overview {
+  .sbt-title {
+    line-height: 24px;
+    color: #000000;
+  }
+
+  .sbt-label {
+    font-size: 15px;
+    line-height: 18px;
+    color: #676767;
+  }
+
+  .sbt-value {
+    color: #000000;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .sbt-button {
+    border-radius: 3px;
+    height: 40px;
+  }
+}
+
+.currency-placeholder {
+  background: #dfe0eb !important;
+}

@@ -1,0 +1,182 @@
+$linkColor: #c2c2c2;
+$hoverLinkColor: #676767;
+$inputColor: #cccdd9;
+$fill: 400px;
+$transparent: transparent;
+$blank:#000000;
+$sbtLink:#3F99F0;
+
+
+.sbt-reset {
+  input{
+    border-color: #F1F4F8;
+  }
+  .sbt-btn {
+    border-radius: 3px;
+    border: 0.5px solid #dddddd;
+
+    background: #8fc4f6;
+    border-color: #8fc4f6;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 40px;
+
+    &:hover {
+      background: #8fc4f6;
+      border-color: #8fc4f6;
+      color: #ffffff !important;
+    }
+
+    &:focus {
+      background: #8fc4f6;
+      box-shadow: none;
+    }
+
+    &:active {
+      background: #8fc4f6;
+      border-color: #8fc4f6;
+    }
+  }
+
+  .ui.form .field>label {
+    color: #bababa;
+    font-weight: 500;
+  }
+
+  .border-right {
+    border-right: 1px solid #dcdcdc;
+  }
+
+  .border-left {
+    border-left: 1px solid #dcdcdc;
+  }
+
+  .bg-white {
+    background-color: #fff !important;
+  }
+
+  .pt-0 {
+    padding-top: 0 !important;
+  }
+
+  .p-3 {
+    padding: 1em !important;
+  }
+
+  .mt-3 {
+    margin-top: 1em !important;
+  }
+
+  .mr-2 {
+    margin-right: 0.5em !important;
+  }
+
+  .ml-2 {
+    margin-left: 0.5em !important;
+  }
+
+  .font-bold {
+    font-weight: 500 !important;
+  }
+
+  .value {
+    font-size: 15px;
+  }
+
+  .pb-3 {
+    padding-bottom: 1em;
+  }
+
+  .text-center {
+    text-align: center !important;
+  }
+
+  .text-right {
+    text-align: right !important;
+  }
+
+  .link {
+    color: $sbtLink;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .form-outline {
+    position: relative;
+}
+
+.form-control {
+    display: block;
+    height: 53px;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4f4f4f;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: "1px solid #E8E8EB";
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+
+  .form-label {
+    position: absolute;
+    top: 10px;
+    left: .75rem;
+    padding-top: .37rem;
+    pointer-events: none;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: all .2s ease-out;
+    transition: top .2s ease-out;
+    color: rgba(0,0,0,.6);
+    margin-bottom: 0;
+}
+
+.form-outline input[type=text], 
+.form-outline input[type=email], 
+.form-outline input[type=password],
+.form-outline input[type=number],
+.form-outline input[type=url],
+.form-outline input[type=tel]  { 
+  padding-top: 20px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[readonly] {
+    cursor: text;
+    background-color: #fff;
+}
+.seerbit-login-email:focus + label, 
+.seerbit-login-password:focus + label
+ {
+  top: 1px;
+  font-size: 11px;
+}
+
+.hasEmail + label, .hasPassword + label {
+  top: 1px;
+  font-size: 11px;
+}
+}
+

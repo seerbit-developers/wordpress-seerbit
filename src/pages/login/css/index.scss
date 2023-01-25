@@ -1,0 +1,140 @@
+$linkColor: #c2c2c2;
+$hoverLinkColor: #676767;
+$inputColor: #cccdd9;
+$fill: 400px;
+$transparent: transparent;
+$blank: #000000;
+$sbtLink: #3f99f0;
+
+.sbt-login {
+  .form-outline {
+    position: relative;
+  }
+
+  .form-control {
+    display: block;
+    height: 53px;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4f4f4f;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #E8E8EB;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+
+  .form-label {
+    position: absolute;
+    top: 10px;
+    left: 0.75rem;
+    padding-top: 0.37rem;
+    pointer-events: none;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: all 0.2s ease-out;
+    transition: top 0.2s ease-out;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 0;
+  }
+
+  .form-outline input[type="text"],
+  .form-outline input[type="email"],
+  .form-outline input[type="password"],
+  .form-outline input[type="number"],
+  .form-outline input[type="url"],
+  .form-outline input[type="tel"] {
+    //padding-top: 20px;
+  }
+
+  .form-outline span.toggle-password-visibility {
+    right: 10px;
+    top: 54%;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[readonly] {
+    cursor: text;
+    background-color: #fff;
+  }
+
+  #password:focus,#password:focus-visible, #password:active, #password:valid {
+    + label {
+      top: 1px;
+      font-size: 11px;
+    }
+  }
+
+  #email:focus,#email:focus-visible, #email:active, #email:valid {
+    + label {
+      top: 1px;
+      font-size: 11px;
+    }
+  }
+
+
+  .hasEmail + label,
+  .hasPassword + label {
+    top: 1px;
+    font-size: 11px;
+  }
+  .err-txt{
+    color:#ff2300;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .notTrue{
+    border:.5px solid #ff2300;
+    border-radius: 5px;
+    box-shadow: 1px 3px 5px #e6e6e6;
+    transition:.5s ease-in-out
+  }
+
+  @media (min-width: 576px) {
+
+    .body-height {
+      margin-top: 70px;
+    }
+  }
+  @media (min-width: 768px) {
+    .body-height {
+      margin-top: 70px;
+    }
+  }
+  @media (min-width: 992px) {
+    .body-height {
+      margin-top: 140px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .body-height {
+      margin-top: 100px;
+    }
+  }
+  @media (min-width: 1500px) {
+    .body-height {
+      margin-top: 190px;
+    }
+  }
+}

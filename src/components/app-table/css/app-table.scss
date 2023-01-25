@@ -1,0 +1,66 @@
+
+.app-table-container{
+    border-radius: .3em;
+    position: relative;
+    scroll-snap-type: inline mandatory;
+    //overflow-x: auto;
+    white-space: nowrap;
+    overscroll-behavior: contain;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    //overflow-x: auto;
+    //overflow-y: scroll !important;
+    min-height: 500px;
+    -webkit-overflow-scrolling: touch;
+}
+.app-table-container::-webkit-scrollbar {
+     display: none;
+ }
+.not-fixed table{
+    table-layout: auto !important;
+}
+.app-table table{
+        width: 100%;
+        border-collapse: collapse;
+    // table-layout: fixed;
+    border-spacing: 0;
+}
+.app-table table thead{
+    border-bottom: 1px solid #D2DAE1;
+    }
+.app-table table thead th{
+    padding: 3.7em 1em 1.2em 0;
+    font-weight: 400;
+    line-height: 40px;
+    font-size: 1em;
+    color: #4d4d4d;
+}
+.app-table table td{
+    padding: .8em 10px .8em 0;
+    border-bottom: 1px solid #DFE4EB;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.app-table table tbody tr:hover{
+    background: #fbfbfb;
+}
+
+.row-height{
+    height: 30px
+}
+
+// Mobile scroll
+.mobile-table-scroll-icon {
+    height: 40px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-table-scroll-icon {
+        display: inline;
+        position: sticky;
+        top: 87px;
+        margin-left: -90vw;
+        right: 0;
+    }
+}

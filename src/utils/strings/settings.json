@@ -1,0 +1,73 @@
+[{
+        "name": "Your Profile",
+        "description": "Details about your personal information",
+        "index": 0,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "*"
+    },
+    {
+        "name": "Business Information",
+        "description": " Details about your company information",
+        "index": 1,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "*"
+    },
+    {
+        "name": "Bank Information",
+        "description": "Settlement account details",
+        "index": 2,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "APPROVE_MERCHANT_PROFILE_UPDATE"
+    },
+    {
+        "name": "API Keys",
+        "description": "Details about your API Keys",
+        "index": 3,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "VIEW_API_KEYS"
+    },
+    {
+        "name": "Account Configuration",
+        "description": "Configure your checkout payment options",
+        "index": 4,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "FEE_SETUP"
+    },
+
+    {
+        "name": "Checkout Customization",
+        "description": "Customize your modal to your preference",
+        "index": 5,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "*"
+    },
+    {
+        "name": "Checkout Ads",
+        "description": "Activate and display adverts on your checkout",
+        "index": 6,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "*"
+    },
+    {
+        "name": "PreAuth Features",
+        "description": "Customize your modal to your preference",
+        "index": 7,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "HIDE"
+    },
+    {
+        "name": "Webhook",
+        "description": "Webhook configuration",
+        "index": 8,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "VIEW_API_KEYS"
+    },
+
+    {
+        "name": "User Management",
+        "description": "Manage users and roles",
+        "index": 9,
+        "action": "BUSINESS TRANSACTION FEE UPDATED",
+        "access": "*"
+    }
+]

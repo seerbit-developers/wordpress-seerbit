@@ -1,0 +1,123 @@
+@supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {
+  .tick {
+    stroke-opacity: 0;
+    stroke-dasharray: 29px;
+    stroke-dashoffset: 29px;
+    animation: draw .5s cubic-bezier(.25, .25, .25, 1) forwards;
+    animation-delay: .6s
+  }
+
+  .circle {
+    fill-opacity: 0;
+    stroke: #219a00;
+    stroke-width: 16px;
+    transform-origin: center;
+    transform: scale(0);
+    animation: grow 1s cubic-bezier(.25, .25, .25, 1.25) forwards;
+  }
+}
+
+@keyframes grow {
+  60% {
+    transform: scale(.8);
+    stroke-width: 4px;
+    fill-opacity: 0;
+  }
+  100% {
+    transform: scale(.9);
+    stroke-width: 8px;
+    fill-opacity: 1;
+    fill: #219a00;
+  }
+}
+
+@keyframes draw {
+  0%, 100% { stroke-opacity: 1; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/*hover effect*/
+$hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+.anime--box-shadow {
+  cursor: pointer;
+  position: relative;
+  flex: 0 0 240px;
+  //width: 240px;
+  //height: 320px;
+  //background-color: #333;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow:
+          rgba(white, 0.2) 0 0 20px 5px,
+          rgba(white, 1) 0 0 0 1px,
+          rgba(black, 0.1) 0 10px 20px 0,
+          inset var(--brand-color) 0 0 0 2px;
+  transition: 0.6s $hoverEasing;
+  &:hover {
+    opacity: 0.8;
+    box-shadow:
+            rgba(white, 0.2) 0 0 20px 5px,
+            rgba(white, 1) 0 0 0 1px,
+            rgba(black, 0.1) 0 10px 20px 0,
+            inset black 0 0 0 2px,
+  }
+}
+
+.transaction-search-filter-container{
+  position: relative;
+  cursor: pointer;
+  padding: 4px 10px;
+
+  img{
+    margin-right: 7px;
+  }
+}
+
+.p-dropdown-items .p-dropdown-item.p-highlight{
+  color: #fff !important;
+  background-color: #007ad9 !important;
+}
+
+.tabs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .tab{
+    font-size: 14px;
+    cursor: pointer;
+    color: rgba(44, 44, 45, 0.4);
+  }
+  .tab-active{
+    font-size: 14px;
+    cursor: pointer;
+    color: #000000;
+  }
+}
+
+.product_image-border-stripes{
+  border: #DFE0EB dashed 1px;
+  border-radius: 3px;
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+}
+.product_image-border{
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  position: relative;
+}
+.product_image-close{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  height: 0;
+  transition: all 300ms linear;
+}
+
+.product_image-border:hover > svg{
+  top: 10px;
+  height: 20px;
+}

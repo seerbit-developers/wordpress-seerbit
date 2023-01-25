@@ -1,0 +1,9 @@
+{
+  "name": "[A-Za-z-, ]*",
+  "business_name": "[0-9A-Za-z-_. ]*",
+  "email": "[\\w@.-]*",
+  "phone_no": "[\\d-() ]*",
+  "number": "[0-9.]*",
+  "rc_number": "[rc|bn\\d{8}]*",
+  "hex": "[A-Fa-f0-9]{6}]*"
+}

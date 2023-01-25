@@ -1,0 +1,126 @@
+.sidebar-wrapper {
+  background-color: #ffffff;
+  min-height: 100vh;
+  border-right: 1px solid F8FAFF;
+  border-left: solid 5px #5ab2f9;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.footer-wrapper {
+  background-color: #ffffff;
+  min-height: 4%;
+  border-top: 1px solid F8FAFF;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.footer-wrapper span {
+  font-size: 0.8rem;
+}
+
+.seerbit.logo {
+  width: 120px;
+  height: auto;
+}
+
+.myNav .nav-link {
+  color: #5b5b5b;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.myNav .nav-link:hover {
+  background: rgba(13, 108, 180, 0.1);
+  color: #0d6cb4 !important;
+  /* border-left: .3rem solid #0d6cb4; */
+  padding-left: 0.7rem;
+}
+
+.myNav .nav-link.active {
+  background: rgba(13, 108, 180, 0.1);
+  color: #0d6cb4 !important;
+  /* border-left: .3rem solid #0d6cb4; */
+  padding-left: 0.7rem;
+}
+
+.need-help {
+  color: #25405a !important;
+  font-weight: 500;
+}
+
+.header-title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #343a40;
+  padding-left: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.active-blue input[type="text"] {
+  border-radius: 0;
+  border: none;
+  background: none;
+  font-size: 15px;
+  width: calc(100% - 40px);
+}
+
+.active-blue {
+  border-bottom: 1px solid #b8d6f2;
+}
+
+.btn-seer {
+  color: #fff;
+  background-color: #82c4fb;
+  border-color: #81c4fb;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+
+.btn-tbl {
+  color: #fff;
+  background-color: #0d6cb4;
+  border-color: #0d6cb4;
+  float: right;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.last-seen {
+  position: absolute;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  color: #9a9a9a;
+  padding-top: 10px;
+}
+
+.last-seen {
+  position: absolute;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  color: #9a9a9a;
+  padding-top: 10px;
+}
+
+.section-wrapper {
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  padding: 20px;
+}
+
+@media (min-width: 576px) {
+  .section-wrapper {
+    padding: 40px;
+  }
+}
+
+.section-wrapper .section-title:first-child {
+  margin-top: 0;
+}

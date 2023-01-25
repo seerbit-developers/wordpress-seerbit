@@ -1,0 +1,85 @@
+.headlessui-listbox-button {
+  background: transparent;
+  color: $text__color--black;
+  width: 100%;
+  margin: 0;
+  border: 1px solid #ECECEC;
+  border-radius: 3px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 45px;
+  span{
+    padding: 0 10px;
+  }
+  svg{
+    //margin-top: 4px;
+  }
+}
+
+.headlessui-listbox-options{
+  position: absolute;
+  width: 100%;
+  list-style: none;
+  text-align: left;
+  background: #FFFFFF;
+  padding: 0;
+  box-sizing: border-box;
+  max-height: 150px;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 5%);
+  overflow: scroll;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  visibility: visible;
+  //height: auto;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  z-index: 999;
+  border: none !important;
+  height: auto;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+  li{
+    padding: 10px;
+    cursor: pointer;
+    border-left: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+    border-radius: 0px !important;
+    &:hover {
+      background: rgba(151, 151, 151, 0.1);
+    }
+    &.active{
+      background: rgba(151, 151, 151, 0.3);
+    }
+  }
+}
+
+.custom-modal-window {
+  position: fixed;
+  background-color: rgb(70 70 70 / 95%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  & > div {
+    padding: 2em;
+    background: white;
+  }
+
+}

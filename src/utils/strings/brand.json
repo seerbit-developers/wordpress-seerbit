@@ -1,0 +1,34 @@
+{
+  "uba": {
+    "button_color": "#EB1401",
+    "icon_color": "#E00E01",
+    "border_color": "#E81401",
+    "logo": "https://seerbit.com/images/cl_logos/live/uba.svg",
+    "test_logo": "https://seerbit.com/images/cl_logos/test/uba.svg",
+    "color": "#EB1401"
+  },
+  "wema": {
+    "button_color": "#990D81",
+    "icon_color": "#990D81",
+    "border_color": "#990D81",
+    "logo": "https://seerbit.com/images/cl_logos/live/wema.svg",
+    "test_logo": "https://seerbit.com/images/cl_logos/test/wema.svg",
+    "color": "#990D81"
+  },
+  "intouch": {
+    "button_color": "#22305C",
+    "icon_color": "#59BFC9",
+    "border_color": "#59BFC9",
+    "logo": "https://seerbit.com/images/cl_logos/live/intouch.svg",
+    "test_logo": "https://seerbit.com/images/cl_logos/test/intouch.svg",
+    "color": "#59BFC9"
+  },
+  "default": {
+    "button_color": "#000000",
+    "icon_color": "#253B80",
+    "border_color": "#E8E8EB",
+    "logo": "https://seerbit.com/images/cl_logos/live/seerbit.svg",
+    "test_logo": "https://seerbit.com/images/cl_logos/test/seerbit.svg",
+    "color": "#EB3E25"
+  }
+}

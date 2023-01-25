@@ -1,0 +1,311 @@
+.container__standard--config {
+  margin: 4.4% auto;
+  padding-bottom: 8.8%;
+  @include media(">=xlarge") {
+    width: calc(100% - 30rem);
+  }
+  @include media(">=large","<xlarge") {
+    width: calc(100% - 20rem);
+  }
+  @include media(">medium", "<large") {
+    width: calc(100% - 10rem);
+  }
+  @include media("<medium") {
+    width: calc(100% - 5rem);
+  }
+  @include media("<=small") {
+    width: calc(100% - 3rem);
+  }
+  .config--section__container{
+    display: flex;
+    justify-content: space-between;
+    @include media(">=xlarge") {
+      width: calc(100% - 40rem);
+    }
+    @include media(">=large") {
+      width: calc(100% - 20rem);
+    }
+    @include media(">medium", "<large") {
+      flex-direction: row;
+    }
+    @include media("<medium") {
+      flex-direction: column-reverse;
+    }
+    @include media("<=small") {
+      flex-direction: column-reverse;
+    }
+    .config__section--left{
+      @include media(">=xlarge") {
+        width: 80%;
+      }
+      @include media(">=large") {
+        width: 80%;
+      }
+      @include media(">medium", "<large") {
+        width: 60%;
+      }
+      @include media("<medium") {
+        width: 100%;
+      }
+      @include media("<=small") {
+        display: none;
+      }
+    }
+    .config__section--right{
+      @include media(">=xlarge") {
+        width: 20%;
+      }
+      @include media(">large","<xlarge") {
+        width: 20%;
+      }
+      @include media(">medium", "<large") {
+        width: 40%;
+      }
+      @include media("<medium") {
+        display: none;
+      }
+      @include media("<=small") {
+        display: none;
+      }
+    }
+  }
+}
+
+.breadcrumb-container {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: #000;
+  a:nth-of-type(1) {
+    padding-right: 1rem;
+    color: #000;
+  }
+  a:not(:first-of-type) {
+    padding-left: 1rem;
+    color: #000;
+  }
+}
+
+.button__toggle {
+  width: 32px;
+  height: 16px;
+  background: #a7afbc;
+  border-radius: 13px;
+  outline: none;
+  border: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 1px;
+}
+.button__toggle--active {
+  background: #61bc6e;
+}
+.button__toggle--button {
+  background: #fff;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  transition: all ease-in-out 200ms;
+  position: absolute;
+}
+.translate-x-9 {
+  transform: translateX(135%);
+}
+.translate-x-0 {
+  transform: translateX(5%);
+}
+
+.card-basic {
+  padding: 1rem;
+  border-radius: 5px;
+  .title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0 0 0.4rem 0;
+  }
+}
+
+//configuration style
+.configuration__container {
+  @include media(">=xlarge") {
+    width: 50%;
+    min-width: 50%;
+  }
+  @include media(">=large") {
+    width: 50%;
+    min-width: 50%;
+  }
+  @include media(">medium", "<large") {
+    width: 50%;
+    min-width: 50%;
+  }
+  @include media("<medium") {
+    width: 100%;
+    min-width: 100%;
+  }
+  @include media("<=small") {
+    width: 100%;
+    min-width: 100%;
+  }
+  .configuration__item {
+    padding: 15px 0;
+    margin-bottom: 15px;
+  }
+}
+
+.no-border {
+  border: none !important;
+}
+
+.scrollable {
+  height: 300px; /* or any value */
+  overflow-y: auto;
+  width: 100%;
+  background: #f1f1f1;
+  padding: 15px;
+}
+//@mixin scrollable($argument) {
+//  $string: unquote($argument);
+//  &--#{$string} {
+//    height: unquote($argument + 'px');
+//  }
+//}
+
+.text__color--base{
+  color: $text__color !important;
+}
+.text__color--light{
+  color: $text__color--light !important;
+}
+.text__color--dark {
+  color: $text__color--active-dark !important;
+}
+.brand-color{
+  color: var(--brand-color) !important;
+}
+.brand-btn {
+   border-radius: 3px !important;
+   border: none !important;
+   background: $text__color--black !important;
+   border-color: $text__color--black !important;
+   color: $text__color--white !important;
+   font-weight: 500;
+   font-size: 14px;
+   min-height: 40px;
+
+   &:hover {
+     background: var(--brand-color) !important;
+     border-color: var(--brand-color) !important;
+     color: $text__color--white !important;
+   }
+
+   .p-inputtext {
+     padding: 1em;
+     font-size: 12px !important;
+   }
+  &-danger{
+    @extend .brand-btn;
+    background: var(--brand-color)  !important;
+    border-color: var(--brand-color)  !important;
+    &:hover {
+      background: $text__color--black !important;
+      border-color: $text__color--black !important;
+    }
+  }
+ }
+.divide__horizontal{
+  width: 100%;
+  height: 1px;
+  background: #E8E8E8;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}
+.App, #root {
+height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.round.rounded-circle {
+  shape-outside: circle();
+  clip-path: circle();
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.success {
+  background-color: #0DB450;
+}
+
+.failed {
+  background-color: #DB0606;
+}
+
+.default {
+  background-color: #ccc;
+}
+
+.pending {
+  background-color: #ffc107;
+}
+@media print {
+  img{
+    display: none;
+  }
+  .no-print  {
+    display: none;
+  }
+  .show-print  {
+    display: block;
+  }
+}
+
+//block ui
+.block-ui{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(83, 80, 80, 0.4);
+  -webkit-backdrop-filter: blur(5px); /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
+  backdrop-filter: blur(5px); /* Supported in Chrome 76 */
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  &--container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+  }
+}

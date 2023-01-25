@@ -1,0 +1,13 @@
+declare module 'utils/strings/validate';
+declare module 'utils/strings/email';
+declare module 'utils/strings/refund';
+declare module 'utils/strings/brand';
+declare module 'utils/strings/transaction';
+declare module 'utils/strings/transaction_export';
+declare module 'utils/strings/settings';
+declare module 'utils/strings/settlement';
+declare module 'utils/strings/verify';
+declare module '*.svg'
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'

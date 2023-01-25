@@ -2,9 +2,10 @@
 	"name": "seerbit-merchants",
 	"version": "1.0.0",
 	"description": "Seerbit merchants account plugin packages",
-	"main": "seerbit-merchants.js",
+	"main": "index.js",
 	"scripts": {
 		"prod": "cross-env NODE_ENV=production webpack --mode production --progress",
+		"build": "webpack --config webpack.production.js",
 		"dev": "cross-env BABEL_ENV=default webpack --watch",
 		"clean": "rm -rf assets/build/*",
 		"svg": "svgr -d assets/src/js/icons src/icons",

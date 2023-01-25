@@ -1,0 +1,112 @@
+
+.filter__engine{
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 999;
+  box-shadow: 4px 0px 16px 0px #101E7314;
+  &-enter{
+    position: absolute;
+    transform: translateX(-110%);
+  }
+  &-enter-active{
+    transform: translateX(0%);
+    transition: all 300ms ease;
+  }
+  &-exit{
+    position: absolute;
+  }
+  &-exit-active{
+    transform: translateX(-110%);
+    transition: all 300ms ease;
+  }
+  .--container{
+    width: 290px;
+    min-height: 464px;
+    z-index: 999;
+    background: #FFFFFF;
+    //overflow: hidden;
+
+    .--header{
+      height: 39px;
+      background: #F0F2F7;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .--badge{
+        &-white{
+          border-radius: 4px;
+          cursor: pointer;
+          background: #FFFFFF;
+          padding: 3px 18px;
+          font-size: 13px;
+        }
+        &-black{
+          border-radius: 4px;
+          cursor: pointer;
+          color: #fff;
+          padding: 3px 18px;
+          font-size: 13px;
+          background: #000000;
+        }
+      }
+    }
+    .--content{
+      height: 39px;
+      background: #FFFFFF;
+      color: #000000;
+      padding: 10px;
+      width: 100%;
+      //display: flex;
+      //justify-content: space-between;
+      //flex-direction: column;
+      //align-items: center;
+      .--search-box{
+        position: relative;
+        img{
+          position: absolute;
+          top: 15px;
+          right: 10px;
+        }
+      }
+      input{
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        background: #FFFFFF;
+        border: 1px solid #D2DAE1 !important;
+        outline-color:#D2DAE1 !important;
+        border-color:#D2DAE1 !important;
+        padding-left: 10px;
+
+      }
+
+      .space-border{
+        width: 100%;
+        height: 1px;
+        background: #D2DAE1;
+      }
+    }
+  }
+}
+
+.filter__engine-enter{
+  position: absolute;
+  transform: translateY(-5%);
+  opacity: 0;
+}
+.filter__engine-enter-active{
+  transform: translateX(0%);
+  opacity: 1;
+  transition: all 300ms ease;
+}
+.filter__engine-exit{
+  position: absolute;
+  opacity: 0.9;
+}
+.filter__engine-exit-active{
+  transform: translateY(-5%);
+  opacity: 0;
+  transition: all 300ms ease;
+}

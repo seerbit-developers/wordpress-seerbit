@@ -1,0 +1,106 @@
+{
+  "transactions_field_out": [
+    {
+      "name": "gatewayResponseMessage",
+      "value": "Gateway Response Message"
+    },
+    {
+      "name": "transactionTime",
+      "value": "Transaction Time"
+    },
+    {
+      "name": "currency",
+      "value": "Currency"
+    },
+    {
+      "name": "amount",
+      "value": "Amount"
+    },
+    {
+      "name": "country",
+      "value": "Country"
+    },
+    {
+      "name": "transactionRef",
+      "value": "Transaction Reference"
+    },
+    {
+      "name": "linkingRef",
+      "value": "Linking Ref"
+    },
+    {
+      "name": "status",
+      "value": "Status"
+    },
+    {
+      "name": "transUpdateTimeStamp",
+      "value": "Transaction Updated Time"
+    },
+    {
+      "name": "bank",
+      "value": "Bank"
+    },
+    {
+      "name": "channel",
+      "value": "Channel"
+    },
+    {
+      "name": "channelType",
+      "value": "Channel Type"
+    },
+    {
+      "name": "transactionDescription",
+      "value": "Transaction Description"
+    },
+    {
+      "name": "events",
+      "value": "Transaction Events"
+    }
+  ],
+  "transactions_field_in": [
+    {
+      "name": "customerPhone",
+      "value": "Customer Phone"
+    },
+    {
+      "name": "gatewayResponseCode",
+      "value": "Gateway ResponseCode"
+    },
+    {
+      "name": "productId",
+      "value": "Product Id"
+    },
+    {
+      "name": "orderId",
+      "value": "Order Id"
+    },
+    {
+      "name": "customerName",
+      "value": "Customer Name"
+    },
+    {
+      "name": "customerEmail",
+      "value": "Customer Email"
+    },
+    {
+      "name": "isUpdated",
+      "value": "Is Status Update"
+    },
+    {
+      "name": "settlementAmount",
+      "value": "Settlement Amount"
+    },
+    {
+      "name": "preAuthType",
+      "value": "PreAuth Transanction Type"
+    },
+    {
+      "name": "fee",
+      "value": "Transaction Fee"
+    },
+    {
+      "name": "refund",
+      "value": "Refund"
+    }
+  ]
+}

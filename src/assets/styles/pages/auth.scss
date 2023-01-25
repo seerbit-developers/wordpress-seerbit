@@ -1,0 +1,133 @@
+.auth--container{
+  flex: 4;
+  padding: 0 3rem;
+  //justify-content: center;
+  //display: flex;
+  //flex-direction: column;
+  .title{
+    font-size: 1.8rem;
+    color: #000;
+  }
+  .auth--section{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &__content{
+      @include media(">=xlarge") {
+        width: calc(25%);
+      }
+      @include media(">=large","<xlarge") {
+        width: calc(100% - 40rem);
+      }
+      @include media(">medium", "<large") {
+        width: calc(100% - 10rem);
+      }
+      @include media("<medium") {
+        margin-top: 40px;
+        width: calc(100% - 5rem);
+      }
+      @include media("<=small") {
+        width: calc(100% - 3rem);
+      }
+    }
+  }
+  .sub-heading{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000;
+  }
+  .image-wrapper{
+    height: auto;
+    width: 150px;
+  }
+  .image-wrapper__mobile{
+    height: auto;
+    width: 150px;
+    margin-top: 3em;
+  }
+}
+
+.auth--side-container{
+  //padding: 4rem 1rem;
+  background-color: $color__grey;
+  height: 100vh;
+  @include media(">=xlarge") {
+    flex: 1;
+  }
+  @include media(">=large") {
+    flex: 1.4;
+  }
+  @include media(">medium", "<large") {
+    flex: 2.4;
+  }
+  @include media("<medium") {
+    display: none;
+  }
+  @include media("<=small") {
+    display: none;
+  }
+}
+.auth-logo{
+  width: 150px;
+  margin-top:3em;
+}
+.otp__input{
+  //border: solid 1px #a8adb7;
+  //border-right: none;
+  //font-size: 20px;
+  //color: #525461;
+  //text-align: center;
+  //box-sizing: border-box;
+  //border-radius: 0;
+  //-webkit-appearance: initial;
+
+  input{
+    width: 74px !important;
+    height: 74px !important;
+    &:first-child{
+      border-top-left-radius: 3px !important;
+      border-bottom-left-radius: 3px !important;
+    }
+    &:last-child{
+      border-top-right-radius: 3px !important;
+      border-bottom-right-radius: 3px !important;
+    }
+    @include media("<medium") {
+      width: 54px !important;
+    }
+    @include media("<=small") {
+      width: 54px !important;
+    }
+  }
+}
+.otp_input{
+  width: 40px;
+  height: 40px;
+  background: rgba(235, 236, 240, 0.19);
+  border: 1px solid #000000;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 2.5em;
+  min-width: 0;
+  max-width: 40px;
+  max-height: 40px;
+}
+.otp_input_container{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-container{
+  background-color: #fff3cd;
+  padding: 12px 7em;
+  text-align: center;
+  align-items: center;
+  border-radius: 5px;
+  transition: all 300ms linear;
+}

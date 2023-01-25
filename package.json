@@ -17,9 +17,10 @@
 	},
 	"keywords": [
 		"wordpress",
-		"plugin"
+		"plugin",
+		"seerbit"
 	],
-	"author": "Shadrach Odekhiran",
+	"author": "SeerBit",
 	"license": "MIT",
 	"private": true,
 	"dependencies": {
@@ -182,7 +183,17 @@
 		"webpack-node-externals": "^3.0.0",
 		"webpack-sentry-plugin": "^2.0.3"
 	},
-	"browserslist": [
-		"defaults"
-	]
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version",
+			"ie 11"
+		]
+	}
 }

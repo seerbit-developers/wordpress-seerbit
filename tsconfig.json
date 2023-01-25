@@ -1,0 +1,28 @@
+
+
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "target": "ES5",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"],
+      "services/*": ["services/*"],
+      "utils/*": ["utils/*"],
+      "assets/*": ["assets/*"],
+      "modules/*": ["modules/*"],
+      "config/*": ["config/*"],
+      "actions/*": ["actions/*"],
+      "models/*": ["models/*"],
+    }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "build", "dist"],
+}

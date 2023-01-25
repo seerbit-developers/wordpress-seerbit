@@ -1,14 +1,13 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'production',
     resolve: {
-        // extensions: ['.mjs', '.mts', '.ts', '.tsx', '.js', '.jsx','json'],
         alias: {
             '@fortawesome/fontawesome-free$': '@fortawesome/fontawesome-free-solid/shakable.es.js',
             components: path.resolve(__dirname, 'src/components/'),
@@ -25,17 +24,6 @@ module.exports = {
     optimization: {
         minimize: true,
         usedExports: true,
-        moduleIds: 'hashed',
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                },
-            },
-        },
         minimizer: [
             new TerserPlugin({
                 terserOptions: {
@@ -70,7 +58,7 @@ module.exports = {
             }),
         ],
     },
-    devtool: 'hidden-source-map',
+    devtool: 'none',
     module: {
         rules: [
             {
@@ -148,6 +136,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin(),
+        new webpack.optimize.LimitChunkCountPlugin({
+            maxChunks: 1
+        })
         // new webpack.EnvironmentPlugin([
         //     'REACT_APP_BASE_URL',
         //     'REACT_APP_BASE_URL_AUTH_SERVICE',

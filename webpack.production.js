@@ -135,24 +135,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin(),
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1
         })
-        // new webpack.EnvironmentPlugin([
-        //     'REACT_APP_BASE_URL',
-        //     'REACT_APP_BASE_URL_AUTH_SERVICE',
-        //     'REACT_APP_BASE_URL_INVOICE',
-        //     'REACT_APP_BASE_URL_TERMINAL',
-        //     'SENTRY_PROJECT',
-        //     'SENTRY_ENVIRONMENT',
-        //     'SENTRY_ORG',
-        //     'REACT_APP_PARTNER_ID',
-        //     'BASE_URL_STORE',
-        //     'PARTNER_ID',
-        //     'REACT_APP_BASE_URL_STORE'
-        // ]),
-        // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ].filter(Boolean),
     output: {
         filename: "./dist/bundle.js",

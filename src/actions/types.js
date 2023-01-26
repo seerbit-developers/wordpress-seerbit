@@ -198,17 +198,10 @@ export const posTerminalTypes = {
 }
 
 //PROD
-// export const BASE_URL = 'https://staging.cgseerapps.com/springmerchants/api/v1/';
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
-// export const BASE_URL_AUTH_SERVICE = 'https://staging.cgseerapps.com/authservice/api/v1/';
-
-export const BASE_URL_AUTH_SERVICE =
-  process.env.REACT_APP_BASE_URL_AUTH_SERVICE;
-  
-export const BASE_URL_INVOICE = process.env.REACT_APP_BASE_URL_INVOICE;
-export const BASE_URL_STORE = process.env.BASE_URL_STORE;
-export const SLACK_URL = process.env.REACT_APP_SLACK_URL;
-
-export const TAG = process.env.REACT_APP_STAGING_LOGGLY_TAG;
-export const PARTNER_ID = process.env.PARTNER_ID;
+export const BASE_URL = 'https://merchant.seerbitapi.com/springmerchants/api/v1/';
+export const BASE_URL_AUTH_SERVICE = 'https://merchant.seerbitapi.com/authservice/api/v1/'
+export const BASE_URL_INVOICE = 'https://merchant.seerbitapi.com/invoice/api/v1/';
+export const BASE_URL_STORE = 'https://merchant.seerbitapi.com/store/api/v1/';
+export const SLACK_URL = '';
+export const PARTNER_ID = 1;
 

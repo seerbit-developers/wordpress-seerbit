@@ -34,11 +34,11 @@ class App extends Component {
 		let lng = getLanguage();
 		moment.locale(lng);
 		const faviconEl = getFaviconEl();
-		if (host === 'seerbit') {
-			faviconEl.href = 'https://assets.seerbitapi.com/images/icon.svg';
-		} else {
-			faviconEl.href = `https://ik.imagekit.io/SeerBit/favicons/${host}.png`;
-		}
+		// if (host === 'seerbit') {
+		// 	faviconEl.href = 'https://assets.seerbitapi.com/images/icon.svg';
+		// } else {
+		// 	faviconEl.href = `https://ik.imagekit.io/SeerBit/favicons/${host}.png`;
+		// }
 	}
 
 	render() {

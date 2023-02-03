@@ -59,4 +59,14 @@ function load_scripts() {
         ]);
 }
 
+//function wpshady_frontend_styles() {
+//
+//    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css');
+//}
+//
+//
+//
+//
+//add_action( 'wp_enqueue_scripts', 'wpshady_frontend_styles', 100 );
+
 require_once SEERBIT_MERCHANTS_PLUGIN_PATH  . 'classes/class-create-admin-page.php';

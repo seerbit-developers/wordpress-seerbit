@@ -18,6 +18,8 @@ import {hostChecker, hostName} from "utils";
 import moment from "moment";
 import {getLanguage} from "utils/localStorage";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function getFaviconEl() {
 	return document.getElementById("favicon");
 }

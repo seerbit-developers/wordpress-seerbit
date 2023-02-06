@@ -36,8 +36,6 @@ class Init extends React.Component {
       pendingKyc: false,
       pendingKycDocs: [],
     };
-    this.idleTimer = null;
-
     this.onIdle = this._onIdle.bind(this);
   }
 
@@ -119,19 +117,12 @@ if (AuthService.loggedIn() && this.props.business_details ) {
   }
 
   UNSAFE_componentWillReceiveProps(newProps) {
-    // if (newProps.hasOwnProperty("business_details")) {
-    //   if (!_.isEmpty(newProps.business_details)) {
-    //     this.setState({ ready: true });
-    //   }
-    // }
-
     if (
       newProps.loggedin !== undefined &&
       newProps.loggedin.length > 100 &&
       (newProps.location === "signup" || newProps.location === "join-team")
     ) {
       window.location.href = window.origin + "/#/confirm-email";
-      //window.location.reload();
     }
     if (
       newProps.loggedin !== undefined &&
@@ -142,7 +133,9 @@ if (AuthService.loggedIn() && this.props.business_details ) {
         !hasAccess("MANAGE_MERCHANT_PROFILE", newProps.user_permissions) ||
         newProps.business_details.status !== "NEW_BUSINESS"
       )
+      {
         window.location.href = "/";
+      }
       else {
         window.location.href = window.origin + "/#/quick-setup";
         window.location.reload();
@@ -150,55 +143,48 @@ if (AuthService.loggedIn() && this.props.business_details ) {
     }
   }
 
-  // componentDidCatch(err, info_data) {
-  //   const {
-  //     loggly: { error, providers, info },
-  //   } = this.props;
-  //   error(err);
-  //   info(info_data);
-  // }
-  // _onAction(e) {
-  //   console.log("user did something", e);
-  // }
-
-  // _onActive(e) {
-  //   console.log("user is active", e);
-  //   console.log("time remaining", this.idleTimer.getRemainingTime());
-  // }
-
   _onIdle(e) {
-
     AuthService.logout();
     window.location.reload();
   }
 
 
   render() {
+    if (
+        window.location.hash === "#/" &&
+        !AuthService.loggedIn() &&
+        this.props.location !== "personalInformation"
+    ) {
+      window.location.href = "/#/auth/login";
+    }
+    if (
+        window.location.hash === "#/business-list" &&
+        this.props.business_details &&
+        !isEmpty(this.props.business_details.setting) &&
+        this.props.location !== "signup"
+    ) {
+      if (
+          this.props.business_details &&
+          this.props.business_details.status !== "NEW_BUSINESS"
+      )
+        window.location.href = "/";
+      else {
+        if (this.props.business_details?.otherInfo?.progressStatus === 4){
+          window.location.href = window.origin + "/";
+        }
+        else{
+          window.location.href = window.origin + "/#/quick-setup";
+          window.location.reload();
+        }
+
+      }
+    }
     return (
       <React.Fragment>
-        {/*<div id="pending_note">*/}
-        {/*  <p>Pending KYC Documents</p>*/}
-        {/*  <ul>{*/}
-        {/*    this.state.pendingKycDocs.map(item=><li>{item.kycDocumentName}</li>)*/}
-        {/*  }</ul>*/}
-        {/*</div>*/}
-        {/*{!this.state.ready && !AuthService.loggedIn() ? (*/}
-        {/*  <ConfigRouters business_details={false} />*/}
-        {/*) : !this.state.ready && AuthService.loggedIn() ? (*/}
-        {/*  <h1>Loading...</h1>*/}
-        {/*) : (*/}
-        {/*  <>*/}
-
-
 
             {AuthService.loggedIn() &&
             this.props.business_details && this.props.business_details.setting && (
                 <>
-                  {/*<LoadingBar*/}
-                  {/*  color="#f11946"*/}
-                  {/*  onRef={(ref) => (this.LoadingBar = ref)}*/}
-                  {/*  className="position-absolute load-range"*/}
-                  {/*/>*/}
                   <BlockUI content={<h5>{this.props.block_ui && this.props.block_ui.message}</h5>} show={this.props.block_ui && this.props.block_ui.status}/>
                   <IdleTimer
                     ref={(ref) => {
@@ -209,7 +195,6 @@ if (AuthService.loggedIn() && this.props.business_details ) {
                     debounce={250}
                     timeout={1000 * 60 * 10}
                   />
-
                   <Header data={this.props} />
                   <ConfigRouters business_details={true} />
                 </>

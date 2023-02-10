@@ -69,7 +69,7 @@ function Overview({ business_analytics, business_details, loading }) {
               <Card
                 fluid
                 className="my-2 sbt-border-success cursor-pointer"
-                onClick={() => (window.location.href = "#/settlements")}
+                onClick={() => (window.location.href = localizer.path_url +  "#/settlements")}
               >
                 <Card.Body>
                   <Card.Title className="font-30 text-black">
@@ -105,7 +105,7 @@ function Overview({ business_analytics, business_details, loading }) {
             <Card
               fluid
               className="my-2 sbt-border-success cursor-pointer"
-              onClick={() => (window.location.href = "#/payments/transactions")}
+              onClick={() => (window.location.href = localizer.path_url + "#/payments/transactions")}
             >
               <Card.Body>
                 <Card.Title className="font-30 text-black">
@@ -145,7 +145,7 @@ function Overview({ business_analytics, business_details, loading }) {
               fluid
               className="my-2 sbt-border-success cursor-pointer"
               // onClick={() => {}}
-              onClick={() => (window.location.href = "#/payments/transactions")}
+              onClick={() => (window.location.href = localizer.path_url + "#/payments/transactions")}
             >
               <Card.Body>
                 <Card.Title className="font-30 text-black">
@@ -168,7 +168,7 @@ function Overview({ business_analytics, business_details, loading }) {
               fluid
               className="my-2 sbt-border-success cursor-pointer"
               // onClick={() => {}}
-              onClick={() => (window.location.href = "#/transactions/customers")}
+              onClick={() => (window.location.href = localizer.path_url + "#/transactions/customers")}
             >
               <Card.Body>
                 <Card.Title className="font-30 text-black">
@@ -192,7 +192,7 @@ function Overview({ business_analytics, business_details, loading }) {
                 fluid
                 className="my-2 border-red cursor-pointer"
                 border="warning"
-                onClick={() => (window.location.href = "#/disputes")}
+                onClick={() => (window.location.href = localizer.path_url + "#/disputes")}
               >
                 <Card.Body>
                   <Card.Title className="font-30 text-black">

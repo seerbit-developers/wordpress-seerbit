@@ -122,7 +122,7 @@ if (AuthService.loggedIn() && this.props.business_details ) {
       newProps.loggedin.length > 100 &&
       (newProps.location === "signup" || newProps.location === "join-team")
     ) {
-      window.location.href = window.origin + "/#/confirm-email";
+      window.location.href = localizer.path_url + "#/confirm-email";
     }
     if (
       newProps.loggedin !== undefined &&
@@ -134,28 +134,28 @@ if (AuthService.loggedIn() && this.props.business_details ) {
         newProps.business_details.status !== "NEW_BUSINESS"
       )
       {
-        window.location.href = "/";
+        window.location.href = localizer.path_url + "#/auth/login";
       }
       else {
-        window.location.href = window.origin + "/#/quick-setup";
-        window.location.reload();
+        window.location.href = localizer.path_url + "#/quick-setup";
+    //    window.location.reload();
       }
     }
   }
 
   _onIdle(e) {
     AuthService.logout();
-    window.location.reload();
+  //  window.location.reload();
   }
 
 
   render() {
     if (
-        window.location.hash === "#/" &&
+        window.location.hash === "#" &&
         !AuthService.loggedIn() &&
         this.props.location !== "personalInformation"
     ) {
-      window.location.href = "/#/auth/login";
+      window.location.href = localizer.path_url + "#/auth/login";
     }
     if (
         window.location.hash === "#/business-list" &&
@@ -167,14 +167,15 @@ if (AuthService.loggedIn() && this.props.business_details ) {
           this.props.business_details &&
           this.props.business_details.status !== "NEW_BUSINESS"
       )
-        window.location.href = "/";
+
+        window.location.href = localizer.path_url;
       else {
         if (this.props.business_details?.otherInfo?.progressStatus === 4){
-          window.location.href = window.origin + "/";
+          window.location.href = localizer.path_url;
         }
         else{
-          window.location.href = window.origin + "/#/quick-setup";
-          window.location.reload();
+          window.location.href = localizer.path_url + "#/quick-setup";
+     //     window.location.reload();
         }
 
       }

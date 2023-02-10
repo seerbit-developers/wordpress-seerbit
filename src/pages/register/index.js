@@ -156,7 +156,7 @@ export function Register(props) {
       .then((res) => {
         setInProcess(false);
         if (res.responseCode === "00") {
-          window.location.href = window.origin + "/#/auth/confirm-email/"+value.email
+          window.location.href = localizer.path_url + "#/auth/confirm-email/"+value.email
         } else {
           alertError(res.message
               ? res.message

@@ -18,7 +18,13 @@ import {hostChecker, hostName} from "utils";
 import moment from "moment";
 import {getLanguage} from "utils/localStorage";
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import 'primereact/resources/primereact.min.css';
+// import 'primereact/resources/themes/nova-light/theme.css';
+//
+// import "primeicons/primeicons.css";
 
 function getFaviconEl() {
 	return document.getElementById("favicon");

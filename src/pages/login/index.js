@@ -35,7 +35,7 @@ export function Login(props) {
             .then(res=>{
                     setValidatingCredentials(false);
                     if (res.changePassword){
-                        return location.push('/auth/password/change/'+res.token)
+                        return location.push('auth/password/change/'+res.token)
                     }
                     if (res.responseCode === '00'){    
                         if(host === "seerbit" && res?.payload?.partnerId !== Number(PARTNER_ID)){
@@ -176,10 +176,11 @@ export function Login(props) {
                       }</span>
                                         </div>
                                         <div className="mt-4">
-                   <span>
-                     <a href="/#/auth/recover-password" className="brand-color">
+                   <span className="link cursor-pointer brand-color" onClick={(e) => history.push({
+                             pathname: "recover-password",
+                         })
+                     }>
                        {t("Forgot Password?")}
-                     </a>
                    </span>
                                         </div>
                                     </div>

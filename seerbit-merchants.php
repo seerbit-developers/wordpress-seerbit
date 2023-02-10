@@ -43,6 +43,13 @@ const SEERBIT_MERCHANTS_PLUGIN_VERSION = '1.0.0';
 add_action( 'admin_enqueue_scripts', 'load_scripts' );
 
 function load_scripts() {
+
+    wp_enqueue_style('font-awesome-4-7', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+    wp_enqueue_style('semantic-ui', 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css');
+    wp_enqueue_style('fontisto', 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css');
+    wp_enqueue_style('primereact', 'https://cdnjs.cloudflare.com/ajax/libs/primereact/4.2.2/resources/primereact.min.css');
+    wp_enqueue_style('primereact-themes', 'https://cdnjs.cloudflare.com/ajax/libs/primereact/4.2.2/resources/themes/nova-light/theme.min.css');
+
     wp_enqueue_script(
         'wp-seerbit-merchants',
         SEERBIT_MERCHANTS_PLUGIN_URL . 'dist/bundle.js',
@@ -51,22 +58,25 @@ function load_scripts() {
         true
     );
 
+    wp_enqueue_script(
+        'seerbit-api',
+        'https://checkout.seerbitapi.com/api/v2/seerbit.js',
+        [],
+        null,
+        true
+    );
+
     wp_localize_script(
         'wp-seerbit-merchants',
         'localizer', [
             'apiUrl' => home_url('/wp-json'),
             'nonce' => wp_create_nonce('wp_rest'),
+            'url' => SEERBIT_MERCHANTS_PLUGIN_URL,
+            'dir' => SEERBIT_MERCHANTS_PLUGIN_PATH,
+            'path_url' => esc_attr( get_admin_url( null, 'admin.php?page=seerbit-merchants' ) )
         ]);
 }
 
-//function wpshady_frontend_styles() {
-//
-//    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css');
-//}
-//
-//
-//
-//
-//add_action( 'wp_enqueue_scripts', 'wpshady_frontend_styles', 100 );
+
 
 require_once SEERBIT_MERCHANTS_PLUGIN_PATH  . 'classes/class-create-admin-page.php';

@@ -426,7 +426,7 @@ export function Header(props) {
                     className="cursor-pointer"
                     onClick={() => {
                       AuthService.logout();
-                      window.location.href = "/";
+                      window.location.href = localizer.path_url + "#/auth/login";
                     }}
                   >
                     <LogoutIcon />{" "}

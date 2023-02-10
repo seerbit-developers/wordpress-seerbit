@@ -12317,7 +12317,7 @@
   "resolved" "https://registry.npmjs.org/primeicons/-/primeicons-4.1.0.tgz"
   "version" "4.1.0"
 
-"primereact@^4.2.1":
+"primereact@^4.2.2":
   "integrity" "sha512-7IfNGRqTUKSWCCbTKeeMLKOShShUmUm0rV0DfsPn0vw0SeT+HQ7HA1cDhdfCuc+bbAK9cLts8j6O8oFOXMDJ7A=="
   "resolved" "https://registry.npmjs.org/primereact/-/primereact-4.2.2.tgz"
   "version" "4.2.2"

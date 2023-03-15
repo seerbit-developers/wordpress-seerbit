@@ -76,7 +76,7 @@ function ChartLegend({
                 // onOk={(e) => { updateGraph()}}
                 onClean={(e) => { updateGraph()}}
                 showOneCalendar
-                appearance="subtle"
+                appearance="default"
                 disabledDate={DateRangePicker.allowedMaxDays(7)}
                 defaultValue={[new Date(), dates]}
                 />

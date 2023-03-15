@@ -14,6 +14,13 @@ export const NavigationMenu = ({
 }) => {
   const [isTourOpen, setTour] = useState(false);
   const { t } = useTranslation();
+  const baseUrl = () => {
+    try {
+      return localizer.path_url
+    }catch (e) {
+      return window.origin
+    }
+  }
   useEffect(() => {
     setTimeout(() => {
       window.addEventListener(
@@ -34,12 +41,7 @@ export const NavigationMenu = ({
 
   let { pathname, hash } = useLocation();
 
-  console.log('path', pathname);
-  console.log('h', hash);
-
   const isPageActive = (p) => {
-     console.log('p', p)
-     console.log('pathname', pathname)
     if (pathname === "/" && p === "home") return true;
     pathname = pathname.replace("/", "");
     if (pathname === "/" && p === "home") return true;
@@ -127,7 +129,7 @@ export const NavigationMenu = ({
         <li key={i}>
           <Nav.Link
             id={menu.id}
-            href={"/" + menu.navLink === "" ? pathname : localizer.path_url +  menu.navLink}
+            href={"/" + menu.navLink === "" ? pathname : baseUrl() +  menu.navLink}
             className={`sbt nav-item mr-3 ${
               isPageActive(menu.id) ? "active" : ""
             }`}
@@ -146,7 +148,7 @@ export const NavigationMenu = ({
                     <Nav.Link
                       id={childMenu.id}
                       key={i}
-                      href={localizer.path_url + '#' + childMenu.navLink}
+                      href={baseUrl() + '#' + childMenu.navLink}
                       className={`sbt nav-item mr-3 ${
                         isSubPageActive(childMenu.id) ? "active" : ""
                       }`}

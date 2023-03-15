@@ -18,28 +18,7 @@ const PaginatorEngine = (props) =>{
     }
 // console.log(props)
     return(
-        <div className="perpage py-5">
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column width={ 8 }>
-                        {/*{props.dontShowPerPage ?*/}
-                        {/*    null*/}
-                        {/*    :*/}
-                        {/*    <div className="font-11 black font-light pl-4">*/}
-                        {/*        per page{' '}*/}
-                        {/*        <select onChange={ (evt, item) => changePageFromPerPage(evt, item) }>*/}
-                        {/*            {quantities.map((item, i) => {*/}
-                        {/*                return <option*/}
-                        {/*                    key={ i }*/}
-                        {/*                    selected={ item.value == props.perPage }*/}
-                        {/*                >{item.text}</option>*/}
-                        {/*            })}*/}
-                        {/*        </select>*/}
-                        {/*    </div>*/}
-                        {/*}*/}
-                    </Grid.Column>
-                    <Grid.Column width={ 8 }>
-                        <div className={ 'float-right' }>
+        <div className="d-flex justify-content-end mt-4">
                             <Pagination
                                 as="span"
                                 activePage={ props.currentPage }
@@ -63,10 +42,6 @@ const PaginatorEngine = (props) =>{
                                 nextItem={ { content: t('next') } }
                                 onPageChange={ (s,u)=>props.changePage(u) }
                             />
-                        </div>{' '}
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
         </div>
     )
 }

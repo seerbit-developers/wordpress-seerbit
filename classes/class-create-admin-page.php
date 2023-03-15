@@ -41,7 +41,7 @@ class Create_Admin_Page {
     }
 
     public function menu_page_template() {
-        echo '<div class="wrap"><div id="root"></div></div>';
+        echo '<div class="wrap"><div id="root"></div><div id="app-modal"></div></div>';
     }
 
 

@@ -65,7 +65,6 @@ const CapitalPage = lazy(() => import("./pages/capital"));
 
 const ConfigRouters = ({ business_details }) => {
   let location = useLocation();
-  console.log('AuthService.loggedIn()', AuthService.loggedIn())
   return (
     <>
       {!AuthService.loggedIn() && (

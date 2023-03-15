@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect} from "react";
+import React, {useState, useEffect, Fragment} from "react";
 import { connect } from "react-redux";
 import {
   getBranches,
@@ -13,30 +13,23 @@ import moment from "moment";
 import cogoToast from "cogo-toast";
 import { Can } from "../../modules/Can";
 import ReportSettlement from "../../modules/ReportSettlement";
-import { Dropdown } from "primereact/dropdown";
+// import { Dropdown } from "primereact/dropdown";
 import transactions_json from "../../utils/strings/transaction.json";
-import Filter from "./components/filter";
 import Details from "../../utils/analytics/settlement_details";
 import BranchDetails from "../../utils/analytics/branch_payout_details";
 import AppTable from "components/app-table";
-import iconFilter from "../../assets/images/svg/filter.svg";
 import Copy from "../../assets/images/svg/copy.svg";
 import { isEmpty } from "lodash";
 import styled from "styled-components";
-import { useTransition, animated } from "react-spring";
 import {exportSettlementReport} from "../../services/settlementService";
 import {searchSettlements,getSettlements,getInternationalSettlements} from "../../actions/settlementActions";
 import useWindowSize from "../../components/useWindowSize";
 import {alertError, alertInfo, alertSuccess} from "../../modules/alert";
 import {handleCopy} from "utils";
 import { useTranslation } from "react-i18next";
-
-const Counter = styled.span`
-  color: #bababa;
-  font-size: 12px;
-  font-weight: 400;
-  margin-left: 1em;
-`;
+import {DebounceInput} from "react-debounce-input";
+import DateRangePicker from 'rsuite/DateRangePicker';
+import Dropdown from 'rsuite/Dropdown';
 const Gap = styled.div`
   padding-bottom: 2em;
   padding-top: 1em;
@@ -48,7 +41,6 @@ function SettlementPage(props) {
   const [show_branch_details, setShowBranchDetails] = useState(false);
   const [location, setLocation] = useState("Local");
   const [active_option, setActiveOption] = useState("default");
-  const [show_filter, setShowFilter] = useState(true);
   const [perPage, setPerPage] = useState(25);
   const [show_details, setShowDetails] = useState(false);
   const [payout_data, setPayoutData] = useState();
@@ -69,21 +61,7 @@ function SettlementPage(props) {
     moment().toDate(),
   ]);
   const size = useWindowSize()
-  const { width, height } = size;
-  const isMobile = width < 991;
-  const [expt, setExport] = useState();
-  const exports = [
-    {
-      text: t("Export to Excel"),
-      value: 1,
-      label: 1,
-    },
-    {
-      text: t("Request Report link"),
-      value: 3,
-      label: 3
-    }
-  ];
+  const { width } = size;
 
   function formatNumber(num) {
     return Number(num)
@@ -243,6 +221,9 @@ function SettlementPage(props) {
     }
   }, [props.location]);
 
+  useEffect(()=>{
+    reference && filter(dates[0], dates[1], 1, perPage, type, reference);
+  }, [reference])
   const exportReports = ()=>{
     cogoToast.loading('Exporting Records');
     if (props.payouts){
@@ -260,43 +241,15 @@ function SettlementPage(props) {
     }
   }
 
-  const downloadTemplate = (option) => {
-    if (!option.value) {
-      return option.text;
-    } else {
-      if (option.value === 1)
-        return (
-          <div className="my-1 font-12 font-weight-bold">
-            <span style={{ color: "#333333" }} onClick={ ()=> exportReports() }>{option.text}</span>
-          </div>
-        );
-      else if (option.value === 3)
-        return (
-          <div
-            className="my-1 font-12 font-weight-bold"
-            onClick={() => {
-              setShowMailReport(true);
-            }}
-          >
-            {option.text}
-          </div>
-        );
-    }
-  };
-
   const closeEmailReport = () => {
     setShowMailReport(false);
   };
 
-  const filterTransitions = useTransition(!show_filter, null, {
-    from: { opacity: 0, marginRight: -25, marginLeft: 25 },
-    enter: {
-      opacity: 1,
-      marginRight: 0,
-      marginLeft: 0
-    },
-    leave: { opacity: 0, marginRight: -10, marginLeft: 10 },
-  });
+  const onFilter = (type) => {
+    setLocation(type);
+    setType(type !== "local");
+    filter(dates[0], dates[1], currentPage, perPage, type !== "local")
+  }
 
   const [fullColumns] = React.useState([
     {
@@ -328,8 +281,8 @@ function SettlementPage(props) {
     {
       name: t('Reference'),
       style: { width: '180px', paddingRight: '15px', textAlign: 'left' },
-      cell: props => <span className="row p-0 m-0">
-                      <div className="cut-text">{props.cycleRef}</div>
+      cell: props => <span className="d-flex justify-content-start align-items-center">
+                      <span className="cut-text">{props.cycleRef}</span>
                       <img
                           src={Copy}
                           width="15"
@@ -412,96 +365,48 @@ function SettlementPage(props) {
         <div className="page-container py-5">
           <div className="py-3">
             <div className="font-medium pb-3 font-20 text-black">
-              {t("Settlements")}{" "}
-              <Counter>
-                {/*TOTAL{" "}*/}
-                {/*{props.payouts && props.payouts.rowCount*/}
-                {/*  ? props.payouts.rowCount*/}
-                {/*  : 0}*/}
-              </Counter>
+              {t("Settlements")}
             </div>
             <Gap>
-
               <div>
                 <div className="d-flex flex-row justify-content-between">
                   <div className="d-flex">
-                    <Dropdown
-                      optionLabel="text"
-                      value={location}
-                      options={locationsOptions}
-                      onChange={(e) => {
-                        setLocation(e.value);
-                        setType(e.value === "Local" ? false : true);
-                        filter(dates[0], dates[1], currentPage, perPage, e.value === "Local" ? false : true)
-                      }}
-                      className="font-12 w-200px sbt-border-success mr-3"
-                    />
                     {width >= 991 &&
-                    <Filter
-                        allowedCurrency={props.business_details.allowedCurrency}
-                        showFilter={show_filter}
-                        setDates={(val) => setDates(val)}
-                        setReference={(val) => setReference(val)}
-                        dates={dates}
-                        processing={processing}
-                        reference={reference}
-                        filter={(from_date, to_date) => {
-                          filter(from_date, to_date, 1, perPage, type, reference);
-                        }}
-                        search={(ref) => {
-                          filter(dates[0], dates[1], 1, perPage, type, ref);
-                        }}
-                        currency={false}
-                        setCurrency={setCurrency}
-                        transaction_status={false}
-                        setShowFilter={(bol) => setShowFilter(bol)}
-                        toggleFilter={() => setShowFilter(!show_filter)}
-                        useNewDatePicker
-                        defaultDates={dates}
-                        setDefaultDates={setDates}
-                        loading={loading}
-                        onClearDate={(b)=>{setDateFilter(b)}}
-                    />
-                    }
-                    {width >= 991 &&
-
-                      filterTransitions.map(({item, key, props}) => (
-                          item && <animated.span className="font-12 px-3 cursor-pointer" key={key} style={props}>
-                            <div
-                                onClick={() => setShowFilter(!show_filter)}
-                                style={{paddingTop: '12px'}}
-                            >
-                          <span>
-                            {t('Filters')}
-                              <img
-                                  src={iconFilter}
-                                  style={{width: "12px"}}
-                                  className="ml-1"
-                              />
-                          </span>
-                            </div>
-                          </animated.span>
-                      ))
-
+                        <Fragment>
+                          <DateRangePicker
+                              onChange={(r)=>{ setDates(r);} }
+                              defaultValue={dates}
+                              appearance={'default'}
+                          />
+                          <DebounceInput
+                              minLength={2}
+                              debounceTimeout={2000}
+                              className="font-12 text-left w-200px sbt-border-success p-2 ml-3"
+                              placeholder={t('Cycle reference')}
+                              aria-label="Search"
+                              onChange={(e) => {
+                                search(e.target.value);
+                                setReference(e.target.value);
+                              }}
+                          />
+                        </Fragment>
                     }
                   </div>
                   <div>
-                    <div className="row p-0 m-0">
+                    <div className="d-flex justify-content-end p-0 m-0">
+                      <Dropdown title="Filter">
+                        <Dropdown.Item onClick={()=>onFilter('local')}>Local</Dropdown.Item>
+                        <Dropdown.Item onClick={()=>onFilter('international')}>International</Dropdown.Item>
+                      </Dropdown>
                       <Can access={"EXPORT_MERCHANT_REPORT"}>
-                        <span className="font-12 font-light export_data">
-                          <Dropdown
-                            optionLabel="text"
-                            value={expt}
-                            options={exports}
-                            onChange={(e) => {
-                              setExport(e.target.value);
-                            }}
-                            itemTemplate={downloadTemplate}
-                            showClear={true}
-                            placeholder={t("Export Data")}
-                            className="font-12 text-left w-200px sbt-border-success"
-                          />
-                        </span>
+                        <div className='ml-3'>
+                        <Dropdown
+                            title="Export"
+                        >
+                          <Dropdown.Item onClick={()=>exportReports()}>Export to Excel</Dropdown.Item>
+                          <Dropdown.Item  onClick={()=>setShowMailReport(true)}>Export to email</Dropdown.Item>
+                        </Dropdown>
+                        </div>
                       </Can>
                     </div>
                   </div>

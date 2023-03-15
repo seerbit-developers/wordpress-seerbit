@@ -884,12 +884,12 @@ select {
   border-bottom-left-radius: 0px !important;
 }
 
-_::-webkit-full-page-media,
-_:future,
-:root select {
-  -webkit-appearance: none;
-  background: #fff;
-}
+/*_::-webkit-full-page-media,*/
+/*_:future,*/
+/*:root select {*/
+/*  -webkit-appearance: none;*/
+/*  background: #fff;*/
+/*}*/
 
 .link-dark {
   color: rgba(0, 0, 0, 0.8) !important;
@@ -1116,7 +1116,7 @@ body .p-paginator .p-paginator-last {
   min-width: 150px !important;
 }
 .sbt-filter .p-dropdown-label {
-  top: -6px;
+  top: -3px;
   position: inherit
 }
 .sbt-filter .refunds .p-dropdown-label {
@@ -1128,7 +1128,6 @@ body .p-paginator .p-paginator-last {
   text-overflow: ellipsis;
   overflow: hidden;
   width: 150px;
-  height: 1.2em;
   white-space: nowrap;
 }
 
@@ -1165,18 +1164,16 @@ body .p-paginator .p-paginator-last {
 
 body .p-dropdown .p-dropdown-clear-icon {
   color: orange !important;
-}
-
-.p-dropdown .p-dropdown-clear-icon {
   margin-right: 20px;
+  right: 1rem !important;
 }
 
 .badge {
-  width: "80px";
-  background-color: "#c6f7e7";
-  color: "#1a3c26";
+  width: 80px;
+  background-color: #c6f7e7;
+  color: #1a3c26;
   font-weight: 300;
-  border-radius: "5";
+  border-radius: 5px;
 }
 
 body .p-button {
@@ -1369,19 +1366,36 @@ body .p-inputtext{
 }
 .react-daterange-picker__wrapper{
   border: none !important;
+  padding:0 !important;
 }
 .rs-picker-default .rs-picker-toggle{
-  border: none;
+  /*border: none;*/
 }
-.rs-picker-toggle-wrapper{
-  padding-top: 3px;
-}
+/*.rs-picker-toggle-wrapper{*/
+/*  padding-top: 3px;*/
+/*}*/
 .rs-picker-toggle-value{
   color: #000000 !important;
   padding-right: 10px;
 }
-
-
+.rs-picker-toggle-caret{
+  top: 11px !important;
+}
+.rs-stack{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.rs-btn-close{
+  top: 8px !important;
+}
+.rs-picker-toolbar-right{
+  display:flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 .chart {
   position: relative;
   /*box-shadow: 0px 0px 0.1em rgba(0, 0, 0, 0.25);*/

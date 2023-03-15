@@ -59,7 +59,6 @@ const DropdownFilter = ({
     const handleClickOutside = (event)=>{
         const isNotInContainer = (container && container.current &&
             !container.current?.contains(event.target));
-        console.log('isNotInContainer', isNotInContainer)
         const isButton =
             (event.target.id === 'filterToggleDiv' || event.target.id === 'filterToggleSpan' || event.target.id === 'filterToggleImg')
         if (isNotInContainer && !isButton && isOpen) {

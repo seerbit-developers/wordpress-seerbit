@@ -66,11 +66,6 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
       </div>
 
       <li className="mmm d-flex justify-content-center align-items-center">
-        <img src={notify} className="mr-4 mxx-erx" />
-        <div className="contain p-6 notfi">{t('No notification available')}</div>
-      </li>
-
-      <li className="mmm d-flex justify-content-center align-items-center">
         <img src={help} className="mr-2 mcdx-erx" />
         <div className="contain p-6">
           <div className="mt-3">

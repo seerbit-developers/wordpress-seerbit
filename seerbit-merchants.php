@@ -36,24 +36,29 @@ define( 'SEERBIT_MERCHANTS_PLUGIN_PATH', trailingslashit( plugin_dir_path(__FILE
 define( 'SEERBIT_MERCHANTS_PLUGIN_URL', trailingslashit( plugins_url( '/', __FILE__ ) ) );
 const SEERBIT_MERCHANTS_PLUGIN_VERSION = '1.0.0';
 
+
+
+
+
 /**
  * Loading Necessary Scripts.
  */
 
 add_action( 'admin_enqueue_scripts', 'load_scripts' );
+add_action( 'admin_enqueue_scripts', 'enqueue_bootstrap_styles' );
 
 function load_scripts() {
 
     wp_enqueue_style('font-awesome-4-7', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     wp_enqueue_style('semantic-ui', 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css');
     wp_enqueue_style('fontisto', 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css');
-    wp_enqueue_style('primereact', 'https://cdnjs.cloudflare.com/ajax/libs/primereact/4.2.2/resources/primereact.min.css');
-    wp_enqueue_style('primereact-themes', 'https://cdnjs.cloudflare.com/ajax/libs/primereact/4.2.2/resources/themes/nova-light/theme.min.css');
+    wp_enqueue_style('primereact', 'https://cdnjs.cloudflare.com/ajax/libs/primereact/9.2.0/resources/primereact.min.css');
+    wp_enqueue_style('primereact-themes', 'https://cdnjs.cloudflare.com/ajax/libs/primereact/9.2.0/resources/themes/nova-light/theme.min.css');
 
     wp_enqueue_script(
         'wp-seerbit-merchants',
         SEERBIT_MERCHANTS_PLUGIN_URL . 'dist/bundle.js',
-        ['jquery', 'wp-element'],
+        ['wp-element'],
         SEERBIT_MERCHANTS_PLUGIN_VERSION,
         true
     );
@@ -77,6 +82,8 @@ function load_scripts() {
         ]);
 }
 
-
+function enqueue_bootstrap_styles(){
+    wp_enqueue_style('bootstrap_css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css');
+}
 
 require_once SEERBIT_MERCHANTS_PLUGIN_PATH  . 'classes/class-create-admin-page.php';

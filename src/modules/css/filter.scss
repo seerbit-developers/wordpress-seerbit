@@ -8,6 +8,8 @@ $black: #000;
 .sbt-filter {
   .calender-wrap {
     min-width: 205px;
+    display: flex;
+    justify-content: center;
 
     input {
       border: none !important;

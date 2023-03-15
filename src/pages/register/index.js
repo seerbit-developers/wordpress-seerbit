@@ -7,17 +7,17 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { newUser, getCountries } from "../../actions/postActions";
-import { popover } from "../../modules/password_guide";
+import { newUser, getCountries } from "actions/postActions";
+import { popover } from "modules/password_guide";
 import { OverlayTrigger } from "react-bootstrap";
 import ReactCountryFlag from "react-country-flag"
 import "./css/index.scss";
 import { isEmpty } from "lodash";
 import Select from 'react-select';
 import Loader from 'components/loader'
-import {alertError, alertExceptionError} from "../../modules/alert";
-import {registerNewMerchant} from "../../services/authService";
-import {fetchCountries} from "../../actions/generalActions";
+import {alertError, alertExceptionError} from "modules/alert";
+import {registerNewMerchant} from "services/authService";
+import {fetchCountries} from "actions/generalActions";
 import {useTranslation} from "react-i18next";
 import {hostChecker} from "utils";
 import Button from "components/button";

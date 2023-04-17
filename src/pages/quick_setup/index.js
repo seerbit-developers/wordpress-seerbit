@@ -6,14 +6,14 @@
 
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import {getProgressStatus, getBankList, getKYC, getIndustries, setBusiness} from "../../actions/postActions";
+import {getProgressStatus, getBankList, getKYC, getIndustries, setBusiness} from "actions/postActions";
 import "rc-steps/assets/index.css";
 import "./css/quick-setup.scss";
 import Onboarding from "./Onboarding";
 import BusinessDetails from "./BusinessDetails";
 import OnBoardingSidebar from "./components/onBoardingSidebar";
-import {getOnBoardingStatus} from "../../actions/authActions";
-import {AppModalCenter} from "../../components/app-modal";
+import {getOnBoardingStatus} from "actions/authActions";
+import {AppModalCenter} from "components/app-modal";
 import {Button} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
 import {useHistory} from "react-router-dom";

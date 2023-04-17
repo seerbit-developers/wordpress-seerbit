@@ -6,7 +6,7 @@
 
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { userLogin, setErrorLog } from "../../actions/postActions";
+import { userLogin, setErrorLog } from "actions/postActions";
 import Email from "../../assets/images/svg/email.svg";
 import "./css/index.scss";
 import styled from "styled-components";
@@ -15,9 +15,9 @@ import {useParams} from "react-router";
 import {hostChecker} from "utils";
 import {useTranslation} from "react-i18next";
 import PinCodeCode  from 'react-auth-code-input';
-import {verifyAccount} from "../../services/authService";
+import {verifyAccount} from "services/authService";
 import {alertError, alertExceptionError} from "modules/alert";
-import {appBusy} from "../../actions/appActions";
+import {appBusy} from "actions/appActions";
 import Loader from "components/loader";
 import Button from "components/button";
 
@@ -94,13 +94,14 @@ export function ConfirmEmail(props) {
                     onChange={handleOnChange}
                 />
                 <br/>
-                  <button
-                      className='btn btn-lg btn-dark'
+                  <Button
+                      size="lg"
                       onClick={verifyPinCode}
                       disabled={isDisabled}
+                      loading={verifying}
                   >
                     Verify
-                  </button>
+                  </Button>
                 <br/> <br/>
                 {t('If you did not receive the email, kindly check your spam folder')}
           </div>

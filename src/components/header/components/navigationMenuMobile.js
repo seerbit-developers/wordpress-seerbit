@@ -113,11 +113,11 @@ export const NavigationMenuMobile = (props) => {
               type="white"
               size="sm"
               full
-              className="mr-2"
+              className="me-2"
               style={{ width: "90%" }}
             > */}
             <div
-              className="d-flex justify-content-between align-items-center ml-12"
+              className="d-flex justify-content-between align-items-center ms-12"
               style={{ lineHeight: "normal", marginLeft: "18px" }}
             >
               <AppToggle

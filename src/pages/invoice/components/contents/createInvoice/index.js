@@ -322,7 +322,7 @@ const CreateInvoice = ({
                     <div className="col-lg-6 col-md-12">
                       <div className="form-group">
                         <label className="field--title">{t("Due date")}</label>
-                        <input type="datetime-local"
+                        <input type="datetimr-local"
                                className="d-block form-control"
                                onChange={(e) =>
                                    setValues({

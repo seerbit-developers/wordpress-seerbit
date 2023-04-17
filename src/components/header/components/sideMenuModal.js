@@ -57,7 +57,7 @@ const SideMenuModal = (props) => {
         }`}
       >
         <div style={{ background: "#ECECEC" }}>
-          <div className="user_business__section ml-4">
+          <div className="user_business__section ms-4">
             <div className="user_business__section--business_logo text-center">
               {props.logo && (
                 <img
@@ -84,7 +84,7 @@ const SideMenuModal = (props) => {
                 type="white"
                 size="sm"
                 full
-                className="mr-2"
+                className="me-2"
                 style={{ width: "90%" }}
               >
                 <div
@@ -104,7 +104,7 @@ const SideMenuModal = (props) => {
                 type="white"
                 size="sm"
                 full
-                className="ml-2"
+                className="ms-2"
                 styles={{ width: "70%" }}
                 onClick={() => goto("/account")}
               >
@@ -152,7 +152,7 @@ const SideMenuModal = (props) => {
               <div className="row mb-5">
                 {/*<div className="col-6">
                   <p className=" d-flex align-items-center cursor-pointer" >
-                    <SendIcon /> <span className="pl-2">Take a Tour</span>
+                    <SendIcon /> <span className="ps-2">Take a Tour</span>
                   </p>
                 </div>*/}
                 <div className="col-6">
@@ -163,7 +163,7 @@ const SideMenuModal = (props) => {
                       props.close();
                     }}
                   >
-                    <BooksIcon /> <span className="pl-2">{t('Get Started')}</span>
+                    <BooksIcon /> <span className="ps-2">{t('Get Started')}</span>
                   </p>
                 </div>
                 <div className="col-6">
@@ -171,7 +171,7 @@ const SideMenuModal = (props) => {
                     className=" d-flex align-items-center cursor-pointer"
                     onClick={() => window.open("https://doc.seerbit.com/")}
                   >
-                    <SettingsIcon /> <span className="pl-2">{t('Documentation')}</span>
+                    <SettingsIcon /> <span className="ps-2">{t('Documentation')}</span>
                   </p>
                 </div>
               </div>
@@ -181,7 +181,7 @@ const SideMenuModal = (props) => {
                     className=" d-flex align-items-center cursor-pointer"
                     onClick={() => window.open("https://support.seerbit.com/")}
                   >
-                    <SupportIcon /> <span className="pl-2">{t('Support')}</span>
+                    <SupportIcon /> <span className="ps-2">{t('Support')}</span>
                   </p>
                 </div>
                 <div className="col-6">
@@ -191,7 +191,7 @@ const SideMenuModal = (props) => {
                       window.open("https://releasenotes.seerbitapi.com/")
                     }
                   >
-                    <NoteIcon /> <span className="pl-2">{t('Release Notes')}</span>
+                    <NoteIcon /> <span className="ps-2">{t('Release Notes')}</span>
                   </p>
                 </div>
               </div>

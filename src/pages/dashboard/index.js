@@ -7,19 +7,19 @@ import {
   getSampleTransactions,
   getBusinessAnalysis,
   clearState,
-} from "../../actions/postActions";
+} from "actions/postActions";
 import {
   getRecentTransactions,
   getDashboardAnalytics
-} from "../../actions/transactionActions";
+} from "actions/transactionActions";
 import moment from "moment";
-import Overview from "../../utils/analytics/dashboard_overview";
-import SBTChart from "../../utils/analytics/sbt_chart";
+import Overview from "utils/analytics/dashboard_overview";
+import SBTChart from "utils/analytics/sbt_chart";
 import "./css/dashboard.scss";
 import { isEmpty } from "lodash";
 import RecentTransactions from "./components/recentTransactions";
 import { useTranslation } from "react-i18next";
-import { AppModalCenter } from "../../components/app-modal/index";
+import { AppModalCenter } from "components/app-modal";
 import i18next from 'i18next';
 import {Button} from "react-bootstrap";
 
@@ -76,7 +76,7 @@ export function Dashboard(props) {
   }
   return (
     <div className="sbt-home">
-      <div className="row mr-0 resx">
+      <div className="row me-0 resx">
         <div className="col-md-8 col-sm-12 dashboard-left-section">
           <div className='dashboard-left'>
             <div className="font-medium pb-3 font-20 text-black d-none d-md-block">
@@ -106,7 +106,7 @@ export function Dashboard(props) {
                 FooterComponent={props.transactions && props.transactions.payload && (
                     <div className="link py-3 font-16 brand-color">
                       <a
-                          href="/#/payments/transactions"
+                          href="#/payments/transactions"
                           className="link"
                       >
                         {" "}
@@ -137,7 +137,7 @@ export function Dashboard(props) {
               loading={props.loading_recent_transactions}
               FooterComponent={props.transactions && props.transactions.payload && (
                   <div className="link py-3 font-14 font-light">
-                    <a href="/#/payments/transactions"
+                    <a href="#/payments/transactions"
                        className="link brand-color"
                     >
                       {" "}
@@ -152,7 +152,7 @@ export function Dashboard(props) {
       {isCountryModalOpen && <AppModalCenter isOpen={isCountryModalOpen} close={() => close(setIsCountryModalOpen(false))} title="" description="">
                                 <div className="p-4">
                                   <div className='d-flex align-items-center mb-2'>
-                                    <h4 className='d-inline-block mr-2 mb-0'>{t('Notice')} </h4>
+                                    <h4 className='d-inline-block me-2 mb-0'>{t('Notice')} </h4>
                                     <span></span>
                                   </div>
 
@@ -162,10 +162,10 @@ export function Dashboard(props) {
                                   <div className="mt-5">
                                     <Button
 
-                                        className="brand-btn w-200px cursor-pointer mr-2 "
+                                        className="brand-btn w-200px cursor-pointer me-2 "
                                         onClick={langChange}
                                     >
-                                      <span className='mr-2'></span>{t(' Yes')}
+                                      <span className='me-2'></span>{t(' Yes')}
                                     </Button>
                                     <Button
 

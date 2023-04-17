@@ -60,7 +60,7 @@ function SectionDetails({
                                 </div>
                             )}
         </div>
-            <div className="pt-4 mr-4" style={{ paddingRight: "58px" }}>
+            <div className="pt-4 me-4" style={{ paddingRight: "58px" }}>
                 <img
                     src={Close}
                     alt="close"

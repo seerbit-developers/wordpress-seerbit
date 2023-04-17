@@ -8,26 +8,26 @@ import {
   getSettlementTransaction,
   getBranchSettlementTransactions,
   transferSettlementFund, clearState,
-} from "../../actions/postActions";
+} from "actions/postActions";
 import moment from "moment";
 import cogoToast from "cogo-toast";
-import { Can } from "../../modules/Can";
-import ReportSettlement from "../../modules/ReportSettlement";
+import { Can } from "modules/Can";
+import ReportSettlement from "modules/ReportSettlement";
 import { Dropdown } from "primereact/dropdown";
-import transactions_json from "../../utils/strings/transaction.json";
+import transactions_json from "utils/strings/transaction.json";
 import Filter from "./components/filter";
-import Details from "../../utils/analytics/settlement_details";
-import BranchDetails from "../../utils/analytics/branch_payout_details";
+import Details from "utils/analytics/settlement_details";
+import BranchDetails from "utils/analytics/branch_payout_details";
 import AppTable from "components/app-table";
-import iconFilter from "../../assets/images/svg/filter.svg";
-import Copy from "../../assets/images/svg/copy.svg";
+import iconFilter from "assets/images/svg/filter.svg";
+import Copy from "assets/images/svg/copy.svg";
 import { isEmpty } from "lodash";
 import styled from "styled-components";
 import { useTransition, animated } from "react-spring";
-import {exportSettlementReport} from "../../services/settlementService";
-import {searchSettlements,getSettlements,getInternationalSettlements} from "../../actions/settlementActions";
-import useWindowSize from "../../components/useWindowSize";
-import {alertError, alertInfo, alertSuccess} from "../../modules/alert";
+import {exportSettlementReport} from "services/settlementService";
+import {searchSettlements,getSettlements,getInternationalSettlements} from "actions/settlementActions";
+import useWindowSize from "components/useWindowSize";
+import {alertError, alertInfo, alertSuccess} from "modules/alert";
 import {handleCopy} from "utils";
 import { useTranslation } from "react-i18next";
 
@@ -434,7 +434,7 @@ function SettlementPage(props) {
                         setType(e.value === "Local" ? false : true);
                         filter(dates[0], dates[1], currentPage, perPage, e.value === "Local" ? false : true)
                       }}
-                      className="font-12 w-200px sbt-border-success mr-3"
+                      className="font-12 w-200px sbt-border-success me-3"
                     />
                     {width >= 991 &&
                     <Filter
@@ -476,7 +476,7 @@ function SettlementPage(props) {
                               <img
                                   src={iconFilter}
                                   style={{width: "12px"}}
-                                  className="ml-1"
+                                  className="ms-1"
                               />
                           </span>
                             </div>

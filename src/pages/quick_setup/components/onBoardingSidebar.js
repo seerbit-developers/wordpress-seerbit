@@ -1,8 +1,4 @@
 import React from "react";
-import Wordpress from "../../../assets/images/svg/wordpress.png";
-import Magento from "../../../assets/images/svg/magento.png";
-import Wix from "../../../assets/images/svg/wix.png";
-
 
 import ApiKeys from "./apiKeys";
 import {useTranslation} from "react-i18next";
@@ -32,14 +28,14 @@ const OnBoardingSidebar = ({
                     <h3 className="seerbit--section-title">{t('E-commerce Plugins')}</h3>
                 </div>
                 <div className="col-12 d-flex justify-content-between" style={{ marginTop: "-32px", marginLeft: "-7px" }}>
-                    <div className="mr-1 m-0">
-                        <img src={Wordpress} height="100" />
+                    <div className="me-1 m-0">
+                        <img src={`${localizer.assets}images/svg/wordpress.png`} height="100" />
                     </div>
-                    <div className="mr-1">
-                        <img src={Magento} height="100" />
+                    <div className="me-1">
+                        <img src={`${localizer.assets}images/svg/magento.png`} height="100" />
                     </div>
-                    <div className="mr-1">
-                        <img src={Wix} height="100" />
+                    <div className="me-1">
+                        <img src={`${localizer.assets}images/svg/wix.png`} height="100" />
                     </div>
                 </div>
             </div>

@@ -377,7 +377,7 @@ export function SplitSettlementsPage(props) {
           src={Pen}
           alt="edit"
           style={{ height: "10px", width: "10px" }}
-          className="ml-2 mb-1 cursor-pointer"
+          className="ms-2 mb-1 cursor-pointer"
           onClick={(e) => {
             setEdit(true)
             selectVendor(props && props.subAccountId);
@@ -388,7 +388,7 @@ export function SplitSettlementsPage(props) {
           src={Trash}
           alt="delete"
           style={{ height: "10px", width: "10px" }}
-          className="ml-2 mb-1 cursor-pointer"
+          className="ms-2 mb-1 cursor-pointer"
           onClick={(e) => {
             selectVendor(props && props.subAccountId);
             setShowConfirmDelete(true);
@@ -438,7 +438,7 @@ export function SplitSettlementsPage(props) {
       {!vendorDetails && (
         <div className="page-container">
           <NavMenuItem className="py-5">
-            <div className="font-medium font-20 text-black mr-3 d-none d-lg-block mb-4">
+            <div className="font-medium font-20 text-black me-3 d-none d-lg-block mb-4">
               {t("Split Settlements")}
             </div>
             <Gap>
@@ -476,11 +476,11 @@ export function SplitSettlementsPage(props) {
                     </span>
                     <RightComponent>
                       <div className="row">
-                        <div className="input-wrap sbt-border-success br-normal px-2">
+                        <div className="input-wrap sbt-border-success br-normal px-2 col-7">
                           <DebounceInput
                             minLength={2}
                             debounceTimeout={1000}
-                            className="font-12 text-left w-200px sbt-border-success py-2"
+                            className="font-12 text-left w-100 sbt-border-success py-2"
                             placeholder={t("Sub Account ID")}
                             aria-label="Search"
                             onChange={(e) => {
@@ -491,7 +491,7 @@ export function SplitSettlementsPage(props) {
                             <img src={Search} />
                           </span>
                         </div>
-                        <span className="font-12 font-light px-3 export_data">
+                        <span className="font-12 font-light px-3 export_data col-5">
                           <Dropdown
                             optionLabel="text"
                             value={expt}

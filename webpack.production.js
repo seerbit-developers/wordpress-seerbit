@@ -114,7 +114,7 @@ module.exports = {
                 loader: 'url-loader'
             },
             {
-                test: /\.(woff(2)?|ttf|eot|ico)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(png|jpe?g|ico)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -124,7 +124,7 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(pdf|jpg|png|gif|ico)$/,
+                test: /\.(pdf|jpg|png|gif|ico|woff|woff2|eot|ttf)$/,
                 use: [
                     {
                         loader: 'url-loader'
@@ -140,7 +140,7 @@ module.exports = {
         })
     ].filter(Boolean),
     output: {
-        filename: "./dist/bundle.js",
+        filename: "./assets/js/seerbit.js",
         path: __dirname
     },
 }

@@ -1,7 +1,7 @@
 {
-	"name": "seerbit-merchants",
+	"name": "seerbit",
 	"version": "1.0.0",
-	"description": "Seerbit merchants account plugin packages",
+	"description": "SeerBit is a WordPress plugin that allows merchants to manage their SeerBit account.",
 	"main": "index.js",
 	"scripts": {
 		"prod": "cross-env NODE_ENV=production webpack --mode production --progress",

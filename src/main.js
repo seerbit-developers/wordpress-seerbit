@@ -145,7 +145,7 @@ if (AuthService.loggedIn() && this.props.business_details ) {
 
   _onIdle(e) {
     AuthService.logout();
-  //  window.location.reload();
+    window.location.href = localizer.path_url
   }
 
 

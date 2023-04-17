@@ -100,8 +100,8 @@ function Filter({
                             <div className="font-11 black font-light">
                                 <div className="row">
                                     {dates && (
-                                        <div className="mr-3">
-                                            <div className="calender-wrap cursor-pointer pl-3 pr-2 sbt-border-success">
+                                        <div className="me-3">
+                                            <div className="calender-wrap cursor-pointer ps-3 pe-2 sbt-border-success">
                                                 <img src={CalendarIcon} />
                                                 {!useNewDatePicker && <Calendar
                                                     disabled={processing}
@@ -139,7 +139,7 @@ function Filter({
                                             onChange={(e) => {
                                                 setCurrency(e.value);
                                             }}
-                                            className="font-12 w-150px cursor-pointer mr-3 sbt-border-success"
+                                            className="font-12 w-150px cursor-pointer me-3 sbt-border-success"
                                         />
                                     )}
                                     {transaction_status && (
@@ -152,7 +152,7 @@ function Filter({
                                                 changePage(currency, e.value);
                                                 setShowFilter(true);
                                             }}
-                                            className="font-12 w-150px cursor-pointer mr-3 sbt-border-success"
+                                            className="font-12 w-150px cursor-pointer me-3 sbt-border-success"
                                         />
                                     )}
                                     <DebounceInput

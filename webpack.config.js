@@ -168,7 +168,7 @@ module.exports = {
 		new HtmlWebpackPlugin()
 	],
 	output: {
-		filename: "./dist/bundle.js",
+		filename: "./assets/js/seerbit.js",
 		path: __dirname
 	},
 };

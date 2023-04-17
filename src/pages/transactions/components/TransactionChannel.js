@@ -35,7 +35,7 @@ const ChannelView = ({props}) => {
                                       :
                                       Exchange
               }
-              className="mr-2 mb-1"
+              className="me-2 mb-1"
           />
 
             {props.analytics.channel &&

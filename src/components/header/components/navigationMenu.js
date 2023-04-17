@@ -34,9 +34,6 @@ export const NavigationMenu = ({
 
   let { pathname, hash } = useLocation();
 
-  console.log('path', pathname);
-  console.log('h', hash);
-
   const isPageActive = (p) => {
      console.log('p', p)
      console.log('pathname', pathname)
@@ -128,9 +125,9 @@ export const NavigationMenu = ({
           <Nav.Link
             id={menu.id}
             href={"/" + menu.navLink === "" ? pathname : localizer.path_url +  menu.navLink}
-            className={`sbt nav-item mr-3 ${
+            className={`sbt nav-item me-3 ${
               isPageActive(menu.id) ? "active" : ""
-            }`}
+            } ${menu.navLink}`}
           >
             {t(menu.title)}
           </Nav.Link>
@@ -147,7 +144,7 @@ export const NavigationMenu = ({
                       id={childMenu.id}
                       key={i}
                       href={localizer.path_url + '#' + childMenu.navLink}
-                      className={`sbt nav-item mr-3 ${
+                      className={`sbt nav-item me-3 ${
                         isSubPageActive(childMenu.id) ? "active" : ""
                       }`}
                     >

@@ -26,19 +26,19 @@ import {
   alertExceptionError,
   alertSuccess,
   alertInfo,
-} from "../../modules/alert";
+} from "modules/alert";
 import { useHistory } from "react-router";
-import { appBusy } from "../../actions/appActions";
-import { setUserRole } from "../../actions/userManagementActions";
-import { fetchBusinessDetails } from "../../services/authService";
+import { appBusy } from "actions/appActions";
+import { setUserRole } from "actions/userManagementActions";
+import { fetchBusinessDetails } from "services/authService";
 import {
   switchUserDataMode,
   switchBusinessDataMode,
 } from "services/userManagementService";
 import RightComp from "./components/rightComp";
-import { resetBusiness } from "../../actions/generalActions";
+import { resetBusiness } from "actions/generalActions";
 import NewBusinessRequestModal from "./components/newBusiness";
-import { hostChecker } from "../../utils";
+import { hostChecker } from "utils";
 import { useTranslation } from "react-i18next";
 
 export function Header(props) {
@@ -377,7 +377,7 @@ export function Header(props) {
                 className="cursor-pointer d-flex flex-row justify-content-end w-100"
               >
                 <div className="menu-divide-bar">{""}</div>
-                <div className="user_name_business pl-4" id="business">
+                <div className="user_name_business ps-4" id="business">
                   <h4
                     className=""
                     title={
@@ -407,7 +407,7 @@ export function Header(props) {
 
             {/* < className="mmm"> */}
             <>
-              {/* // <img src={help} className="mr-" /> */}
+              {/* // <img src={help} className="me-" /> */}
               <div className="contain-nav p-6 m-auto">
                 <div className="d-flex mx-xs mt-3 ">
                   <div>
@@ -426,7 +426,7 @@ export function Header(props) {
                     className="cursor-pointer"
                     onClick={() => {
                       AuthService.logout();
-                      window.location.href = localizer.path_url + "#/auth/login";
+                      window.location.href = localizer.path_url;
                     }}
                   >
                     <LogoutIcon />{" "}

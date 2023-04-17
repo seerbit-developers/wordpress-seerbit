@@ -619,13 +619,13 @@ export function TransactionPage(props) {
         />}
       <div className="sbt-transaction">
         <NavMenuItem className="py-5">
-          <div className="font-medium font-20 text-black mr-3 d-none d-lg-block mb-4">
+          <div className="font-medium font-20 text-black me-3 d-none d-lg-block mb-4">
             { t("Payments")}
           </div>
           <div className="d-none d-lg-flex flex-row align-items-center justify-content-between">
 
               <div className="d-flex flex-row justify-content-between align-items-center">
-                <div className="input-wrap sbt-border-success br-normal mr-3 position-relative"  id="filterToggleDiv" style={{padding:'6px 0', lineHeight: 'normal'}}>
+                <div className="input-wrap sbt-border-success br-normal me-3 position-relative"  id="filterToggleDiv" style={{padding:'6px 0', lineHeight: 'normal'}}>
                 <span className="transaction-search-filter-container" id="filterToggleSpan">
                   <img src={FilterIcon} id="filterToggleImg" />
                   {t("Filter")}
@@ -653,7 +653,7 @@ export function TransactionPage(props) {
                       productId={productId}
                   />
                 </div>
-                <div className="input-wrap mr-3">
+                <div className="input-wrap me-3">
                   <Can access={"EXPORT_MERCHANT_REPORT"}>
                     <Dropdown
                         style={{ width: 130 }}
@@ -736,7 +736,7 @@ export function TransactionPage(props) {
               </div>
             </div>
 
-            <div className="input-wrap mr-3 w-100 mt-4">
+            <div className="input-wrap me-3 w-100 mt-4">
               <Can access={"EXPORT_MERCHANT_REPORT"}>
                 <Dropdown
                   style={{ width: 170 }}

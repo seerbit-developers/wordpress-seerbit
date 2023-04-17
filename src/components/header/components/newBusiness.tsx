@@ -165,7 +165,7 @@ const NewBusinessRequestModal = ({
                             <Error>{t('Enter a valid business name')}</Error>
                         )}
                     </div>
-                    <div className="pl-1 form-group mh-40 col-md-6">
+                    <div className="ps-1 form-group mh-40 col-md-6">
                         <label className="font-12">{t('Business Email')}</label>
                         <input
                             className="form-control mh-40 "
@@ -193,7 +193,7 @@ const NewBusinessRequestModal = ({
                             <Error>{t('Enter a valid email address')} </Error>
                         )}
                     </div>
-                    <div className="pl-1 form-group mh-40 col-md-6">
+                    <div className="ps-1 form-group mh-40 col-md-6">
                         <label className="font-12">{t('Support Phone number')}</label>
                         <input
                             className="form-control mh-40 "
@@ -231,7 +231,7 @@ const NewBusinessRequestModal = ({
                         )}
                     </div>
 
-                    <div className="pl-1 form-group mh-40 col-md-6">
+                    <div className="ps-1 form-group mh-40 col-md-6">
                         <label className="font-12">{t('Business Industry')}</label>
                         <select
                             className="form-control mh-40"

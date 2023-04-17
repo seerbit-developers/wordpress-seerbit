@@ -195,7 +195,7 @@ export function Header(props) {
           <Navbar.Brand
             href="https://seerbit.com"
             target="_blank"
-            className="px-4 ml-1"
+            className="px-4 ms-1"
           >
             <img
               src={
@@ -217,7 +217,7 @@ export function Header(props) {
               <Nav.Link
                 id="home"
                 href="/#/"
-                className={`sbt nav-item font-15 mr-3 ${window.location.hash === "#/" ? "active" : ""
+                className={`sbt nav-item font-15 me-3 ${window.location.hash === "#/" ? "active" : ""
                   }`}
               >
                 Home
@@ -226,7 +226,7 @@ export function Header(props) {
                 style={{ border: 0 }}
                 title="Transactions"
                 id="transaction"
-                className={`sbt nav-item font-15 mr-3 ${transactions.includes(window.location.hash) ? "active" : ""
+                className={`sbt nav-item font-15 me-3 ${transactions.includes(window.location.hash) ? "active" : ""
                   }`}
               >
                 <TransactionDropDown props={props} />
@@ -234,7 +234,7 @@ export function Header(props) {
               <NavDropdown
                 title="Sales"
                 id="sales"
-                className={`sbt nav-item font-15 mr-3 ${sales.indexOf(window.location.hash) > -1 ? "active" : ""
+                className={`sbt nav-item font-15 me-3 ${sales.indexOf(window.location.hash) > -1 ? "active" : ""
                   }`}
               >
                 <NavDropdown.Item href="/#/customers" className="font-13">
@@ -244,7 +244,7 @@ export function Header(props) {
               <NavDropdown
                 title="Finance"
                 id="finance"
-                className={`sbt nav-item font-15 mr-3 ${finance.indexOf(window.location.hash) > -1 ? "active" : ""
+                className={`sbt nav-item font-15 me-3 ${finance.indexOf(window.location.hash) > -1 ? "active" : ""
                   }`}
               >
                 <NavDropdown.Item href="/#/settlements" className="font-13">
@@ -264,7 +264,7 @@ export function Header(props) {
               {/* <NavDropdown
                 title='Store'
                 id='basic-nav-dropdown'
-                className={`sbt nav-item font-15 mr-3 ${products.indexOf(window.location.hash) > -1 ? "active" : ""
+                className={`sbt nav-item font-15 me-3 ${products.indexOf(window.location.hash) > -1 ? "active" : ""
                   }`}
               >
                 <NavDropdown.Item href='/#/products' className='font-13'>
@@ -280,7 +280,7 @@ export function Header(props) {
               <NavDropdown
                 title="Account"
                 id="account"
-                className={`sbt nav-item font-15 mr-3 ${account.indexOf(window.location.hash) > -1 ? "active" : ""
+                className={`sbt nav-item font-15 me-3 ${account.indexOf(window.location.hash) > -1 ? "active" : ""
                   }`}
               >
                 {/* <NavDropdown.Item href='#' className='font-13'>
@@ -293,8 +293,8 @@ export function Header(props) {
               </NavDropdown>
             </Nav>
           )}
-          {!props.business_details.setting && <Nav className="mr-auto"></Nav>}
-          <div className="row ml-auto">
+          {!props.business_details.setting && <Nav className="me-auto"></Nav>}
+          <div className="row ms-auto">
             {/* <div className="row border-right px-3 link">
                 <a
                   className="mt-2"
@@ -306,7 +306,7 @@ export function Header(props) {
                   // 	.replace('#', '')
                   // 	.replace(/\//g, '--')}`}
                 >
-                  <span className="mr-2">Switch to the old look</span>{" "}
+                  <span className="me-2">Switch to the old look</span>{" "}
                   <Toggle
                     icons={false}
                     checked={true}
@@ -481,7 +481,7 @@ const TemplateDrop = ({
           {props.business_details && props.business_details.number && (
             <div className="item font-12 py-1 sbt-deep-color cursor-pointer">
               {" "}
-              <FontAwesomeIcon icon={faPlus} className="mr-2" />{" "}
+              <FontAwesomeIcon icon={faPlus} className="me-2" />{" "}
               <span
                 onClick={(e) => {
                   setShowAdd(true);
@@ -494,7 +494,7 @@ const TemplateDrop = ({
           {props.primary_user && (
             <div className="absolute-bottom mb-3">
               <span className="border p-2 br-normal ">
-                <span className="font-12 mr-1">Test mode</span>{" "}
+                <span className="font-12 me-1">Test mode</span>{" "}
                 {props.primary_user &&
                   props.user_details.id === props.primary_user.number && (
                     <Toggle

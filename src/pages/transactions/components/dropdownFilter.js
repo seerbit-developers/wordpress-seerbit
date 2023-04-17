@@ -174,7 +174,7 @@ const DropdownFilter = ({
                     onChange={(e) => {
                         setPaymentChannel(e.value);
                     }}
-                    className="font-12 w-100 cursor-pointer mr-3 sbt-border-success"
+                    className="font-12 w-100 cursor-pointer me-3 sbt-border-success"
                 />
                 </div>
 
@@ -189,7 +189,7 @@ const DropdownFilter = ({
                         onChange={(e) => {
                             setCurrency(e.value);
                         }}
-                        className="font-12 w-100 cursor-pointer mr-3 sbt-border-success"
+                        className="font-12 w-100 cursor-pointer me-3 sbt-border-success"
                     />
                 )}
             </div>

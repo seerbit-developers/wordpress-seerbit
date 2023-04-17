@@ -397,11 +397,11 @@ export function PaymentLink({
                 <div className="d-none d-lg-block">
                   <RightComponent>
                     <div className="row">
-                      <div className="input-wrap sbt-border-success br-normal px-2">
+                      <div className="col-7 input-wrap sbt-border-success br-normal px-2">
                         <DebounceInput
                           minLength={2}
                           debounceTimeout={1000}
-                          className="font-12 text-left w-200px sbt-border-success py-2"
+                          className="w-100 font-12 text-left sbt-border-success py-2"
                           placeholder={t("Payment Link Name")}
                           aria-label="Search"
                           onChange={(e) => {
@@ -413,7 +413,7 @@ export function PaymentLink({
                           <img src={Search} />
                         </span>
                       </div>
-                      <span className="font-12 font-light px-3 export_data">
+                      <span className="col-5 font-12 font-light px-3 export_data">
                         <Dropdown
                           optionLabel="text"
                           style={{ width: 180 }}

@@ -234,7 +234,7 @@ export function Header(props) {
                   <Nav.Link
                     id="home"
                     href="/#/"
-                    className={`sbt nav-item font-15 mr-3 ${window.location.hash === "#/" ? "active" : ""
+                    className={`sbt nav-item font-15 me-3 ${window.location.hash === "#/" ? "active" : ""
                       }`}
                   >
                     Home
@@ -393,7 +393,7 @@ const TemplateDrop = ({
           {props.business_details && props.business_details.number && (
             <div className="item font-12 py-1 sbt-deep-color cursor-pointer">
               {" "}
-              <FontAwesomeIcon icon={faPlus} className="mr-2" />{" "}
+              <FontAwesomeIcon icon={faPlus} className="me-2" />{" "}
               <span
                 onClick={(e) => {
                   setShowAdd(true);
@@ -406,7 +406,7 @@ const TemplateDrop = ({
           {props.primary_user && (
             <div className="absolute-bottom mb-3">
               <span className="border p-2 br-normal ">
-                <span className="font-12 mr-1">Test mode</span>{" "}
+                <span className="font-12 me-1">Test mode</span>{" "}
                 {props.primary_user &&
                   props.user_details.id === props.primary_user.number && (
                     <Toggle

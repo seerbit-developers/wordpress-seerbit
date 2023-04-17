@@ -28,7 +28,7 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
   return (
     <div className="d-flex justify-content-between align-items-center">
       <div
-        className="d-flex justify-content-between align-items-center mr-2"
+        className="d-flex justify-content-between align-items-center me-2"
         style={{ lineHeight: "normal" }}
       >
         {/* USER CAN SWITCH MODE BUT IS NOT THE PRIMARY USER
@@ -66,12 +66,12 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
       </div>
 
       <li className="mmm d-flex justify-content-center align-items-center">
-        <img src={notify} className="mr-4 mxx-erx" />
+        <img src={notify} className="me-4 mxx-erx" />
         <div className="contain p-6 notfi">{t('No notification available')}</div>
       </li>
 
       <li className="mmm d-flex justify-content-center align-items-center">
-        <img src={help} className="mr-2 mcdx-erx" />
+        <img src={help} className="me-2 mcdx-erx" />
         <div className="contain p-6">
           <div className="mt-3">
             <small>{t('Quick Links')}</small>
@@ -81,7 +81,7 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
                 style={{ cursor: "pointer" }}
                 onClick={() => setStartTour(true)}
               >
-                <img src={tour} className="mr-3" style={{ width: "15px" }} />
+                <img src={tour} className="me-3" style={{ width: "15px" }} />
                 <div className="d-flex">{t('Take a tour')}</div>
               </div>
               <div className="d-flex mt-3" style={{ cursor: "pointer" }}
@@ -89,7 +89,7 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
               >
                 <img
                   src={docx}
-                  className="mr-3"
+                  className="me-3"
                   style={{ width: "15px" }}
                   onClick={() => window.open("https://doc.seerbit.com/")}
                  alt={t('Documentation')}/>
@@ -102,7 +102,7 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
                   window.location = "#/quick-setup";
                 }}
               >
-                <img src={copyx} className="mr-3" style={{ width: "15px" }} />
+                <img src={copyx} className="me-3" style={{ width: "15px" }} />
                 <div className="d-flex">{t('Get Started')}</div>
               </div>
               <div
@@ -112,7 +112,7 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
                   window.open("https://releasenotes.seerbitapi.com/")
                 }
               >
-                <img src={notes} className="mr-3" style={{ width: "15px" }} />
+                <img src={notes} className="me-3" style={{ width: "15px" }} />
                 <div className="d-flex">{t('Release Notes')}</div>
               </div>
               <div
@@ -120,7 +120,7 @@ const RightComp = ({ setStartTour, onSwitchBusinessMode, onSwitchUserMode, activ
                 style={{ cursor: "pointer" }}
                 onClick={() => window.open("https://support.seerbit.com/")}
               >
-                <img src={support} className="mr-3" style={{ width: "15px" }} />
+                <img src={support} className="me-3" style={{ width: "15px" }} />
                 <div className="d-flex">{t('Support')}</div>
               </div>
             </div>

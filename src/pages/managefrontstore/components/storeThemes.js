@@ -36,7 +36,7 @@ const StoreThemes = ({
                                     })
                                     setselectedTheme(data.themeId)
                                 }} key={id}>
-                                    <div className="img-div mx-3 my-2 anime--box-shadow ">
+                                    <div className="img-div mx-3 my-2 animr--box-shadow ">
                                         {!isEmpty(selectedTheme) ? (
                                             <img src={data.previewLink} alt="theme" className={selectedTheme === data.themeId ? `theme responsive` : `responsive`} style={{ height: 150 }} />
                                         ) : (

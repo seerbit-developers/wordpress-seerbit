@@ -379,7 +379,7 @@ function RefundPage(props) {
                 <DebounceInput
                     minLength={2}
                     debounceTimeout={2000}
-                    className="input-wrap sbt-border-success br-normal w-200px p-2"
+                    className="input-wrap sbt-border-success br-normal w-200px"
                     placeholder={t("Transaction Reference")}
                     aria-label="Search"
                     onChange={(e) => {

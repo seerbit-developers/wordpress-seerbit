@@ -20,7 +20,7 @@ const  updateTwoFactorAuthStatus = async (status, otp)=> {
 }
 
 const registerNewMerchant = async (payload)=> {
-    const url = `auth/register`
+    const url = `auth/newregister`
     return postRequestNoAuth(`${BASE_URL_AUTH_SERVICE}${url}`, payload)
 }
 

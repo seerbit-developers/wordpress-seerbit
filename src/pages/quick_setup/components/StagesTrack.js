@@ -55,7 +55,7 @@ const StagesTrack = ({stages,totalProgress,completedKyc,stageOnePercent,stageThr
     const { t } = useTranslation();
     return (
             completedKyc ?
-                <div className="p-0 mr-1">
+                <div className="p-0 me-1">
                     <Flipper flipKey={true}>
                     <IconWrapper className="text-center">
                         <img
@@ -86,7 +86,7 @@ const StagesTrack = ({stages,totalProgress,completedKyc,stageOnePercent,stageThr
 
                 </div>
                 :
-        <div className="p-0 mr-1">
+        <div className="p-0 me-1">
             <Flipper flipKey={stageOnePercent >= 50}>
                 {
                     stageOnePercent >= 50 ? (

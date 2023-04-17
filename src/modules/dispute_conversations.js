@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, {Fragment, useState} from 'react';
 import moment from 'moment';
 import AppModal from "components/app-modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,6 +28,8 @@ const Wrap = styled.div`
 		line-height: 2;
 		font-size: 12px;
 		display: flex;
+		justify-content: flex-start;
+		line-height:1.3;
 		.text {
 			color: #6b6b6b;
 		}
@@ -94,9 +96,9 @@ function Conversations({
 	};
 	return (
 		<AppModal title="Dispute Details" isOpen={isOpen} close={() => close()}>
-			{isOpen && <div>
-				<Wrap className='pt-4 mt-5'>
-					<div className='title font-16'>
+			{isOpen && <Fragment>
+				<Wrap className=''>
+					<div className='title font-16 mb-2'>
 						Details
 						<RightComponent>
 							<FontAwesomeIcon
@@ -124,7 +126,7 @@ function Conversations({
 								<span className='text '>
 								{dispute.resolution === null
 									? dispute.status
-									: dispute.resolution.replace(/_/g, ' ')}
+									: dispute.resolution.replaceAll(/_/g, ' ')}
 							</span>
 							</div>
 							<div className='text-body font-12'>
@@ -133,15 +135,7 @@ function Conversations({
 								{dispute.amount === null ? 'NONE' : `NGN ${dispute.amount}`}
 							</span>
 							</div>
-							<div className='text-body font-12'>
-								<div className='label'>Resolution : </div>
-								<span className='text '>
-								{' '}
-									{dispute.date_of_resolution === null
-										? dispute.status
-										: dispute.date_of_resolution}
-							</span>
-							</div>
+
 							<div className='text-body font-12'>
 								<div className='label'>Transaction Reference : </div>
 								<div className='text '>
@@ -177,27 +171,10 @@ function Conversations({
 						dispute.evidence.map(function (item, key) {
 							return (
 								<div
-									className='text-body font-15 mb-2 py-2'
-									style={{ lineHeight: '1.3' }}
+									className='text-body  mb-2 py-2'
 								>
-									{/* {item.msg_sender === 'merchant' && ( */}
-
 									<Thumbnail item={item} />
-
 									<Text item={item} />
-
-									{/* )} */}
-									{/* {item.msg_sender !== 'merchant' && (
-										<div className='row'>
-										  <div className='col-9'>
-											<Text item={item} />
-                      </div>
-                      <div className='col-3'>
-                        	<Thumbnail item={item} />
-                      </div>
-
-										</div>
-									)} */}
 								</div>
 							);
 						})}
@@ -209,18 +186,16 @@ function Conversations({
 						className='wrapper overflow-auto px-5'
 						style={{ bottom: '10px', display: 'contents' }}
 					>
-						<div className='bg-white'>
+						<div className='bg-white d-flex justify-content-between align-items-center'>
 						<textarea
 							name='message'
 							className='form-control'
 							placeholder='Message'
-							rows='2'
 							maxLength={200}
 							style={{ resize: 'none' }}
 							onChange={(e) => setMessage(e.target.value)}
 							value={message}
 						/>
-
 							<img
 								src={Attach}
 								style={{
@@ -233,7 +208,6 @@ function Conversations({
 							/>
 							{image_upload && <span>Attached</span>}
 						</div>
-
 						<input
 							style={{ display: 'none' }}
 							type='file'
@@ -242,18 +216,14 @@ function Conversations({
 							ref={(e) => (uploadElement = e)}
 							onChange={fileuploadHandler.bind(this)}
 						/>
-
-						<div className='float-right mt-2'>
+						<div className='d-flex justify-content-end mt-2'>
 							<Button text='Reply' onClick={replyDispute} />
 						</div>
 						<p className={'font-10'}>
-							{/* {this.state.upload_image === undefined
-                    ? ""
-                    : `${this.state.upload_image.name}`} */}
 						</p>
 					</div>
 				</Wrap>}
-			</div>}
+			</Fragment>}
 		</AppModal>
 	);
 }

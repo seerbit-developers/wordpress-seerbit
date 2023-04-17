@@ -148,14 +148,20 @@ if (AuthService.loggedIn() && this.props.business_details ) {
     window.location.href = localizer.path_url
   }
 
-
+  baseUrl(){
+    try {
+      return localizer.path_url
+    }catch (e) {
+      return window.origin
+    }
+  }
   render() {
     if (
         window.location.hash === "#" &&
         !AuthService.loggedIn() &&
         this.props.location !== "personalInformation"
     ) {
-      window.location.href = localizer.path_url + "#/auth/login";
+      window.location.href = this.baseUrl() + "#/auth/login";
     }
     if (
         window.location.hash === "#/business-list" &&
@@ -168,13 +174,13 @@ if (AuthService.loggedIn() && this.props.business_details ) {
           this.props.business_details.status !== "NEW_BUSINESS"
       )
 
-        window.location.href = localizer.path_url;
+        window.location.href = this.baseUrl();
       else {
         if (this.props.business_details?.otherInfo?.progressStatus === 4){
-          window.location.href = localizer.path_url;
+          window.location.href = this.baseUrl();
         }
         else{
-          window.location.href = localizer.path_url + "#/quick-setup";
+          window.location.href = this.baseUrl()  + "#/quick-setup";
      //     window.location.reload();
         }
 

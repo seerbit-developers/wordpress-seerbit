@@ -39,8 +39,8 @@ function RefundPage(props) {
     {value:'REFUND', text:'REFUND'}]
   );
   const [defaultDates, setDefaultDates] = useState([
-    moment().subtract(3, 'months'),
-    moment()
+    moment().subtract(3, 'months').toDate(),
+    moment().toDate()
   ]);
   const [expt, setExport] = useState();
   const [loading, setLoading] = useState(false);

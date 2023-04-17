@@ -13,7 +13,6 @@ import { Can } from "../../modules/Can";
 import Copy from "../../assets/images/svg/copy.svg";
 import moment from "moment";
 import { isEmpty } from "lodash";
-// import Table from "../../utils/analytics/table";
 import Filter from "../../utils/analytics/filter";
 import Conversations from "../../modules/dispute_conversations";
 import { CSVLink } from "react-csv";
@@ -29,7 +28,7 @@ import TableDropdown from "../../components/table-actions-dropdown/table-dropdow
 import {appBusy} from "actions/appActions";
 import {acceptBulkDispute, disputeFeedback} from "services/disputeService";
 import {alertError, alertExceptionError, alertSuccess} from "modules/alert";
-import {handleCopy} from "utils"
+import {formatNumber, handleCopy} from "utils"
 import { useTranslation } from "react-i18next";
 import {AppModalCenter} from "components/app-modal";
 
@@ -43,8 +42,8 @@ export function DisputePage(props) {
   const [perPage, setPerPage] = useState(25);
   const [processing, setProcessing] = useState(false);
   const [dates, setDates] = useState([
-    moment().subtract(1, 'months'),
-    moment()
+    moment().subtract(1, 'months').toDate(),
+    moment().toDate()
   ]);
   const [message, setMessage] = useState("");
   const [image_upload, setImageUpload] = useState();
@@ -85,12 +84,6 @@ export function DisputePage(props) {
   };
   if (image_upload) reader.readAsDataURL(image_upload);
 
-  function formatNumber(num) {
-    return Number(num)
-      .toFixed(2)
-      .toString()
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  }
 
   const getFromDate = () => {
     if (typeof dates === 'object'){
@@ -274,34 +267,6 @@ export function DisputePage(props) {
           props.appBusy()
           alertExceptionError(e)
         })
-      // props.replyDispute({
-      //   location: "dispute",
-      //   url: {
-      //     dispute_ref: dispute.dispute_ref,
-      //     action: "",
-      //   },
-      //   data: {
-      //     evidence: [
-      //       {
-      //         images: [
-      //           {
-      //             image: image,
-      //           },
-      //         ],
-      //         message: message,
-      //         msg_sender: "merchant",
-      //       },
-      //     ],
-      //     amount: dispute.transDetails.amount,
-      //     resolution: "decline",
-      //     status: "DECLINED",
-      //     resolution_image: null,
-      //     merchant_id: props.business_details.number,
-      //     customer_email: dispute.customer_email,
-      //   },
-      // });
-      // setImageUpload()
-      // changePage(1);
     }
   };
 
@@ -382,7 +347,6 @@ export function DisputePage(props) {
   const headers = [
     { label: t("Status"), key: "status" },
     { label: t("Date Created"), key: "date_of_dispute" },
-    // { label: "Category", value: "Charge back" },
     { label: t("Transaction"), key: "transaction_ref" },
     { label: t("Customer"), key: "customer_email" },
     { label: t("Due Date"), key: "due_when" },
@@ -506,7 +470,7 @@ export function DisputePage(props) {
     },
     {
       name: t('Reference'),
-      cell: props => <span className="row p-0 m-0">
+      cell: props => <span className="d-flex justify-content-start align-items-center">
                       <div className="cut-text">{props.transaction_ref}</div>
                       <img
                           src={Copy}
@@ -521,7 +485,7 @@ export function DisputePage(props) {
     },
     {
       name: t('Dispute Reference'),
-      cell: props => <span className="row p-0 m-0">
+      cell: props => <div className="d-flex justify-content-start align-items-center">
                       <div className="cut-text">{props.dispute_ref}</div>
                       <img
                           src={Copy}
@@ -532,12 +496,12 @@ export function DisputePage(props) {
                             handleCopy(props.dispute_ref);
                           }}
                           alt="Copy"/>
-                    </span>
+                    </div>
     },
     {
       name: t('Product ID'),
-      cell: props => <span className="row p-0 m-0">
-                      <div className="cut-text">{props.transDetails ? props.transDetails.product_id ? props.transDetails.product_id : "NA" : "NA"}</div>
+      cell: props => <div className="d-flex justify-content-start align-items-center">
+                      <span className="cut-text">{props.transDetails ? props.transDetails.product_id ? props.transDetails.product_id : "NA" : "NA"}</span>
                       <img
                           src={Copy}
                           width="15"
@@ -547,7 +511,7 @@ export function DisputePage(props) {
                             handleCopy(props.transDetails ? props.transDetails.product_id ? props.transDetails.product_id : "" : "");
                           }}
                           alt="Copy"/>
-                    </span>
+                    </div>
     },
     {
       name: t('Date'),

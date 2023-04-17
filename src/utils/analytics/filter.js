@@ -84,21 +84,12 @@ function Filter({
       filter();
     }
   };
+  console.log('defaultDates', defaultDates)
 
-  // const transitions = useTransition(showFilter, null, {
-  //   from: { position: "absolute", opacity: 0, marginLeft: -25 },
-  //   enter: {
-  //     opacity: 1,
-  //     marginLeft: 12,
-  //   },
-  //   leave: { opacity: 0, marginLeft: -10 },
-  // });
-  //   console.log(defaultDates)
   return (
     <Wrapper className="sbt-filter">
       <div className="d-flex flex-wrap">
         <div className="mr-3">
-          <div className="calender-wrap cursor-pointer pl-2 pr-2 sbt-border-success">
             {/*<img src={CalendarIcon} />*/}
            {!useNewDatePicker && <Calendar
               placeholder={t("Select Date Range")}
@@ -117,12 +108,14 @@ function Filter({
               {useNewDatePicker &&
               <DateRangePicker
                   onChange={(r)=>{ setDates(r); setDefaultDates(r); setDefaultDatesInternal(r)} }
+                  appearance='default'
+                  size="sm"
                   defaultValue={defaultDates}
                   // format="MM/dd/y"
               />
               }
             {/*{!isEmpty(dates) && <FontAwesomeIcon icon={faTimes} onClick={() => setDates()} />}*/}
-          </div>
+
         </div>
         {payment_option_filter && (
           <Dropdown

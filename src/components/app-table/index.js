@@ -33,13 +33,7 @@ const Index = (props) => {
               //     height: "100%",
               // }}
             >
-              {/*<BarLoader
-                            css={ {display:'block', margin:'30px auto', width:'10%', height:'1px'} }
-                            sizeUnit={ '%' }
-                            size={ 100 }
-                            color={ '#FFCBC2' }
-                            loading={ props.loading  }
-                        />*/}
+
             </div>
           </div>
         ) : null}

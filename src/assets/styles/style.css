@@ -6,33 +6,14 @@
   box-sizing: border-box;
 }
 
-/*html {*/
-/*  font-family: "Helvetica Neue", Arial, sans-serif;*/
-/*  line-height: 1.15;*/
-/*}*/
-
-@-ms-viewport {
-  width: device-width;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Helvetica Neue, Ubuntu, sans-serif;
-  font-size: 12px;
-  /*font-weight: 400;*/
+  font-size: 12px !important;
   line-height: 1.5;
-  /*color: #868ba1;*/
   text-align: left;
-  /*background-color: #FBFBFB;*/
 }
-
-div:contains-selector(.load-range) {
-  height: 0px !important;
-  position: absolute !important;
-  top: 0em;
-}
-
 .container-fluid {
   width: 100%;
   padding-right: 15px;

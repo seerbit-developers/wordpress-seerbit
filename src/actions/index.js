@@ -1,10 +1,8 @@
 /** @format */
 
-import { BASE_URL, ERROR_DATA, LOGIN, UPDATE, QUERY } from "./types";
-import { loadState } from "../utils/localStorage";
+import {BASE_URL, ERROR_DATA, LOGIN, UPDATE, QUERY, PARTNER_ID} from "./types";
+import { loadState } from "utils/localStorage";
 import axios from "axios";
-
-export const PARTNER_ID = process.env.PARTNER_ID
 
 export const auth = (postData, dispatch, fn) => {
   return axios(`${BASE_URL}${postData.URL}`, {

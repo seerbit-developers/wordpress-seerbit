@@ -170,6 +170,8 @@
   height: 40px;
   width: 1px;
   background: #cccdd9;
+  margin-right: 20px;
+  margin-left: 10px;
 }
 .user_business__section {
   display: flex;
@@ -342,6 +344,7 @@
   flex-direction: column;
   h4 {
     font-size: 1em;
+    margin: 0
   }
   h5 {
     font-size: 0.8em;

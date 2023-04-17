@@ -60,10 +60,6 @@ const TransactionOverviewModal = ({
       alertError("Please enter a value below or equals to the full amount.");
       return
     }
-    // if (!description) {
-    //   alertError("Please enter a value below the full amount.", "transaction_overview");
-    //   return
-    // }
     amount = full ? full_amount : amount;
 
     if (!amountPass) {
@@ -117,16 +113,7 @@ const TransactionOverviewModal = ({
   const { t } = useTranslation()
 
   const ref = useRef();
-  // useOnClickOutside(ref, () => close());
 
-  // const print = () => {
-  //   setMobile(true)
-  //   window.print()
-  //   .then(() => {
-  //     setMobile(false)
-  //   })
-  //   return true;
-  // }
 
   return (
 
@@ -160,7 +147,7 @@ const TransactionOverviewModal = ({
                     src={Copy}
                     width="15"
                     height="15"
-                    className="cursor-pointer me-2 no-print"
+                    className="cursor-pointer mr-2 no-print"
                     onClick={(e) => {
                       handleCopy(props.transactionRef);
                     }}
@@ -429,7 +416,7 @@ const TransactionOverviewModal = ({
               {" "}
               <div className="d-flex justify-content-start my-2">
                 {props.customer && props.customer.customerName && (
-                  <div className="text-body font-14 py-1 me-5">
+                  <div className="text-body font-14 py-1 mr-5">
                     <div className="label" style={{ color: "#676767" }}>{t('Name')} -</div>
                     <div className="text mt-2 font-medium">
                       {props.customer.customerName}
@@ -609,7 +596,7 @@ const TransactionOverviewModal = ({
               <div className="d-flex flex-wrap my-2">
                 <div className="analytics-details--container my-2">
                   {props.analytics && props.analytics.channel && (
-                    <div className="text-body font-14 py-2 me-5">
+                    <div className="text-body font-14 py-2 mr-5">
                       <div className="label" style={{ color: "#676767" }}>{t('Channel Type')}</div>
                       <div className="trans--detail mt-2">
                         {t(props.analytics.channel)}
@@ -618,7 +605,7 @@ const TransactionOverviewModal = ({
                   )}
 
                   {props.analytics && props.analytics.channelType && (
-                    <div className="text-body font-14 py-2 me-5">
+                    <div className="text-body font-14 py-2 mr-5">
                       <div className="label" style={{ color: "#676767" }}>{t('Channel')}</div>
                       <div className="mt-2">
                         <TransactionChannel props={props}/>
@@ -627,15 +614,16 @@ const TransactionOverviewModal = ({
                   )}
 
                   {props.analytics && props.analytics.country && (
-                    <div className="text-body font-14 py-2 me-5">
+                    <div className="text-body font-14 py-2 mr-5">
                       <div className="label" style={{ color: "#676767" }}>{t('Country')} </div>
                       <div className="mt-2">
                         <ReactCountryFlag
-                          style={{
-                            fontSize: "16px",
-                            paddingRight: "12px",
-                          }}
-                          countryCode={props.analytics.country}
+                            style={{
+                              fontSize: "16px",
+                              paddingRight: "12px",
+                            }}
+                            cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
+                            countryCode={props.analytics.country}
                         />
                         <span className='text-capitalize'>{props.analytics.country}</span>
                       </div>
@@ -644,17 +632,19 @@ const TransactionOverviewModal = ({
                 </div>
 
                 <div className="analytics-details--container my-2">
-                  {props.analytics && props.analytics.deviceType && (
-                    <div className="text-body font-14 py-2 me-5">
+
+                    <div className="text-body font-14 py-2 mr-5">
                       <div className="label" style={{ color: "#676767" }}>{t('Device Type')}</div>
                       <div className="trans--detail mt-2">
-                        {props.analytics.deviceType}
+                        {props.analytics && props.analytics.deviceType ?
+                        props.analytics.deviceType : 'NA'
+                        }
                       </div>
                     </div>
-                  )}
+
 
                   {props.analytics && props.analytics.ipAddress && (
-                    <div className="text-body font-14 py-2 me-5">
+                    <div className="text-body font-14 py-2 mr-5">
                       <div className="label" style={{ color: "#676767" }}>{t('IP Address')} </div>
                       <div className="trans--detail mt-2">
                         {props.analytics.ipAddress}
@@ -662,7 +652,7 @@ const TransactionOverviewModal = ({
                     </div>
                   )}
 
-                  <div className="text-body font-14 py-2 me-5">
+                  <div className="text-body font-14 py-2 mr-5">
                     <div className="label" style={{ color: "#676767" }}>{t('Attempts')} </div>
                     <div className="trans--detail mt-2">
                       {attempt}
@@ -673,13 +663,13 @@ const TransactionOverviewModal = ({
                 <div className="analytics-details--container my-2">
                   <CardDetails props={props}/>
                   <CardDetailsExpiry props={props}/>
-                  <div className="text-body font-14 py-2 me-5">
+                  <div className="text-body font-14 py-2 mr-5">
                     <div className="label" style={{ color: "#676767" }}>{t('Errors')} </div>
                     <div className="trans--detail mt-2">
                       {error}
                     </div>
                   </div>
-                  <div className="text-body font-14 py-2 me-5">
+                  <div className="text-body font-14 py-2 mr-5">
                     <div className="label" style={{ color: "#676767" }}> </div>
                     <div className="trans--detail mt-2">
 

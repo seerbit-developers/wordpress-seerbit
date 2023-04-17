@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   getTransactions,
-  // filterTransactions,
   searchTransactions,
   emailReport,
   addRefund,
@@ -21,13 +20,9 @@ import { CSVLink } from "react-csv";
 import ReportEmail from "../../modules/ReportEmail";
 import { isEmpty } from "lodash";
 import Filter from "../../utils/analytics/filter";
-import styled from "styled-components";
 import transactions_export from "../../utils/strings/transaction_export.json";
 import transactions_json from "../../utils/strings/transaction.json";
 import AppTable from "components/app-table";
-import Mastercard from "../../assets/images/svg/mastercard-icon.svg";
-import Visa from "../../assets/images/svg/visa-icon.svg";
-import Verve from "../../assets/images/verve.png";
 import Search from "../../assets/images/svg/search.svg";
 import FilterIcon from "../../assets/images/svg/filterIcon.svg";
 import TransactionOverviewModal from "./components/TransactionOverviewModal";
@@ -38,14 +33,7 @@ import {alertError, alertSuccess} from "../../modules/alert";
 import DropdownFilter from "./components/dropdownFilter";
 import { useTranslation } from "react-i18next";
 import {getCustomReportFieldNames} from "../../actions/transactionActions";
-import './style.css'
-const NavMenuItem = styled.div`
-  // width: 95vw;
-  margin: auto;
-  font-size: 1.1em;
-  color: #676767 !important;
-  // min-height: calc(100vh - 80px);
-`;
+// import './style.css'
 
 function formatNumber(num) {
   return Number(num)
@@ -81,8 +69,8 @@ export function TransactionPage(props) {
   const [exportOptions, setExportOptions] = useState([]);
   const [statusOptions, setStatusOptions] = useState([]);
   const [defaultDates, setDefaultDates] = useState([
-    moment().subtract(1, 'months'),
-    moment()
+    moment().subtract(1, 'months').toDate(),
+    moment().toDate()
   ]);
 
   const size = useWindowSize()
@@ -115,7 +103,6 @@ export function TransactionPage(props) {
     setProcessing(true);
     setActiveOption("filter");
     props.searchTransactions(page, perPage, from, to, search_term, cur, status, true, selectedpaymentOption, transactionReference,productId)
-    // props.getTransactions(from, perPage, cur, status);
     setProcessing(true);
   }
 
@@ -352,16 +339,6 @@ export function TransactionPage(props) {
     props.transactions_params,
   ]);
 
-
-  const cardQuickDection = text => {
-    return /^5[1-5][0-9]+/.test(text) || text === '2223000000000007'
-      ? Mastercard
-      : /^4[0-9]+(?:[0-9]{3})?/.test(text)
-        ? Visa
-        : /^5[0][0-9]+/.test(text)
-          ? Verve
-          : '';
-  };
 
   const viewTransactionData = (data) => {
     props.clearState({ search_vendor: null });
@@ -618,18 +595,17 @@ export function TransactionPage(props) {
           isMobile={isMobile}
         />}
       <div className="sbt-transaction">
-        <NavMenuItem className="py-5">
-          <div className="font-medium font-20 text-black me-3 d-none d-lg-block mb-4">
+        <div className="py-5">
+          <div className="font-medium font-20 text-black mr-3 d-none d-lg-block mb-4">
             { t("Payments")}
           </div>
           <div className="d-none d-lg-flex flex-row align-items-center justify-content-between">
 
               <div className="d-flex flex-row justify-content-between align-items-center">
-                <div className="input-wrap sbt-border-success br-normal me-3 position-relative"  id="filterToggleDiv" style={{padding:'6px 0', lineHeight: 'normal'}}>
+                <div className="input-wrap sbt-border-success br-normal mr-3 position-relative"  id="filterToggleDiv" style={{padding:'6px 0', lineHeight: 'normal'}}>
                 <span className="transaction-search-filter-container" id="filterToggleSpan">
                   <img src={FilterIcon} id="filterToggleImg" />
                   {t("Filter")}
-
                 </span>
                   <DropdownFilter
                       loading={props.loading}
@@ -653,7 +629,7 @@ export function TransactionPage(props) {
                       productId={productId}
                   />
                 </div>
-                <div className="input-wrap me-3">
+                <div className="input-wrap mr-3">
                   <Can access={"EXPORT_MERCHANT_REPORT"}>
                     <Dropdown
                         style={{ width: 130 }}
@@ -736,7 +712,7 @@ export function TransactionPage(props) {
               </div>
             </div>
 
-            <div className="input-wrap me-3 w-100 mt-4">
+            <div className="input-wrap mr-3 w-100 mt-4">
               <Can access={"EXPORT_MERCHANT_REPORT"}>
                 <Dropdown
                   style={{ width: 170 }}
@@ -753,7 +729,7 @@ export function TransactionPage(props) {
               </Can>
             </div>
           </div>
-        </NavMenuItem>
+        </div>
 
         {show_mail_report && (
           <ReportEmail

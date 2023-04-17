@@ -1,11 +1,8 @@
-import React, {useState} from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import EmailData from "../utils/strings/email.json";
 import { Dropdown } from "primereact/dropdown";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Sortable from "react-sortablejs";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 import { requestReport, clearState } from "actions/postActions";
 import transactions_json from "../utils/strings/transaction.json";

@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import 'rsuite/dist/styles/rsuite-default.min.css'
+import 'rsuite/dist/rsuite.min.css'
 import './assets/styles/utilities/_variables.scss'
 const host = hostChecker();
 import(`./assets/styles/brand/${host}.css`);
@@ -10,21 +10,18 @@ import Init from './main';
 import Loader from './components/loader';
 import AppErrorBoundary from "./components/AppErrorBoundary";
 import { withTranslation } from 'react-i18next';
-// import getMomentLocale from 'assets/i18n/moment/translations'
 import {Helmet} from "react-helmet";
 import 'moment/locale/fr';
 import 'moment/locale/en-gb';
 import {hostChecker, hostName} from "utils";
 import moment from "moment";
 import {getLanguage} from "utils/localStorage";
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 
+//core
+import "primereact/resources/primereact.min.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-// import 'primereact/resources/primereact.min.css';
-// import 'primereact/resources/themes/nova-light/theme.css';
-//
-// import "primeicons/primeicons.css";
 
 function getFaviconEl() {
 	return document.getElementById("favicon");
@@ -41,12 +38,6 @@ class App extends Component {
 	componentDidMount() {
 		let lng = getLanguage();
 		moment.locale(lng);
-		const faviconEl = getFaviconEl();
-		// if (host === 'seerbit') {
-		// 	faviconEl.href = 'https://assets.seerbitapi.com/images/icon.svg';
-		// } else {
-		// 	faviconEl.href = `https://ik.imagekit.io/SeerBit/favicons/${host}.png`;
-		// }
 	}
 
 	render() {

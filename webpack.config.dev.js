@@ -1,14 +1,22 @@
-const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const dotenv = require('dotenv');
+const env = dotenv.config().parsed;
+// reduce it to a nice object, the same as before
+const envKeys = Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+}, {});
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    mode: 'production',
+    entry: {
+        app: './src/index.js',
+    },
     resolve: {
         alias: {
-            '@fortawesome/fontawesome-free$': '@fortawesome/fontawesome-free-solid/shakable.es.js',
             components: path.resolve(__dirname, 'src/components/'),
             assets: path.resolve(__dirname, 'src/assets/'),
             modules: path.resolve(__dirname, 'src/modules/'),
@@ -20,44 +28,6 @@ module.exports = {
         },
         extensions: ['.tsx', '.ts', '.js', '.json', '.jsx', '.svg'],
     },
-    optimization: {
-        minimize: true,
-        usedExports: true,
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    output: {
-                        comments: true,
-                    },
-                    ecma: undefined,
-                    warnings: false,
-                    parse: {},
-                    compress: {drop_console: false},
-                    mangle: true, // Note `mangle.properties` is `false` by default.
-                    module: false,
-                    toplevel: false,
-                    nameCache: null,
-                    ie8: true,
-                    keep_classnames: undefined,
-                    keep_fnames: false,
-                    safari10: false,
-                    format: {
-                        comments: false,
-                    },
-                },
-                extractComments: false,
-            }),
-            new OptimizeCssAssetsPlugin({
-                cssProcessorOptions: {
-                    map: {
-                        inline: false,
-                        annotation: true,
-                    },
-                },
-            }),
-        ],
-    },
-    devtool: 'none',
     module: {
         rules: [
             {
@@ -71,6 +41,7 @@ module.exports = {
                             "@babel/plugin-proposal-class-properties",
                             "@babel/plugin-transform-runtime",
                             "@babel/plugin-transform-react-jsx",
+                            isDevelopment && require.resolve('react-refresh/babel')
                         ].filter(Boolean),
                         presets: ["@babel/preset-react",
                             ["@babel/preset-env", {
@@ -112,8 +83,9 @@ module.exports = {
                 test: /\.svg$/,
                 loader: 'url-loader'
             },
+
             {
-                test: /\.(png|jpe?g|ico)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(woff(2)?|ttf|eot|ico)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -123,23 +95,36 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(pdf|jpg|png|gif|ico|woff|woff2|eot|ttf)$/,
+                test: /\.(pdf|jpg|png|gif|ico)$/,
                 use: [
                     {
                         loader: 'url-loader'
                     },
                 ]
             }
+            // {
+            //     test: /\.(scss)$/,
+            //     use: [{
+            //         loader: 'style-loader',
+            //     }],
+            //     sideEffects: true
+            // }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new webpack.optimize.LimitChunkCountPlugin({
-            maxChunks: 1
-        })
+        new HtmlWebpackPlugin({
+            title: 'SeerBit - Merchant Dashboard',
+            // favicon: path.resolve(__dirname, './public/favicons/favicon.ico'),
+            template: path.resolve(__dirname, './public', 'index.html'),
+            filename: "./index.html",
+            publicPath: "/"
+        }),
+        new webpack.DefinePlugin(envKeys),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ].filter(Boolean),
     output: {
-        filename: "./assets/js/seerbit.js",
-        path: __dirname
+        filename: '[name].[hash].js',
+        path: path.resolve(__dirname, 'build')
     },
-}
+};

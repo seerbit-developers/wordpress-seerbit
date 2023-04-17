@@ -72,7 +72,7 @@ function load_scripts() {
         'apiUrl' => home_url('/wp-json'),
         'nonce' => wp_create_nonce('wp_rest'),
         'url' => SEERBIT_PLUGIN_URL,
-        'assets' => SEERBIT_PLUGIN_URL . "/src/assets/",
+        'assets' => SEERBIT_PLUGIN_URL . "src/assets/",
         'dir' => SEERBIT_PLUGIN_PATH,
         'path_url' => esc_attr( get_admin_url( null, 'admin.php?page=seerbit' ) )
     ]);

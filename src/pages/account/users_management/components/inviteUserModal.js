@@ -10,7 +10,6 @@ const InviteUserModal = ({ isOpen, close, businessRoles, onInvite, processInvite
     const { t } = useTranslation();
     const { register, handleSubmit, control,reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        console.log('data',data)
         if (data) {
                 // const r = businessRoles.find(item => item.value == role)
                 const p = {
@@ -28,8 +27,6 @@ const InviteUserModal = ({ isOpen, close, businessRoles, onInvite, processInvite
            setOnSuccess(false)
        }
    }, [onSuccess])
-
-    console.log('errors', errors)
     return (
         <AppModal title="Invite a Team Member" isOpen={isOpen} close={() => close(false)}>
             <form onSubmit={handleSubmit(onSubmit)}>

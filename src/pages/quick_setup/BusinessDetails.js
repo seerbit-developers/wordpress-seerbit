@@ -17,7 +17,7 @@ import {
     setErrorLog,
     nameInquiry,
     clearState
-} from "../../actions/postActions";
+} from "actions/postActions";
 import Select from 'react-select';
 import { ProgressBar, Spinner } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -26,7 +26,7 @@ import KYCForms from "modules/kycForms";
 import { isEmpty } from "lodash";
 import "./css/quick-setup.scss";
 import styled from "styled-components";
-import Placeholder from "assets/images/image-gallery.png";
+import Placeholder from "assets/images/svg/image-gallery.svg";
 import Upload from "assets/images/svg/onboarding-upload.svg";
 import { useHistory } from "react-router-dom"
 import StagesTrack from "./components/StagesTrack";
@@ -38,13 +38,13 @@ import {
     StageOnePercent,
     StageThreeComplete,
     StageTwoComplete
-} from "../../utils";
+} from "utils";
 import {
     updateBusinessCertificate,
     updateBusinessDetails,
     updateBusinessSupportDetails,
     updateBusinessSettlementDetails
-} from "../../services/businessService";
+} from "services/businessService";
 import {useTranslation} from "react-i18next";
 import {AnimatePresence, motion} from "framer-motion";
 import SectionDetails from "./components/sectionDetails";
@@ -609,7 +609,7 @@ export function BusinessDetails(props) {
                                                             onClick={(e) => uploadElement.click()}
                                                             width="70"
                                                             title={t('Click to update business logo')}
-                                                            className='cursor-pointer'
+                                                            className="img-thumbnail bg-transparent border-0 cursor-pointer"
                                                         />
                                                     </Centered>
                                                     <input

@@ -176,7 +176,6 @@ export function BusinessList({ user_details, setBusiness, setUserRole, business_
   );
 
     useEffect( ()=>{
-        // console.log('business list')
         // if(full_name){
         //     setMessage(`Hi ${full_name}, Select a business.`)
         // }

@@ -56,7 +56,6 @@ const alertPromise = (callback, params={
     success: 'Success!',
     error: 'An error occurred.',
 }) => {
-    console.log(callback)
      toast.promise(
         callback(),
         params

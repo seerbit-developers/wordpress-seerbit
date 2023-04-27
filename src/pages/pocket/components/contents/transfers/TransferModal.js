@@ -128,7 +128,6 @@ function PocketTransfer({
                 alertError(res.responseMessage)
             }
         }).catch(e=>{
-            console.log(e)
             setProcessing(false);
             alertExceptionError(e)
         })
@@ -145,7 +144,6 @@ function PocketTransfer({
                 alertError(res.responseMessage)
             }
         }).catch(e=>{
-            console.log(e)
             setProcessing(false);
             alertExceptionError(e)
         })
@@ -172,11 +170,9 @@ function PocketTransfer({
                     { isCgBankCode: false, bankCode, accountNumber }
                 ).then(res=>{
                     stopNameEnquiry();
-                    console.log('res', res)
                     if (res.responseCode === "00"){
                         setBankAccountName(res.detail);
                     } else {
-                        console.log('clear bank ac name')
                         setBankAccountName('')
                     }
                 }).catch(e=>{

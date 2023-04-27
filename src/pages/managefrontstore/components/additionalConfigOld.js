@@ -4,7 +4,6 @@ import Loader from "assets/images/svg/loader.svg";
 import Next from "assets/images/svg/next.svg";
 
 const StoreAdditionalConfig = ({all_store_details, loading, onEdit})=>{
-    console.log(all_store_details)
     return (
         <div className="col-lg-9 col-md-12 py-3">
             <div className="sbt-table-topless">

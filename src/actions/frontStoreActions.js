@@ -86,7 +86,6 @@ export const getProductList = (from = 0, to = 25, type = false, search_term='') 
             )
         }
     }).catch(e=>{
-        console.log(e)
         dispatch(
             {
                 type:LOADING_BUSINESS_PRODUCTS,

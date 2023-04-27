@@ -27,7 +27,6 @@ function EditPlan(props) {
   const [enableTrial, setEnableTrial] = useState(false);
   const [values, setValues] = useState();
 
-  console.log(selectedPlan)
 
   useEffect(() => {
     setValues({

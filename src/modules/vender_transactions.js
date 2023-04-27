@@ -60,7 +60,6 @@ export function VendorTransactions(props) {
     };
 
     const onRowClick = (e) => {
-        console.log(e);
     };
 
     const changePage = (from = 1) => {

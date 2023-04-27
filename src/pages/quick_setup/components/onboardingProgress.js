@@ -17,7 +17,7 @@ const OnBoardingProgress = ({
                                 stageThreeComplete
                           })=>{
     const { t } = useTranslation();
-    // console.log('stageTwoPercent', stageTwoPercent)
+
     return (
         <div className="progress_track">
 

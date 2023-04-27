@@ -190,7 +190,6 @@ function KycForms(props) {
                 window.open( encodeURI(d.kycDocumentUrl));
             }
         }catch (e) {
-            console.log(e)
             alertError('Unable to preview file at the moment')
         }
     }

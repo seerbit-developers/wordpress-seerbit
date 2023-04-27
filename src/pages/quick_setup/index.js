@@ -110,7 +110,6 @@ export function QuickSetup({setBusiness,getProgressStatus, ...props}) {
         account_name : business_details?.payout?.payout_account_name,
         bvn_number : business_details?.payout?.payout_bvn_number,
       }
-      console.log('availableFields', availableFields)
       const isNigeria =
           business_details &&
           business_details.country &&
@@ -151,8 +150,6 @@ export function QuickSetup({setBusiness,getProgressStatus, ...props}) {
     })
   }
 
-  console.log('stageOnePercent', stageOnePercent)
-  console.log('progressStatus', progressStatus)
 
   return (
     <div className="col-12 sbt-quick-setup onboarding">

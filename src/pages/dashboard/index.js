@@ -61,7 +61,6 @@ export function Dashboard(props) {
       DATE_FORMAT: date_format,
     });
   };
-  // console.log(props.business_details.country.name)
   // const langs = ["Senegal", "Ivory Coast", "Gabon", "Uganda"]
   //country.toLowerCase() === "senegal"
   const country = props.business_details.country.name

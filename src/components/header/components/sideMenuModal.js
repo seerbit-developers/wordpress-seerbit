@@ -23,7 +23,6 @@ const SideMenuModal = (props) => {
     if (props.isOpen) {
       document.getElementById("top_nav").style.position = "static";
       window.document.body.style.overflow = "hidden";
-      // console.log(window.document.body.style)
     } else {
       document.getElementById("top_nav").style.position = "relative";
       window.document.body.style.overflow = "auto";

@@ -116,7 +116,6 @@ export function WalletPage(props) {
   }, [show_filter]);
 
   const showCheckout = () => {
-    // console.log(
     //   setting.mode === "TEST" ? test_public_key : live_public_key,
     //   "----",
     //   setting.mode
@@ -189,7 +188,7 @@ export function WalletPage(props) {
   };
 
   const onRowClick = (e) => {
-    console.log(e);
+
   };
 
   const changePage = (from = 1) => {

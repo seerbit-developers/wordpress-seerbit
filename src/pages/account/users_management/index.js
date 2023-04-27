@@ -235,7 +235,7 @@ const UserManagement = ({ getBusinessUsersList, roles, loading, business_users, 
 
     // React.useEffect(() => {
     //     if (branches) {
-    //         // console.log(branches)
+    //
     //         // setBusinessBranches(branches)
     //     }
     // }, [branches]);

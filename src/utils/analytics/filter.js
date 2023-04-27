@@ -84,7 +84,6 @@ function Filter({
       filter();
     }
   };
-  console.log('defaultDates', defaultDates)
 
   return (
     <Wrapper className="sbt-filter">

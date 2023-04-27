@@ -16,7 +16,6 @@ const PaginatorEngine = (props) =>{
     const changePageFromPerPage = (evt)=>{
         props.changePageFromPerPage(1,evt.currentTarget.selectedOptions[ 0 ].value)
     }
-// console.log(props)
     return(
         <div className="d-flex justify-content-end mt-4">
                             <Pagination

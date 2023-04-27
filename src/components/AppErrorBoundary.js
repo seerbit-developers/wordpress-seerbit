@@ -8,16 +8,11 @@ class AppErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    console.log(error)
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
-    // console.log(error, errorInfo);
-    // console.log(this.props.store.getState().user_details.email);
-    // console.log(this.props.store.getState().business_details.number);
-    // console.log(this.props.store.getState().business_details.business_name);
    try{
      Sentry.setUser({
        email: this.props.store.getState().data.user_details.email,
@@ -26,7 +21,6 @@ class AppErrorBoundary extends React.Component {
      });
      Sentry.captureException(error);
    }catch (e) {
-     console.log(e)
    }
   }
 

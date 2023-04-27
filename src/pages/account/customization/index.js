@@ -69,10 +69,10 @@ const Template = ({ business_details,getBusiness }) => {
   );
 
   const close = (close) => {
-    console.log(close);
+
   };
   const callback = (response) => {
-    console.log(response);
+
   };
 
   //UPLOAD LOGO

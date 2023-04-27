@@ -67,7 +67,6 @@ const TransactionOverviewModal = ({
       setInProcess(false);
       alertError("Please enter a valid amount");
     } else {
-      console.log('trigger refund')
 
       setInProcess(true);
       refundPayment({
@@ -127,7 +126,6 @@ const TransactionOverviewModal = ({
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log('submit refund')
           initProcess(
             props.transactionRef,
             amount,

@@ -78,7 +78,6 @@ function CreateFrontStore(props) {
                 }
             })
             .catch((e) => {
-                console.log(e)
                 setProcessing(false);
                 alertExceptionError(e)
             });

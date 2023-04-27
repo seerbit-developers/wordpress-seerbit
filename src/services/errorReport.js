@@ -15,8 +15,6 @@ export const reportError = (error, additionalInfo) => {
         additionalInfo: additionalInfo
     };
 
-    console.log(errorReport);
-
     const errorReportJson = JSON.stringify(errorReport);
     // const errorReportUrl = `${host}/api/v1/error-report`;
     // const errorReportHeaders = new Headers();
@@ -41,8 +39,6 @@ export const reportError = (error, additionalInfo) => {
         headers: slackHeaders,
         body: errorReportJson
     };
-
-    console.log(slackOptions);
 
     postRequest(SLACK_URL, slackOptions);
 

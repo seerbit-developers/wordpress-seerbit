@@ -307,7 +307,6 @@ export function Header(props) {
             // props.saveKey(businessNumber);
           }}
           toggleMode={() => {
-            // console.log(props.business_details.status)
             if (props.business_details.status === "APPROVED") {
               setActive(!active);
               props.switchMode({

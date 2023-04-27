@@ -49,7 +49,6 @@ function CreateFrontStore(props) {
                 }
             })
             .catch((e) => {
-                console.log(e)
                 setValidate(false);
                 alertExceptionError(e, "frontstore")
             })
@@ -105,7 +104,6 @@ function CreateFrontStore(props) {
                         }
                     })
                     .catch((e) => {
-                        console.log(e)
                         setProcessing(false);
                         alertExceptionError(e)
                     });

@@ -110,7 +110,6 @@ export function StoreProduct(props) {
                 }
             })
             .catch((e) => {
-                console.log(e)
                 setLoading(false);
                 alertExceptionError(e, "frontstore")
             })

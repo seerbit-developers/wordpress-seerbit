@@ -191,7 +191,6 @@ const getRequestNoAuth = async (url) => {
 
 const get = async (url) => {
   const state = loadState() && loadState().user.data;
-console.log('PARTNER_ID', PARTNER_ID)
   const options = {
     baseURL: BASE_URL,
     method: "GET",

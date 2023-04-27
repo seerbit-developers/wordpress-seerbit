@@ -33,7 +33,6 @@ const DisputeResponse = (props, raiseDispute, setShowDispute, replyDispute, proc
   );
 };
 const DisputeStatus = (status) => {
-  // console.log('status: ',status)
   if (status) {
     if (status === "IN_DISPUTE") {
       return (

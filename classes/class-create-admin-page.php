@@ -1,17 +1,10 @@
 <?php
 
-/**
- *
- * @link       https://www.seerbit.com
- * @since      1.0.0
- *
- */
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
-/**
- *
- * @package    SeerBit
- * @author     Shadrach Odekhiran <shadrach.odekhiran@gmail.com>
- */
+
 class Create_Admin_Page {
 
 	public function __construct( ) {
@@ -20,11 +13,11 @@ class Create_Admin_Page {
 
     public function create_menu() {
         $capability = 'manage_options';
-        $slug = 'seerbit';
+        $slug = 'seerbit-merchants';
 
         add_menu_page(
-            __('SeerBit', 'seerbit'),
-            __('SeerBit', 'seerbit'),
+            __('Seerbit Merchants', 'seerbit'),
+            __('Seerbit Merchants', 'seerbit'),
             $capability,
             $slug,
             [ $this, 'menu_page_template' ],

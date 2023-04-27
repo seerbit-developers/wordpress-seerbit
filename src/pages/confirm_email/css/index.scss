@@ -124,9 +124,10 @@ $size11: 11px;
   background: #fff;
   color: #0d6cb4 !important;
   background-clip: padding-box;
+  outline: none !important;
 }
 
-.pin-code-input:focus {
+.pin-code-input:focus, input[type=password]:focus, input:focus {
   border: 1px solid #0d6cb4 !important;
 }
 

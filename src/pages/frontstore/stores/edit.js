@@ -70,12 +70,10 @@ function CreateFrontStore(props) {
             status: "ACTIVE",
             storeUrl: `https://seerbit.store/${values.storeName.replace(/\s/g, '').toLocaleLowerCase()}`
         }
-        console.log(p);
         const schema = Joi.object(validationObject);
 
         try {
             const validation = await schema.validate(p);
-            console.log(validation)
             if (validation.error){
                 alertError(validation.error.message);
             }else{
@@ -99,7 +97,6 @@ function CreateFrontStore(props) {
                 }
             })
             .catch((e) => {
-                console.log(e)
                 setProcessing(false);
                 alertExceptionError(e)
             });

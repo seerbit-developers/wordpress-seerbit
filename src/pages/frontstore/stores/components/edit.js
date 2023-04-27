@@ -62,7 +62,6 @@ function EditFrontStore(props) {
                 }
             })
             .catch((e) => {
-                console.log(e)
                 setValidate(false);
                 alertExceptionError(e, "frontstore")
             })
@@ -96,7 +95,6 @@ function EditFrontStore(props) {
             status: status,
             storeUrl: `https://store.seerbit.com/${values.storeName.replace(/\s/g, '').toLocaleLowerCase()}`
         }
-        console.log(p)
         const schema = Joi.object(validationObject);
 
         try {
@@ -119,7 +117,6 @@ function EditFrontStore(props) {
                         }
                     })
                     .catch((e) => {
-                        console.log(e)
                         setProcessing(false);
                         alertExceptionError(e)
                     });

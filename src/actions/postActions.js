@@ -1461,15 +1461,13 @@ export const getRoles = () => (dispatch, getState) => {
 
 export const setBusiness = (data) => (dispatch, getState) => {
   const param = data;
-  // console.log('invoice', param.business.invoice)
     const user_ps = param.role ? param.role.permissions : []
     const user_ps_branch = param.business ?
         param.business.invoice ?
         param.business.invoice.active ? ['ACCESS_BRANCHES'] :
             [] : [] : []
     const permissions = [...user_ps, ...user_ps_branch ]
-    // console.log('permissions', permissions)
-    // console.log('param.role && param.role.permissions', permissions)
+
   dispatch({
     name: "business",
     location: "set_business",

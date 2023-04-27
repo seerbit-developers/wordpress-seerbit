@@ -28,7 +28,6 @@ const ChangePasswordModal = ({isOpen,close})=>{
     }
 
     const validatePassword = (password)=>{
-        console.log(password)
         if (/^(?=.*[A-Za-z])$/.test(password) === false){
             return "Must contain at least one character"
         } else if (/^(?=.*[@$!%*#?&])$/.test(password) === false){

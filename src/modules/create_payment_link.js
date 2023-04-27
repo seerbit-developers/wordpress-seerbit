@@ -191,7 +191,6 @@ function CreateFronstore(props) {
 
     Array.from(form.querySelectorAll("input")).forEach(
         input => {
-          console.log(input.value)
           input.value = ""
         }
     );

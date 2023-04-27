@@ -142,10 +142,10 @@ const Template = ({
     live_public_key,
   } = business_details;
   const close = (close) => {
-    console.log(close);
+
   };
   const callback = (response) => {
-    console.log(response);
+
   };
   return (
     <div className="sbt-setup col-md-6 d-flex justify-content-center">

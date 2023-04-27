@@ -238,7 +238,6 @@ export function PersonalDetails({saveTwoFactorCode, ...props}) {
         generateOtpForApproval({
             email: props.user_details.email
         }).then(res=>{
-            console.log('res', res)
             setGeneratingOtp(false);
             setShowTwoFactorToggleModal(true);
         }).catch(e=>{

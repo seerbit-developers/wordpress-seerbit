@@ -21,7 +21,6 @@ const AppModal = ({isOpen, close, title, description, containerStyle, contentSty
             close()
         }
     }, []);
-    console.log('isOpen', isOpen)
     useEffect( ()=>{
         document.addEventListener("keydown", closeWithEscapeKey);
         return () => {

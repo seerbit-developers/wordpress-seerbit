@@ -71,7 +71,6 @@ const SettingsMenu = (props) => {
     }, [])
 
     const goto = (route) => {
-        // console.log(route)
         // props.history.push(route)
         props.movetoSection(route)
     }

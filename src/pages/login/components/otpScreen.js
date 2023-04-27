@@ -24,18 +24,15 @@ const OtpScreen = ({back,dispatchUserDetails})=>{
         }
                 validateOtp(p)
                     .then(res=>{
-                        console.log('otp response', res)
                         setValidatingOtp(false);
                         if (res.responseCode == '00'){
                             dispatchUserDetails(res)
                         }else{
-                            console.log('not 00')
                             AuthInputRef.current?.clear();
                             setError("Invalid OTP. Ensure you are using the code sent to your email")
                             setIsValidInput(false)
                         }})
                     .catch(e=>{
-                        console.log('exception', e)
                         AuthInputRef.current?.clear();
                         setIsValidInput(false)
                         setError("Invalid OTP. Ensure you are using the code sent to your email")

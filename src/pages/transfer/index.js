@@ -76,7 +76,7 @@ export function TransferPage(props) {
   ];
 
   const onRowClick = (e) => {
-    console.log(e);
+
   };
 
   const changePage = (from = 1) => {

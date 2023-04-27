@@ -9,8 +9,8 @@ import "assets/styles/include.css";
 import "assets/styles/style.css";
 import "assets/styles/toggle.css";
 import "assets/styles/responsive.css";
-import "assets/styles/custom.css";
 import "primeicons/primeicons.css";
+import "assets/styles/custom.css";
 import Brand from "utils/strings/brand.json";
 import { hasAccess } from "modules/Can";
 import {

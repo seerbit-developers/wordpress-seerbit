@@ -38,7 +38,6 @@ export const createInvoice = (data, id) => (dispatch, getState) => {
         type: CREATING_INVOICE,
         payload: false,
       });
-      console.log(e?.response?.data?.message);
       alertError(e?.response?.data?.message);
     });
 };

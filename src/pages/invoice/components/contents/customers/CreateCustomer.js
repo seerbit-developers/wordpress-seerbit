@@ -24,11 +24,9 @@ const CreateCustomer = ({
   const [busy, setBusy] = useState(false);
 
   const onSubmit = async data => {
-    console.log(data);
     setBusy(true);
     const p = {...data, country: data.country.name}
     createCustomer(p).then(res=>{
-      console.log('res', res)
       setBusy(false);
       if (res.responseCode == '201'){
         alertSuccess('Customer created');
@@ -39,7 +37,6 @@ const CreateCustomer = ({
     }).catch(e=>{
       setBusy(false);
       alertExceptionError(e)
-      console.log('e', e)
     })
   };
 

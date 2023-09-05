@@ -22,12 +22,6 @@ const SettingsMenu = (props) => {
                 route: 'account/business_details'
             },
             {
-                title: t('Settlement Info'),
-                description: t('Bank account details where settlement will be paid into'),
-                icon: 'settlement',
-                route: 'account/settlement_information'
-            },
-            {
                 title: t('API keys'),
                 description: t('Copy test and live api integration keys and view test credentials'),
                 icon: 'api',
@@ -44,18 +38,6 @@ const SettingsMenu = (props) => {
                 description: t('Customize your checkout to the look and feel of your brand'),
                 icon: 'customisation',
                 route: 'account/customization'
-            },
-            {
-                title: t('Checkout Ads'),
-                description: t('Create, activate and deactivate adverts on your checkout modal'),
-                icon: 'ads',
-                route: 'account/checkout_adverts'
-            },
-            {
-                title: t('Webhooks'),
-                description: t('Configure Webhook notification URLs for your application'),
-                icon: 'webhooks',
-                route: 'account/webhooks'
             },
             {
                 title: t('User Management'),

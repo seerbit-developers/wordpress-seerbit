@@ -1,8 +1,3 @@
-/**
- * BusinessInformation
- *
- * @format
- */
 
 import React, {useState, useEffect, useRef} from "react";
 import PropTypes from "prop-types";
@@ -16,8 +11,8 @@ import {
     getCountries,
     setErrorLog,
     nameInquiry,
-    clearState
-} from "actions/postActions";
+    clearState, getBankList
+} from "../../actions/postActions";
 import Select from 'react-select';
 import { ProgressBar, Spinner } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -26,7 +21,7 @@ import KYCForms from "modules/kycForms";
 import { isEmpty } from "lodash";
 import "./css/quick-setup.scss";
 import styled from "styled-components";
-import Placeholder from "assets/images/svg/image-gallery.svg";
+import Placeholder from "assets/images/image-gallery.png";
 import Upload from "assets/images/svg/onboarding-upload.svg";
 import { useHistory } from "react-router-dom"
 import StagesTrack from "./components/StagesTrack";
@@ -37,14 +32,14 @@ import {
     StageOneComplete,
     StageOnePercent,
     StageThreeComplete,
-    StageTwoComplete
-} from "utils";
+    StageTwoComplete, transformerOnboarding
+} from "../../utils";
 import {
     updateBusinessCertificate,
     updateBusinessDetails,
     updateBusinessSupportDetails,
-    updateBusinessSettlementDetails
-} from "services/businessService";
+    updateBusinessSettlementDetails, nameEnquiry, nameEnquirySupport
+} from "../../services/businessService";
 import {useTranslation} from "react-i18next";
 import {AnimatePresence, motion} from "framer-motion";
 import SectionDetails from "./components/sectionDetails";
@@ -62,13 +57,10 @@ const Card = styled.div`
   justify-content: center;
 `;
 
-
-
 const Centered = styled.div`
   display: flex;
   justify-content: center;
 `;
-
 
 const DataWrapper = styled.div`
   height: 124px;
@@ -76,25 +68,6 @@ const DataWrapper = styled.div`
   border: 1px solid #dfe0eb;
   border-radius: 5px;
 `;
-
-const Bar = styled.div`
-  position: relative;
-  background: #cccccc7a;
-  height: 30px;
-  width: 17%;
-  border-radius: 3px;
-  margin: 0.3rem auto;
-  border:  1px solid #EBEDFB;
-`
-
-const Fill = styled.div`
-  background-color: ${(props) => `${props.color}`};
-  width: 100%;
-  border-radius: inherit;
-  transition: height 0.2s ease-in;
-  height: ${(props) => `${props.percentage}%`};
-`
-
 
 const customStyles = {
     control: (styles, { isDisabled }) => ({
@@ -115,15 +88,7 @@ const customStyles = {
         ":focus": {
             border: "1px solid transparent",
         },
-    }),
-    valueContainer: styles => ({
-        ...styles,
-        marginTop: 13,
-        outline: "unset",
-        ":focus": {
-            border: "1px solid red",
-        },
-    }),
+    })
 }
 
 const staffSize = [
@@ -180,9 +145,9 @@ export function BusinessDetails(props) {
         stageOnePercent,
         stageThreePercent,
         stageTwoPercent,
-        bank_list
+        bank_list,
+        getBankList,
     } = props;
-
     const {
         business_name = undefined,
         default_currency,
@@ -200,16 +165,22 @@ export function BusinessDetails(props) {
     const { payload = {} } = onboarding;
 
     useEffect(() => {
-        if (kyc && business_details){
+        if (progressStatus == 2) {
+            getBankList();
+        }
+    }, [progressStatus]);
+
+    useEffect(() => {
+        if (kyc && business_details && countries){
             const biz_country_code = business_details.country.countryCode
             //SET ANNUAL TRANSACTIONS
-                const currencyCode = business_details.default_currency ? business_details.default_currency : 'NGN'
-                setAnnualTrans(
-                    [
-                        { id: 0, value: `50,000 - 100,000`, label: `50,000${currencyCode} - 100,000${currencyCode}`, name: "annualTransaction" },
-                        { id: 1, value: "10,0000 - 150,000", label: `100,000${currencyCode} - 150,000${currencyCode}`, name: "annualTransaction" },
-                    ]
-                )
+            const currencyCode = business_details.default_currency ? business_details.default_currency : 'NGN'
+            setAnnualTrans(
+                [
+                    { id: 0, value: `50,000 - 100,000`, label: `50,000${currencyCode} - 100,000${currencyCode}`, name: "annualTransaction" },
+                    { id: 1, value: "10,0000 - 150,000", label: `100,000${currencyCode} - 150,000${currencyCode}`, name: "annualTransaction" },
+                ]
+            )
             const country_kyc = countries.payload.find(item=>item.countryCode == biz_country_code).kycConfigs
                 .filter(item=>item.status !== "NOT_REQUIRED")
                 .filter(item=>item.status !== "INACTIVE")
@@ -235,19 +206,34 @@ export function BusinessDetails(props) {
 
     useEffect(() => {
         if (props.industry_list) createIndustryData(props.industry_list.payload);
+    }, [props]);
+
+    useEffect(() => {
         let data;
         if (isNigeria) {
-            data = BanksJson && BanksJson.payload && BanksJson.payload.filter(bank => bank.code !== null)
+            data = bank_list && bank_list.payload && bank_list.payload.filter(bank => (bank.hasOwnProperty('bank_nip_code') && bank.bank_nip_code != null))
             if (hostChecker() !== 'seerbit'){
                 data = data.filter((item) => {
                     return item.bank_name.toLowerCase().indexOf(hostName().toLowerCase()) !== -1
                 } )
             }
+            if (data) createBankData(data);
         } else {
-            data = bank_list && bank_list.payload && bank_list.payload.filter(bank => bank.bank_code !== null)
+            data = bank_list && bank_list.payload && bank_list.payload.filter(bank => (bank.bank_nip_code === "" || !bank.bank_nip_code))
+            let bank_list_copy = [];
+            bank_list_copy = data.map((list, id) => {
+                return {
+                    ...list,
+                    id,
+                    name: "bank_code",
+                    value: list.bank_code,
+                    internal_value: list.bank_code,
+                    label: list.bank_name
+                };
+            });
+            setBankData(bank_list_copy);
         }
-        if (data) createBankData(data);
-    }, [props]);
+    }, [bank_list]);
 
     useEffect(() => {
         setLoading(false);
@@ -256,114 +242,119 @@ export function BusinessDetails(props) {
         setStageCompleted(false)
     }, [progressStatus])
 
-    const submitForm = (e) => {
+    const submitForm = () => {
         if (totalField && approvedField) {
             if (totalField === approvedField) {
                 setProgressShow(false);
             }
         } else {
-            // if (stageCompleted || progressStatus === 3) {
-                const { id } = user_details;
-                if (progressStatus === undefined || progressStatus === 0) {
-                    setLoading(true)
-                    const payload = { ...value, logo, progressStatus: StageOneComplete(value) ? 1 : 0 }
-                    updateBusinessDetails(payload)
-                        .then(res=>{
-                            refreshBusiness();
-                            setLoading(false)
-                        })
-                        .catch(e=>{
-                            setLoading(false)
-                            alertExceptionError(e)
-                        })
-                }
-                if (progressStatus === 1) {
-                    setLoading(true)
-                    const payload =
-                        {
-                            support_email: value? value.support_email : '',
-                            chargeback_email: value ? value.chargeback_email : '',
-                            business_email: value ? value.business_email : '',
-                            address: {
-                                street: value ? value.business_address : '',
-                                city: value ? value.business_city  : '',
-                                state: value ? value.business_state : '',
-                                country: business_details.countryCode
-                            },
-                            progressStatus: StageTwoComplete(value) ? 2 : 0
-                }
-                    updateBusinessSupportDetails(payload)
-                        .then(res=>{
-                            refreshBusiness();
-                            setLoading(false)
-                        })
-                        .catch(e=>{
-                            setLoading(false)
-                            alertExceptionError(e)
-                        })
-
-                }
-                if (progressStatus === 2) {
-                    const selectedBank = bankData.find(data => data.bank_code === value.bank_code)
-                    setLoading(true)
-                    const payload =
-                        {
-                            payout: {
-                                payout_account_number: value.account_number,
-                                payout_account_name: value.account_name,
-                                payout_bank_code: value.bank_code,
-                                payout_bank_name: selectedBank.bank_name,
-                                payout_bvn_number: value.bvn_number || "",
-                                currency: default_currency
-                            },
-                            otherSettlementDetails: [],
-                            progressStatus: StageThreeComplete(value, isNigeria) ? 3 : 2,
-                        }
-                    updateBusinessSettlementDetails(payload)
-                        .then(res=>{
-                            refreshBusiness();
-                            setLoading(false)
-                        })
-                        .catch(e=>{
-                            setLoading(false)
-                            alertExceptionError(e)
-                        })
-                }
-                if (progressStatus === 3) {
-                    setLoading(true)
-                    const pending = kycDocs.filter(item=> item.status !== "SUBMITTED");
-                    let lastDoc = false
-                    if (pending.length === value.length){
-                        if(pending[0].fieldName === value[0].fieldName){
-                            lastDoc = true
-                        }
-                    }
-                    if(fields === null) {
-                        setLoading(false);
-                        alertError('Kindly upload all required legal documents');
-                        setEmptyUpload(true);
-                        return;
-                    }
-                    updateBusinessCertificate(
-                        {
-                            kycDocuments: value,
-                            progressStatus: lastDoc ? 4 : 3,
-                            userId: id
-                        }
-                    ).then(res=>{
-                        refreshBusiness(lastDoc);
-                        setLoading(false);
-                        !lastDoc && alertSuccess('Document saved  💪')
+            const { id } = user_details;
+            if (progressStatus === undefined || progressStatus === 0) {
+                setLoading(true)
+                const transPayload = transformerOnboarding(value)
+                const payload = { ...transPayload, logo, progressStatus: StageOneComplete(value) ? 1 : 0 }
+                updateBusinessDetails(payload)
+                    .then(res=>{
+                        refreshBusiness();
+                        setLoading(false)
                     })
-                        .catch(e=>{
-                            setLoading(false)
-                            alertExceptionError(e)
-                        })
+                    .catch(e=>{
+                        setLoading(false)
+                        alertExceptionError(e)
+                    })
+            }
+            if (progressStatus === 1) {
+                setLoading(true)
+                const payload =
+                    {
+                        support_email: value? value.support_email : '',
+                        chargeback_email: value ? value.chargeback_email : '',
+                        business_email: value ? value.business_email : '',
+                        address: {
+                            street: value ? value.business_address : '',
+                            city: value ? value.business_city  : '',
+                            state: value ? value.business_state : '',
+                            country: business_details.countryCode
+                        },
+                        progressStatus: StageTwoComplete(value) ? 2 : 0
+                    }
+                updateBusinessSupportDetails(payload)
+                    .then(res=>{
+                        refreshBusiness();
+                        setLoading(false)
+                    })
+                    .catch(e=>{
+                        setLoading(false)
+                        alertExceptionError(e)
+                    })
 
+            }
+            if (progressStatus === 2) {
+                const selectedBank = bankData.find(data => (data.code === value.bank_code || data.bank_code === value.bank_code || data.bank_nip_code === value.bank_code));
+                setLoading(true)
+                const payload =
+                    {
+                        payout: {
+                            payout_account_number: value.account_number,
+                            payout_account_name: value.account_name,
+                            payout_bank_code: selectedBank.bank_code,
+                            payout_bank_name: selectedBank.bank_name,
+                            payout_bvn_number: value.bvn_number || "",
+                            currency: default_currency
+                        },
+                        otherSettlementDetails: [],
+                        progressStatus: StageThreeComplete(value, isNigeria) ? 3 : 2,
+                    }
+                updateBusinessSettlementDetails(payload)
+                    .then(res=>{
+                        setLoading(false)
+                        if (res.responseCode === "00"){
+                            refreshBusiness();
+                        }
+                        else {
+                            alertError(res.responseMessage)
+                        }
+                    })
+                    .catch(e=>{
+                        setLoading(false)
+                        alertExceptionError(e)
+                    })
+            }
+            if (progressStatus === 3) {
+                const pending = kycDocs.filter(item=> item.status !== "SUBMITTED");
+                let lastDoc = false
+                if (pending.length === value.length){
+                    if(pending[0].fieldName === value[0].fieldName){
+                        lastDoc = true
+                    }
                 }
-            // } else {
-            //     setStageCompleted(true)
-            // }
+                // if(lastDoc) {
+                //     setLoading(false);
+                //     alertError('Kindly upload all required legal documents');
+                //     return;
+                // }
+                if (!Array.isArray(value)){
+                    alertError('Kindly upload all required legal documents');
+                    return;
+                }
+                setLoading(true)
+                updateBusinessCertificate(
+                    {
+                        kycDocuments: value,
+                        progressStatus: lastDoc ? 4 : 3,
+                        userId: id
+                    }
+                ).then(res=>{
+                    refreshBusiness(lastDoc);
+                    setLoading(false);
+                    !lastDoc && alertSuccess('Document saved  💪')
+                })
+                    .catch(e=>{
+                        setLoading(false)
+                        alertExceptionError(e)
+                    })
+
+            }
         }
     };
 
@@ -408,23 +399,21 @@ export function BusinessDetails(props) {
             setValue({ ...value, account_name: "" });
             setVerify(true);
             clearErrors(['account_number', 'bank_name'])
-            props.nameInquiry({
-                data: { bankCode: bank_code, isCgBankCode: true, account: account_number },
-                location: "name_inquiry",
-            });
+            nameEnquirySupport(
+                { bankcode: bank_code, accountnumber: account_number }
+            ).then(r => {
+                setVerify(false);
+                if (r.data.code == '00'){
+                    setValue({ ...value, account_name: r.data.cutomername });
+                }else{
+                    alertError(r.data.message)
+                }
+            }).catch(e=>{
+                setVerify(false);
+            })
+
         }
     }, [inquiryValue]);
-
-    useEffect(() => {
-        if (!isEmpty(name_inquiry)) {
-            const { code, cutomername } = name_inquiry;
-            if (code === "00") {
-                setValue({ ...value, account_name: cutomername });
-                setVerify(false);
-            }
-        }
-        clearState({ name: "name_inquiry", value: null });
-    }, [name_inquiry]);
 
     const createIndustryData = (data) => {
         if (!isEmpty(data)) {
@@ -450,32 +439,14 @@ export function BusinessDetails(props) {
                     ...list,
                     id,
                     name: "bank_code",
-                    value: list.bank_code,
+                    value: list.bank_nip_code,
+                    internal_value: list.bank_code,
                     label: list.bank_name
                 };
             });
             setBankData(categorizedData);
         }
     };
-
-
-    useEffect(() => {
-        props.clearState({ name: "error_details", value: null });
-        if (
-            props.error_details &&
-            props.error_details.error_source === "name_inquiry"
-        ) {
-            setVerify(false);
-            setLoading(false);
-            // alertError(props.error_details.message);
-            setError("account_number", {
-                type: "manual",
-                message: props.error_details.message,
-            });
-            props.clearState({ name: "error_details", value: null });
-        }
-
-    }, [props.error_details]);
 
     const handleValue = (e) => {
         if (e.target.name !== "account_number") {
@@ -536,10 +507,10 @@ export function BusinessDetails(props) {
 
     useEffect( ()=>{
         if(businessFields && value){
-                setValue({ ...value, ...businessFields });
-            }else{
-                setValue({ ...businessFields });
-            }
+            setValue({ ...value, ...businessFields });
+        }else{
+            setValue({ ...businessFields });
+        }
     }, [businessFields,progressStatus])
 
     return (
@@ -548,130 +519,130 @@ export function BusinessDetails(props) {
                 progressStatus={progressStatus}
                 setProgressShow={setProgressShow}
             />
-                <div className="col-12">
-                    <div className="row">
-                        <StagesTrack
-                                     totalProgress={totalProgress}
-                                     completedKyc={completedKyc}
-                                     stageOnePercent={stageOnePercent}
-                                     stageThreePercent={stageThreePercent}
-                                     stageTwoPercent={stageTwoPercent}
-                        />
-                        <form
-                            className="col-10"
-                            onSubmit={handleSubmit(submitForm, onFormError)}
-                        >
-                            {(!progressStatus || progressStatus === 0) && value && (
-                                <AnimatePresence>
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x:-10 }}
-                                    >
-                                <div>
-                                    <input autoComplete="on" style={{ display: 'none' }}
-                                        id="fake-hidden-input-to-stop-google-address-lookup" />
-                                    <div className="col-12 p-0 m-0">
-                                        <div className="row">
-                                            <div className="col-9">
-                                                <div className="form-outline mb-3">
-                                                    <input
-                                                        name="business_name"
-                                                        type="text"
-                                                        autoComplete="off"
-                                                        className={value && value.business_name || business_name ? `form-control has-business` : `form-control seerbit-business`}
-                                                        onChange={(e) => handleValue(e)}
-                                                        value={value ? value.business_name : business_name}
-                                                        required
-                                                        disabled={stageCompleted}
-                                                    />
-                                                    <label className="form-label">{t('Business Name')}</label>
-                                                </div>
-                                                <div className="form-outline mb-3">
-                                                    <input
-                                                        name="tradingName"
-                                                        type="text"
-                                                        autoComplete="off"
-                                                        className={value && value.tradingName ? `form-control has-trading` : `form-control seerbit-trading`}
-                                                        onChange={(e) => handleValue(e)}
-                                                        value={value ? value.tradingName : ''}
-                                                        required
-                                                        disabled={stageCompleted}
-                                                    />
-                                                    <label className="form-label">{t('Trading Name')}</label>
-                                                </div>
-                                            </div>
-                                            <div className="col-3 p-0 m-0">
-                                                {!logo && <DataWrapper className="bg-white px-4 pt-4 business_logo_placeholder">
-                                                    <Centered>
-                                                        <img
-                                                            src={Placeholder}
-                                                            onClick={(e) => uploadElement.click()}
-                                                            width="70"
-                                                            title={t('Click to update business logo')}
-                                                            className="img-thumbnail bg-transparent border-0 cursor-pointer"
+            <div className="col-12">
+                <div className="row">
+                    <StagesTrack
+                        totalProgress={totalProgress}
+                        completedKyc={completedKyc}
+                        stageOnePercent={stageOnePercent}
+                        stageThreePercent={stageThreePercent}
+                        stageTwoPercent={stageTwoPercent}
+                    />
+                    <form
+                        className="col-10"
+                        onSubmit={handleSubmit(submitForm, onFormError)}
+                    >
+                        {(!progressStatus || progressStatus === 0) && value && (
+                            <AnimatePresence>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x:-10 }}
+                                >
+                                    <div>
+                                        <input autoComplete="on" style={{ display: 'none' }}
+                                               id="fake-hidden-input-to-stop-google-address-lookup" />
+                                        <div className="col-12 p-0 m-0">
+                                            <div className="row">
+                                                <div className="col-9">
+                                                    <div className="form-outline mb-3">
+                                                        <input
+                                                            name="business_name"
+                                                            type="text"
+                                                            autoComplete="off"
+                                                            className={value && value.business_name || business_name ? `form-control has-business` : `form-control seerbit-business`}
+                                                            onChange={(e) => handleValue(e)}
+                                                            value={value ? value.business_name : business_name}
+                                                            required
+                                                            disabled={stageCompleted}
                                                         />
-                                                    </Centered>
-                                                    <input
-                                                        style={{ display: "none" }}
-                                                        type="file"
-                                                        accept="image/png, image/jpeg, image/ico"
-                                                        placeholder="image"
-                                                        ref={(e) => (uploadElement = e)}
-                                                        onChange={(e) => {
-                                                            setUploadLogo();
-                                                            setUploadLogo(e.target.files[0])
-
-                                                        }}
-                                                    />
-                                                </DataWrapper>}
-                                                {logo && <DataWrapper className="bg-white">
-                                                    <Centered>
-                                                        <div className="vertical-center">
+                                                        <label className="form-label">{t('Business Name')}</label>
+                                                    </div>
+                                                    <div className="form-outline mb-3">
+                                                        <input
+                                                            name="tradingName"
+                                                            type="text"
+                                                            autoComplete="off"
+                                                            className={value && value.tradingName ? `form-control has-trading` : `form-control seerbit-trading`}
+                                                            onChange={(e) => handleValue(e)}
+                                                            value={value ? value.tradingName : ''}
+                                                            required
+                                                            disabled={stageCompleted}
+                                                        />
+                                                        <label className="form-label">{t('Trading Name')}</label>
+                                                    </div>
+                                                </div>
+                                                <div className="col-3 p-0 m-0">
+                                                    {!logo && <DataWrapper className="bg-white px-4 pt-4 business_logo_placeholder">
+                                                        <Centered>
                                                             <img
-                                                                src={logo || Upload}
+                                                                src={Placeholder}
                                                                 onClick={(e) => uploadElement.click()}
-                                                                height="100"
-                                                                width="100"
-                                                                title="Click to update a business logo"
+                                                                width="70"
+                                                                title={t('Click to update business logo')}
                                                                 className='cursor-pointer'
                                                             />
-                                                        </div>
-                                                    </Centered>
-                                                    <input
-                                                        style={{ display: "none" }}
-                                                        type="file"
-                                                        accept="image/png, image/jpeg, image/ico"
-                                                        placeholder="image"
-                                                        ref={(e) => (uploadElement = e)}
-                                                        onChange={(e) => {
-                                                            setUploadLogo();
-                                                            setUploadLogo(e.target.files[0])
+                                                        </Centered>
+                                                        <input
+                                                            style={{ display: "none" }}
+                                                            type="file"
+                                                            accept="image/png, image/jpeg, image/ico"
+                                                            placeholder="image"
+                                                            ref={(e) => (uploadElement = e)}
+                                                            onChange={(e) => {
+                                                                setUploadLogo();
+                                                                setUploadLogo(e.target.files[0])
 
-                                                        }}
-                                                    />
-                                                </DataWrapper>}
+                                                            }}
+                                                        />
+                                                    </DataWrapper>}
+                                                    {logo && <DataWrapper className="bg-white">
+                                                        <Centered>
+                                                            <div className="vertical-center">
+                                                                <img
+                                                                    src={logo || Upload}
+                                                                    onClick={(e) => uploadElement.click()}
+                                                                    height="100"
+                                                                    width="100"
+                                                                    title="Click to update a business logo"
+                                                                    className='cursor-pointer'
+                                                                />
+                                                            </div>
+                                                        </Centered>
+                                                        <input
+                                                            style={{ display: "none" }}
+                                                            type="file"
+                                                            accept="image/png, image/jpeg, image/ico"
+                                                            placeholder="image"
+                                                            ref={(e) => (uploadElement = e)}
+                                                            onChange={(e) => {
+                                                                setUploadLogo();
+                                                                setUploadLogo(e.target.files[0])
+
+                                                            }}
+                                                        />
+                                                    </DataWrapper>}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-outline mb-3">
-                                        <input
-                                            name="website_url"
-                                            type="text"
-                                            autoComplete="off"
-                                            className={value && value.website_url ? `form-control has-website` : `form-control seerbit-website`}
-                                            onChange={(e) => handleValue(e)}
-                                            value={value ? value.website_url : ''}
-                                            disabled={stageCompleted}
-                                            required={hostChecker() === 'uba'}
+                                        <div className="form-outline mb-3">
+                                            <input
+                                                name="website_url"
+                                                type="text"
+                                                autoComplete="off"
+                                                className={value && value.website_url ? `form-control has-website` : `form-control seerbit-website`}
+                                                onChange={(e) => handleValue(e)}
+                                                value={value ? value.website_url : ''}
+                                                disabled={stageCompleted}
+                                                required={hostChecker() === 'uba'}
 
-                                        />
-                                        <label className="form-label">{t('Website')}
-                                            {
-                                                hostChecker() !== 'uba' && <span className="text-muted font-10">{"(Optional)"}</span>
-                                            }
-                                        </label>
-                                    </div>
+                                            />
+                                            <label className="form-label">{t('Website')}
+                                                {
+                                                    hostChecker() !== 'uba' && <span className="text-muted font-10">{"(Optional)"}</span>
+                                                }
+                                            </label>
+                                        </div>
                                         <div className="form-onboarding-outline mb-3">
                                             <Controller
                                                 name="business_industry"
@@ -701,73 +672,73 @@ export function BusinessDetails(props) {
                                             )}
                                             <label className="form-label-onboarding">{t('Business Category')}</label>
                                         </div>
-                                    <div className="form-outline mb-3">
-                                        <input
-                                            name="businessDescription"
-                                            type="text"
-                                            autoComplete="off"
-                                            className={value && value.businessDescription ? `form-control has-description` : `form-control seerbit-description`}
-                                            onChange={(e) => handleValue(e)}
-                                            value={value ? value.businessDescription : ''}
-                                            disabled={stageCompleted}
-                                            required
-                                        />
-                                        <label className="form-label">{t('Business Description')}</label>
-                                    </div>
-                                    <div className="form-onboarding-outline mb-3">
-                                        <Controller
-                                            name="staffSize"
-                                            defaultValue={value.staffSize || ""}
-                                            className="basic-single"
-                                            render={({ field }) => (
-                                                <Select
-                                                    options={staffSize}
-                                                    styles={customStyles}
-                                                    value={staffSize.find(c => c.value === field.value)}
-                                                    onChange={e => {
-                                                        handleSelected(e)
-                                                        field.onChange(e.value);
-                                                    }}
-                                                    isSearchable={false}
-                                                    isLoading={!isEmpty(staffSize) ? false : true}
-                                                    isDisabled={stageCompleted}
-                                                />
+                                        <div className="form-outline mb-3">
+                                            <input
+                                                name="businessDescription"
+                                                type="text"
+                                                autoComplete="off"
+                                                className={value && value.businessDescription ? `form-control has-description` : `form-control seerbit-description`}
+                                                onChange={(e) => handleValue(e)}
+                                                value={value ? value.businessDescription : ''}
+                                                disabled={stageCompleted}
+                                                required
+                                            />
+                                            <label className="form-label">{t('Business Description')}</label>
+                                        </div>
+                                        <div className="form-onboarding-outline mb-3">
+                                            <Controller
+                                                name="staffSize"
+                                                defaultValue={value.staffSize || ""}
+                                                className="basic-single"
+                                                render={({ field }) => (
+                                                    <Select
+                                                        options={staffSize}
+                                                        styles={customStyles}
+                                                        value={staffSize.find(c => c.value === field.value)}
+                                                        onChange={e => {
+                                                            handleSelected(e)
+                                                            field.onChange(e.value);
+                                                        }}
+                                                        isSearchable={false}
+                                                        isLoading={!isEmpty(staffSize) ? false : true}
+                                                        isDisabled={stageCompleted}
+                                                    />
+                                                )}
+                                                control={control}
+                                                rules={{ required: true }}
+                                            />
+                                            {errors && errors.staffSize && errors.staffSize.type === "required" && (
+                                                <span className="text-danger font-12">{t("Staff size is required")}</span>
                                             )}
-                                            control={control}
-                                            rules={{ required: true }}
-                                        />
-                                        {errors && errors.staffSize && errors.staffSize.type === "required" && (
-                                            <span className="text-danger font-12">{t("Staff size is required")}</span>
-                                        )}
-                                        <label className="form-label-onboarding">{t('Staff Size')}</label>
-                                    </div>
-                                    <div className="form-onboarding-outline mb-3">
-                                        <Controller
-                                            name="annualTransaction"
-                                            defaultValue={value.annualTransaction || ""}
-                                            className="basic-single"
-                                            render={({ field }) => (
-                                                <Select
-                                                    options={annualTrans}
-                                                    styles={customStyles}
-                                                    value={annualTrans.find(c => c.value === field.value)}
-                                                    onChange={e => {
-                                                        handleSelected(e)
-                                                        field.onChange(e.value);
-                                                    }}
-                                                    isSearchable={false}
-                                                    isLoading={!isEmpty(annualTrans) ? false : true}
-                                                    isDisabled={stageCompleted}
-                                                />
+                                            <label className="form-label-onboarding">{t('Staff Size')}</label>
+                                        </div>
+                                        <div className="form-onboarding-outline mb-3">
+                                            <Controller
+                                                name="annualTransaction"
+                                                defaultValue={value.annualTransaction || ""}
+                                                className="basic-single"
+                                                render={({ field }) => (
+                                                    <Select
+                                                        options={annualTrans}
+                                                        styles={customStyles}
+                                                        value={annualTrans.find(c => c.value === field.value)}
+                                                        onChange={e => {
+                                                            handleSelected(e)
+                                                            field.onChange(e.value);
+                                                        }}
+                                                        isSearchable={false}
+                                                        isLoading={!isEmpty(annualTrans) ? false : true}
+                                                        isDisabled={stageCompleted}
+                                                    />
+                                                )}
+                                                control={control}
+                                                rules={{ required: true }}
+                                            />
+                                            {errors && errors.annualTransaction && errors.annualTransaction.type === "required" && (
+                                                <span className="text-danger font-12">{t("Annual Transaction Value is required")}</span>
                                             )}
-                                            control={control}
-                                            rules={{ required: true }}
-                                        />
-                                        {errors && errors.annualTransaction && errors.annualTransaction.type === "required" && (
-                                            <span className="text-danger font-12">{t("Annual Transaction Value is required")}</span>
-                                        )}
-                                        <label className="form-label-onboarding">{t('Annual Transaction Value Estimation')}</label>
-                                    </div>
+                                            <label className="form-label-onboarding">{t('Annual Transaction Value Estimation')}</label>
+                                        </div>
                                         <div className="form-onboarding-outline mb-3">
                                             <Controller
                                                 name="acceptInternationalTrans"
@@ -799,45 +770,45 @@ export function BusinessDetails(props) {
                                             <label
                                                 className="form-label-onboarding">{t('Will you be accepting international transaction?')}</label>
                                         </div>
-                                    <div className="d-flex justify-content-between my-4">
-                                        <div>{stageCompleted && <div onClick={() => {
-                                            setStageCompleted(false);
-                                        }} className="font-15 cursor-pointer mt-2 text-dark">Edit</div>}</div>
-                                        {
-                                            totalProgress === 100 ?
-                                                <Button
-                                                    block
-                                                    type={'button'}
-                                                    className="brand-btn h-50px w-200px"
-                                                    onClick={() => history.push('account/business_details')}
-                                                >
-                                                    <span> {t('Go to settings')}</span>
-                                                </Button>
-                                                :
-                                                <Button
-                                                    block
-                                                    type="submit"
-                                                    className="brand-btn h-50px w-200px"
-                                                    disabled={loading}
-                                                >
+                                        <div className="d-flex justify-content-between my-4">
+                                            <div>{stageCompleted && <div onClick={() => {
+                                                setStageCompleted(false);
+                                            }} className="font-15 cursor-pointer mt-2 text-dark">Edit</div>}</div>
+                                            {
+                                                totalProgress === 100 ?
+                                                    <Button
+                                                        block
+                                                        type={'button'}
+                                                        className="brand-btn h-50px w-200px"
+                                                        onClick={() => history.push('account/business_details')}
+                                                    >
+                                                        <span> {t('Go to settings')}</span>
+                                                    </Button>
+                                                    :
+                                                    <Button
+                                                        block
+                                                        type="submit"
+                                                        className="brand-btn h-50px w-200px"
+                                                        disabled={loading}
+                                                    >
                                                     <span>{loading ? <Spinner animation="border" variant="light"
                                                                               size/> : t("Save & Continue")} </span>
-                                                </Button>
-                                        }
+                                                    </Button>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            )}
-                            {progressStatus === 1 && (
-                                <AnimatePresence>
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x:-10 }}
-                                    >
+                                </motion.div>
+                            </AnimatePresence>
+                        )}
+                        {progressStatus === 1 && (
+                            <AnimatePresence>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x:-10 }}
+                                >
                                     <input autoComplete="on" style={{ display: 'none' }}
-                                        id="fake-hidden-input-to-stop-google-address-lookup" />
+                                           id="fake-hidden-input-to-stop-google-address-lookup" />
                                     <div className="form-outline mb-3">
                                         <input
                                             name="business_email"
@@ -892,6 +863,7 @@ export function BusinessDetails(props) {
                                             onChange={(e) => handleValue(e)}
                                             value={value ? value.business_state : ''}
                                             disabled={stageCompleted}
+                                            maxLength={24}
                                             required
                                         />
                                         <label className="form-label">{t('Business State')}</label>
@@ -948,18 +920,18 @@ export function BusinessDetails(props) {
                                                 </Button>
                                         }
                                     </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            )}
-                            {(progressStatus == 2 && value) && (
-                                <AnimatePresence>
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x:-10 }}
-                                    >
+                                </motion.div>
+                            </AnimatePresence>
+                        )}
+                        {(progressStatus == 2 && value) && (
+                            <AnimatePresence>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x:-10 }}
+                                >
                                     <input autoComplete="on" style={{ display: 'none' }}
-                                        id="fake-hidden-input-to-stop-google-address-lookup" />
+                                           id="fake-hidden-input-to-stop-google-address-lookup" />
                                     <div className="form-onboarding-outline mb-3">
                                         <Controller
                                             name="bank_name"
@@ -969,14 +941,14 @@ export function BusinessDetails(props) {
                                                 <Select
                                                     options={bankData}
                                                     styles={customStyles}
-                                                    value={bankData.find(c => c.value === field.value)}
+                                                    value={bankData.find(c => c.internal_value === field.value)}
                                                     onChange={e => {
                                                         handleSelected(e)
                                                         field.onChange(e.value)
                                                     }}
                                                     isSearchable={true}
                                                     isLoading={!isEmpty(bankData) ? false : true}
-                                                    isDisabled={stageCompleted || verifying || loading}
+                                                    isDisabled={stageCompleted || verifying || loading || props.business_details.status === "APPROVED"}
                                                 />
                                             )}
                                             control={control}
@@ -999,13 +971,13 @@ export function BusinessDetails(props) {
                                             className={value && value.account_number ? `form-control has-account` : `form-control seerbit-account`}
                                             onChange={(e) => handleValue(e)}
                                             value={value ? value.account_number : ''}
-                                            disabled={stageCompleted || verifying || loading}
+                                            disabled={stageCompleted || verifying || loading || props.business_details.status === "APPROVED"}
                                             required
                                             ref={accountNumberRef}
                                         />
                                         {errors && errors.account_number && errors.account_number.type === "manual" && (
-                                        <span className="text-danger font-12">{t(errors.account_number.message)}</span>
-                                    )}
+                                            <span className="text-danger font-12">{t(errors.account_number.message)}</span>
+                                        )}
                                         <label className="form-label">{t('Business Account Number')}</label>
                                     </div>
                                     <div className="form-outline mb-3">
@@ -1032,7 +1004,7 @@ export function BusinessDetails(props) {
                                             onChange={(e) => handleValue(e)}
                                             value={value ? value.bvn_number : ''}
                                             required
-                                            disabled={loading || stageCompleted || verifying}
+                                            disabled={loading || stageCompleted || verifying || props.business_details.status === "APPROVED"}
                                         />
                                         <label className="form-label">{t('BVN')}</label>
                                     </div>}
@@ -1062,18 +1034,18 @@ export function BusinessDetails(props) {
                                                 </Button>
                                         }
                                     </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            )}
-                            {progressStatus === 3 && (
-                                <AnimatePresence>
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x:-10 }}
-                                    >
+                                </motion.div>
+                            </AnimatePresence>
+                        )}
+                        {progressStatus === 3 && (
+                            <AnimatePresence>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x:-10 }}
+                                >
                                     <input autoComplete="on" style={{ display: 'none' }}
-                                        id="fake-hidden-input-to-stop-google-address-lookup" />
+                                           id="fake-hidden-input-to-stop-google-address-lookup" />
                                     {kyc && kyc.message === "KYC not listed under business!!" && (
                                         <div className="form-outline mb-3">
                                             <input
@@ -1130,14 +1102,14 @@ export function BusinessDetails(props) {
                                     </div>
                                     <div className="d-flex justify-content-end my-4">
                                         {
-                                            totalProgress  === 100 ?
+                                            completedKyc ?
                                                 <Button
                                                     block
-                                                    type={'button'}
+                                                    type={'submit'}
                                                     className="brand-btn h-50px w-200px"
-                                                    onClick={()=> history.push('account/business_details')}
                                                 >
-                                            <span> {t('Go to settings')}</span>
+                                                    {loading ? <Spinner animation="border" variant="light" size/> :
+                                                        <span> {t('Go to dashboard')}</span>}
                                                 </Button>
                                                 :
                                                 <Button
@@ -1147,8 +1119,7 @@ export function BusinessDetails(props) {
                                                     disabled={loading}
                                                 >
                                             <span>{
-                                                    loading ? <Spinner animation="border" variant="light" size />
-                                                    // : emptyUpload ? t("Upload documents to continue")
+                                                loading ? <Spinner animation="border" variant="light" size />
                                                     :  t('Complete Setup')
                                             } </span>
                                                 </Button>
@@ -1156,30 +1127,26 @@ export function BusinessDetails(props) {
                                         }
 
                                     </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            )}
-                            <Card className="mt-5 px-4">
-                                <div className="pb-1">
-                                    <span className="font-12 text-dark">{t('Progressing')} {completedKyc ? 100 : totalProgress}%</span>
-                                </div>
-                                <div>
-                                    <ProgressBar variant="success" now={completedKyc ? 100 : totalProgress} style={{ height: "5px" }} />
-                                </div>
-                                {/* <div className="text-center py-2 font-12">
-                                    {currentField && currentField[0].replace("_", " ")}
-                                </div> */}
-                            </Card>
-                        </form>
-                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        )}
+                        <Card className="mt-5 px-4">
+                            <div className="pb-1">
+                                <span className="font-12 text-dark">{t('Progressing')} {completedKyc ? 100 : totalProgress}%</span>
+                            </div>
+                            <div>
+                                <ProgressBar variant="success" now={completedKyc ? 100 : totalProgress} style={{ height: "5px" }} />
+                            </div>
+                        </Card>
+                    </form>
                 </div>
+            </div>
         </div>
     );
 };
 
 
 BusinessDetails.propTypes = {
-    getKYC: PropTypes.func.isRequired,
     getIndustries: PropTypes.func.isRequired,
     getCountries: PropTypes.func.isRequired,
 };
@@ -1208,5 +1175,6 @@ export default connect(mapStateToProps, {
     getCountries,
     nameInquiry,
     setErrorLog,
-    clearState
+    clearState,
+    getBankList,
 })(BusinessDetails);

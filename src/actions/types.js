@@ -198,7 +198,8 @@ export const posTerminalTypes = {
 }
 
 //PROD
-export const BASE_URL = 'https://merchant.seerbitapi.com/springmerchants/api/v1/';
+export const BASE_URL = 'https://merchants.seerbitapi.com/api/v1/';
+export const BASE_URL_V3 = 'https://merchants.seerbitapi.com/api/v3/';
 export const BASE_URL_AUTH_SERVICE = 'https://merchant.seerbitapi.com/authservice/api/v1/'
 export const BASE_URL_INVOICE = 'https://merchant.seerbitapi.com/invoice/api/v1/';
 export const BASE_URL_STORE = 'https://merchant.seerbitapi.com/store/api/v1/';

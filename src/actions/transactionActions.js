@@ -9,12 +9,12 @@ import {get, getRequestWithToken} from "../services/apiService";
 const CustomToken = '277ed3ca-d727-3998-a524-9e5c00a9f219';
 export const getRecentTransactions = () => (dispatch,getState) => {
     dispatch({
-      type: LOADING_RECENT_TRANSACTIONS,
-      payload: true,
+        type: LOADING_RECENT_TRANSACTIONS,
+        payload: true,
     });
     const url = `user/${getState().data.business_details.number}/transactions/landingtransactions`
 
-        get(url)
+    get(url)
         .then(res=>{
             dispatch(
                 {
@@ -52,17 +52,17 @@ export const getRecentTransactions = () => (dispatch,getState) => {
         )
     })
 
-  };
+};
 
 export const getDashboardAnalytics = () => (dispatch,getState) => {
     dispatch({
-      type: LOADING_DASHBOARD_ANALYTICS,
-      payload: true,
+        type: LOADING_DASHBOARD_ANALYTICS,
+        payload: true,
     });
     const cur = getState().data.business_details.default_currency
     const url = `business/${getState().data.business_details.number}/analytics?cur=${cur}`
 
-        get(url)
+    get(url)
         .then(res=>{
             dispatch(
                 {
@@ -100,7 +100,7 @@ export const getDashboardAnalytics = () => (dispatch,getState) => {
         )
     })
 
-  };
+};
 
 export const getCustomReportFieldNames = () => (dispatch,getState) => {
     dispatch({
